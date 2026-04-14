@@ -149,6 +149,36 @@ export const WithBackAndActions: Story = {
   },
 };
 
+export const WithNotifications: Story = {
+  args: {
+    title: 'Print Room',
+    subtitle: 'Studio',
+    notifications: 3,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Header with notification bell icon showing a count badge.',
+      },
+    },
+  },
+};
+
+export const WithBellNoCount: Story = {
+  args: {
+    title: 'Print Room',
+    subtitle: 'Studio',
+    notifications: 0,
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Header with notification bell but no unread notifications.',
+      },
+    },
+  },
+};
+
 export const NoSubtitle: Story = {
   args: {
     title: 'Print Room',

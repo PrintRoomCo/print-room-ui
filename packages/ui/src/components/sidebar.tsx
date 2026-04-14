@@ -178,28 +178,51 @@ export interface SidebarItemProps
   active?: boolean;
   /** Optional trailing badge / count. */
   badge?: React.ReactNode;
+  /** Visual variant — `studio` matches the Figma Studio dashboard nav. */
+  variant?: 'default' | 'studio';
 }
 
+const sidebarItemVariants: Record<
+  'default' | 'studio',
+  { base: string; active: string; hover: string }
+> = {
+  default: {
+    base: 'rounded-md',
+    hover: 'hover:bg-accent hover:text-accent-foreground',
+    active: 'bg-accent text-accent-foreground',
+  },
+  studio: {
+    base: 'rounded-lg border border-black',
+    hover: 'hover:bg-muted/50',
+    active:
+      'bg-[var(--pr-sidebar-active-bg)] text-white border-[var(--pr-sidebar-active-bg)]',
+  },
+};
+
 const SidebarItem = React.forwardRef<HTMLButtonElement, SidebarItemProps>(
-  ({ className, icon, active, badge, children, ...props }, ref) => (
-    <button
-      ref={ref}
-      type="button"
-      data-active={active || undefined}
-      className={cn(
-        'group flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm font-medium transition-colors',
-        'hover:bg-accent hover:text-accent-foreground',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
-        active && 'bg-accent text-accent-foreground',
-        className
-      )}
-      {...props}
-    >
-      {icon && <span className="h-4 w-4 shrink-0">{icon}</span>}
-      <span className="flex-1 truncate">{children}</span>
-      {badge && <span className="ml-auto">{badge}</span>}
-    </button>
-  )
+  ({ className, icon, active, badge, variant = 'default', children, ...props }, ref) => {
+    const v = sidebarItemVariants[variant];
+    return (
+      <button
+        ref={ref}
+        type="button"
+        data-active={active || undefined}
+        className={cn(
+          'group flex w-full items-center gap-3 px-2 py-2 text-sm font-medium transition-colors',
+          v.base,
+          v.hover,
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+          active && v.active,
+          className
+        )}
+        {...props}
+      >
+        {icon && <span className="h-4 w-4 shrink-0">{icon}</span>}
+        <span className="flex-1 truncate">{children}</span>
+        {badge && <span className="ml-auto">{badge}</span>}
+      </button>
+    );
+  }
 );
 SidebarItem.displayName = 'SidebarItem';
 

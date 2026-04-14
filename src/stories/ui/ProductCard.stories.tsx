@@ -128,6 +128,37 @@ export const WithBrandingPills: Story = {
   ),
 };
 
+/** Catalog layout — simple image + uppercase name, no price or badges */
+export const CatalogGrid: Story = {
+  args: { title: 'placeholder', price: 'placeholder' },
+  decorators: [
+    () => (
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-4" style={{ maxWidth: 900 }}>
+        <ProductCard
+          title="AS Colour Staple Tee"
+          imageSrc={storefrontProducts[0].imageSrc}
+          layout="catalog"
+        />
+        <ProductCard
+          title="Continental Hoodie"
+          imageSrc={storefrontProducts[1]?.imageSrc}
+          layout="catalog"
+        />
+        <ProductCard
+          title="Stanley/Stella Creator 2.0"
+          imageSrc={storefrontProducts[2]?.imageSrc}
+          layout="catalog"
+        />
+        <ProductCard
+          title="Earth Positive Classic"
+          imageSrc={storefrontProducts[3]?.imageSrc}
+          layout="catalog"
+        />
+      </div>
+    ),
+  ],
+};
+
 /** Product grid like the Shopify collection page */
 export const ProductGrid: Story = {
   args: { title: storefrontProducts[0].title, price: storefrontProducts[0].price },

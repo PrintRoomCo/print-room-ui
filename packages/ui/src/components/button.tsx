@@ -18,12 +18,15 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        cta: "bg-[var(--pr-dusky-purple)] text-white border-2 border-[var(--pr-dusky-purple)] hover:bg-[var(--pr-dusky-purple-hover)]",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        cta: "h-[var(--pr-cta-height)] min-w-[var(--pr-cta-width)] px-8 text-base font-semibold rounded-[var(--pr-radius-cta)]",
+        submit: "h-[var(--pr-submit-height)] max-w-[var(--pr-submit-max-width)] w-full px-8 text-xl font-semibold rounded-[var(--pr-radius-submit)]",
       },
     },
     defaultVariants: {

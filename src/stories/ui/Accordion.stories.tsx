@@ -108,6 +108,82 @@ export const WithDefaultOpen: Story = {
   ),
 };
 
+export const CardVariant: Story = {
+  name: 'Card Variant',
+  render: () => (
+    <Accordion type="single" collapsible variant="card" className="w-[450px]">
+      <AccordionItem value="item-1">
+        <AccordionTrigger info>Garment & Colour</AccordionTrigger>
+        <AccordionContent>
+          Select from over 200 garments across AS Colour, Continental, and Stanley/Stella.
+          Each comes in a range of colourways — pick the ones that suit your brand.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-2">
+        <AccordionTrigger info>Print Method</AccordionTrigger>
+        <AccordionContent>
+          Choose between screen printing, embroidery, heat transfers, or DTG depending
+          on your artwork complexity and order quantity.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-3">
+        <AccordionTrigger info>Artwork Placement</AccordionTrigger>
+        <AccordionContent>
+          Position your design on front, back, left chest, sleeve, or custom locations.
+          We&apos;ll send a proof before production.
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="item-4">
+        <AccordionTrigger info>Sizing & Quantities</AccordionTrigger>
+        <AccordionContent>
+          Enter quantities per size. Minimum order quantities vary by decoration method —
+          screen printing starts at 24 units, embroidery from 12.
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
+export const DesignToolAccordions: Story = {
+  name: 'Design Tool Accordions',
+  render: () => (
+    <Accordion
+      type="single"
+      defaultValue="sizing"
+      collapsible
+      variant="card"
+      className="w-[450px]"
+    >
+      <AccordionItem value="garment">
+        <AccordionTrigger info>Garment & Colour</AccordionTrigger>
+        <AccordionContent>
+          AS Colour Staple Tee — Black, Bone, White
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="method">
+        <AccordionTrigger info>Print Method</AccordionTrigger>
+        <AccordionContent>
+          2-colour front screen print
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="artwork">
+        <AccordionTrigger info>Artwork Placement</AccordionTrigger>
+        <AccordionContent>
+          Front centre, 30cm wide
+        </AccordionContent>
+      </AccordionItem>
+      <AccordionItem value="sizing">
+        <AccordionTrigger info>Sizing & Quantities</AccordionTrigger>
+        <AccordionContent>
+          <div className="space-y-2 text-sm">
+            <p>Total: 120 units across S–3XL</p>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
+  ),
+};
+
 export const FAQ: Story = {
   render: () => (
     <Accordion type="single" collapsible className="w-[500px]">

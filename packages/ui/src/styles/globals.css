@@ -38,6 +38,9 @@
     --pr-slider-track-height: 6px;
     --pr-cta-width: 153px;
     --pr-cta-height: 47px;
+    --pr-sidebar-active-bg: #1e2756;
+    --pr-sidebar-border: 1px solid black;
+    --pr-step-underline: var(--pr-dusky-purple);
 
     --background: 60 33% 98%;
     --foreground: 0 0% 8%;

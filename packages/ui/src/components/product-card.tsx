@@ -54,7 +54,7 @@ export interface ProductCardProps
   /** Click handler for the card */
   onCardClick?: () => void;
   /** Price layout */
-  layout?: 'title-left-price-right' | 'title-left-price-under' | 'title-center-price-under';
+  layout?: 'title-left-price-right' | 'title-left-price-under' | 'title-center-price-under' | 'catalog';
 }
 
 const badgeColors: Record<string, string> = {
@@ -104,13 +104,14 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
       ? { href, onClick: onCardClick }
       : { onClick: onCardClick, role: onCardClick ? 'button' as const : undefined, tabIndex: onCardClick ? 0 : undefined };
 
+    const isCatalog = layout === 'catalog';
     const isHorizontal = layout === 'title-left-price-right';
     const isCentered = layout === 'title-center-price-under';
 
     return (
       <div
         ref={ref}
-        className={cn(productCardVariants({ variant, className }))}
+        className={cn(productCardVariants({ variant }), isCatalog && 'rounded-xl', className)}
         {...props}
       >
         {/* Image section */}
@@ -154,7 +155,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
           </Wrapper>
 
           {/* Badge */}
-          {resolvedBadge && (
+          {resolvedBadge && !isCatalog && (
             <div
               className={cn(
                 'pointer-events-none absolute right-2 top-2 z-10 rounded px-2 py-1 text-xs font-medium',
@@ -175,7 +176,7 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
 
         {/* Content section */}
         <div className={cn('flex flex-1 flex-col p-3', isCentered && 'text-center')}>
-          {vendor && (
+          {vendor && !isCatalog && (
             <span className="mb-0.5 text-xs text-muted-foreground">
               {vendor}
             </span>
@@ -190,13 +191,14 @@ const ProductCard = React.forwardRef<HTMLDivElement, ProductCardProps>(
               {...wrapperProps}
               className={cn(
                 'text-sm font-medium leading-snug text-foreground hover:text-primary transition-colors',
-                isHorizontal && 'flex-1'
+                isHorizontal && 'flex-1',
+                isCatalog && 'uppercase tracking-wider text-xs'
               )}
             >
               {title}
             </Wrapper>
 
-            {price && (
+            {price && !isCatalog && (
               <div
                 className={cn(
                   'flex items-center gap-1.5',

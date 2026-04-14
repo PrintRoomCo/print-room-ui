@@ -19,7 +19,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link'],
+      options: ['default', 'destructive', 'outline', 'secondary', 'ghost', 'link', 'cta'],
       description: 'The visual style variant of the button',
       table: {
         type: { summary: 'string' },
@@ -28,7 +28,7 @@ const meta: Meta<typeof Button> = {
     },
     size: {
       control: 'select',
-      options: ['default', 'sm', 'lg', 'icon'],
+      options: ['default', 'sm', 'lg', 'icon', 'cta', 'submit'],
       description: 'The size of the button',
       table: {
         type: { summary: 'string' },
@@ -123,6 +123,22 @@ export const Disabled: Story = {
   },
 };
 
+export const CTA: Story = {
+  args: {
+    children: 'Start Quote',
+    variant: 'cta',
+    size: 'cta',
+  },
+};
+
+export const SubmitButton: Story = {
+  args: {
+    children: 'Submit Quote',
+    variant: 'cta',
+    size: 'submit',
+  },
+};
+
 export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
@@ -132,6 +148,7 @@ export const AllVariants: Story = {
       <Button variant="outline">Request Samples</Button>
       <Button variant="ghost">Back to Catalogue</Button>
       <Button variant="link">Shipping Policy</Button>
+      <Button variant="cta" size="cta">Start Quote</Button>
     </div>
   ),
   parameters: {
@@ -146,6 +163,8 @@ export const AllSizes: Story = {
       <Button size="default">Start Quote</Button>
       <Button size="lg">Submit Quote</Button>
       <Button size="icon">?</Button>
+      <Button variant="cta" size="cta">CTA</Button>
+      <Button variant="cta" size="submit">Submit</Button>
     </div>
   ),
   parameters: {

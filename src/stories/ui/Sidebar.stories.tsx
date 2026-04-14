@@ -242,6 +242,48 @@ export const RightSide: Story = {
   ),
 };
 
+/* ---------- Studio Dashboard (Figma node 3:2) ---------- */
+
+export const StudioDashboard: Story = {
+  name: 'Studio Dashboard',
+  render: () => (
+    <SidebarShell>
+      <Sidebar>
+        <SidebarHeader>
+          <span className="text-sm font-bold tracking-tight">Studio</span>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarItem icon={<ShoppingCart />} variant="studio" active>
+              Past Orders
+            </SidebarItem>
+            <SidebarItem icon={<Package />} variant="studio">
+              Stores
+            </SidebarItem>
+            <SidebarItem icon={<Palette />} variant="studio">
+              Design
+            </SidebarItem>
+            <SidebarItem icon={<FileText />} variant="studio">
+              Catalog
+            </SidebarItem>
+            <SidebarItem icon={<BarChart3 />} variant="studio">
+              Reports
+            </SidebarItem>
+            <SidebarItem icon={<ClipboardList />} variant="studio">
+              Inventory
+            </SidebarItem>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarItem icon={<LogOut />} variant="studio">
+            Sign Out
+          </SidebarItem>
+        </SidebarFooter>
+      </Sidebar>
+    </SidebarShell>
+  ),
+};
+
 export const FavoritesDrawer: Story = {
   name: 'Favorites Drawer',
   render: () => (
