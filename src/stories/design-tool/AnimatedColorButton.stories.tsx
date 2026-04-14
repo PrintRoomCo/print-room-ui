@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import AnimatedColorButton from '@vendored/design-tool/controls/AnimatedColorButton';
 
 const meta: Meta<typeof AnimatedColorButton> = {
@@ -30,28 +30,28 @@ type Story = StoryObj<typeof AnimatedColorButton>;
 
 export const Default: Story = {
   args: {
-    colorHex: '#3b82f6',
+    colorHex: '#2B3990',
     isSelected: false,
   },
 };
 
 export const Selected: Story = {
   args: {
-    colorHex: '#3b82f6',
+    colorHex: '#2B3990',
     isSelected: true,
   },
 };
 
 export const Red: Story = {
   args: {
-    colorHex: '#dc2626',
+    colorHex: '#A83A4B',
     isSelected: false,
   },
 };
 
 export const Green: Story = {
   args: {
-    colorHex: '#16a34a',
+    colorHex: '#658A6A',
     isSelected: true,
   },
 };
@@ -60,12 +60,12 @@ export const Green: Story = {
 const ColorPaletteDemo = () => {
   const [selected, setSelected] = useState('blue');
   const colors = [
-    { id: 'blue', hex: '#3b82f6' },
-    { id: 'red', hex: '#dc2626' },
-    { id: 'green', hex: '#16a34a' },
-    { id: 'purple', hex: '#8b5cf6' },
-    { id: 'orange', hex: '#f97316' },
-    { id: 'pink', hex: '#ec4899' },
+    { id: 'print-room-blue', hex: '#2B3990' },
+    { id: 'dusky-purple', hex: '#4B4D72' },
+    { id: 'forest', hex: '#658A6A' },
+    { id: 'bone', hex: '#EEE8DD' },
+    { id: 'walnut', hex: '#6B4E3D' },
+    { id: 'brick', hex: '#A83A4B' },
   ];
 
   return (

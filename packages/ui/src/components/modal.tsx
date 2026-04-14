@@ -70,9 +70,9 @@ const ModalContent = React.forwardRef<HTMLDivElement, ModalContentProps>(
   ({ children, className, size = 'md', onClose, showCloseButton = true, ...props }, ref) => {
     const sizeClasses = {
       sm: 'max-w-sm',
-      md: 'max-w-md',
-      lg: 'max-w-lg',
-      xl: 'max-w-xl',
+      md: 'max-w-lg',
+      lg: 'max-w-2xl',
+      xl: 'max-w-3xl',
       full: 'max-w-full mx-4',
     };
 
@@ -80,7 +80,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ModalContentProps>(
       <div
         ref={ref}
         className={cn(
-          "relative w-full bg-white rounded-lg shadow-xl",
+          "relative w-full border-2 border-black bg-[var(--pr-off-white)] rounded-[var(--pr-radius-modal)] shadow-[var(--pr-shadow-modal)]",
           sizeClasses[size],
           className
         )}
@@ -92,7 +92,7 @@ const ModalContent = React.forwardRef<HTMLDivElement, ModalContentProps>(
         {showCloseButton && onClose && (
           <button
             onClick={onClose}
-            className="absolute right-4 top-4 p-1 rounded-sm opacity-70 hover:opacity-100 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 transition-opacity z-10"
+            className="absolute right-4 top-4 z-10 rounded-full border border-black/10 bg-white/90 p-1 opacity-80 transition-opacity hover:opacity-100 focus:ring-2 focus:ring-ring focus:ring-offset-2"
             aria-label="Close modal"
           >
             <X className="h-4 w-4" />
@@ -110,7 +110,7 @@ const ModalHeader = React.forwardRef<HTMLDivElement, ModalHeaderProps>(
   ({ children, className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("px-6 py-4 border-b border-gray-200", className)}
+      className={cn("px-6 py-4 border-b border-black/10", className)}
       {...props}
     >
       {children}
@@ -138,7 +138,7 @@ const ModalFooter = React.forwardRef<HTMLDivElement, ModalFooterProps>(
   ({ children, className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn("px-6 py-4 border-t border-gray-200 flex justify-end space-x-2", className)}
+      className={cn("flex justify-end space-x-2 border-t border-black/10 px-6 py-4", className)}
       {...props}
     >
       {children}

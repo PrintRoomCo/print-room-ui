@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { FavoriteButton } from '@print-room-studio/ui';
 
 const meta = {
@@ -27,14 +27,14 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     isFavorite: false,
-    itemName: 'Premium T-Shirt',
+    itemName: 'AS Colour Staple Tee',
   },
 };
 
 export const Favorited: Story = {
   args: {
     isFavorite: true,
-    itemName: 'Premium T-Shirt',
+    itemName: 'Stanley/Stella Creator 2.0',
   },
 };
 
@@ -43,7 +43,7 @@ export const IconOnly: Story = {
     isFavorite: false,
     showLabel: false,
     size: 'icon',
-    itemName: 'Hat',
+    itemName: 'AS Colour Class Cap',
   },
 };
 
@@ -52,7 +52,7 @@ export const SmallOutline: Story = {
     isFavorite: false,
     variant: 'outline',
     size: 'sm',
-    itemName: 'Hoodie',
+    itemName: 'Continental Hoodie',
   },
 };
 
@@ -61,14 +61,14 @@ export const LargeGhost: Story = {
     isFavorite: true,
     variant: 'ghost',
     size: 'lg',
-    itemName: 'Cap',
+    itemName: 'Earth Positive Tote',
   },
 };
 
 /** Interactive toggle demo — click to add/remove from favorites */
 export const Interactive: Story = {
   args: {
-    itemName: 'Custom Polo',
+    itemName: 'AS Colour Supply Hoodie',
   },
   render: function InteractiveDemo(args) {
     const [isFav, setIsFav] = useState(false);
@@ -87,6 +87,6 @@ export const CustomLabels: Story = {
     isFavorite: false,
     addLabel: 'Save',
     removeLabel: 'Saved',
-    itemName: 'Beanie',
+    itemName: 'AS Colour Cuff Beanie',
   },
 };

@@ -10,18 +10,18 @@ const pillVariants = cva(
     variants: {
       variant: {
         default:
-          'border-foreground/20 bg-background text-foreground hover:border-foreground/50 hover:bg-accent',
+          'border-black bg-[var(--pr-pill-bg)] text-foreground hover:bg-secondary',
         filled:
           'border-transparent bg-primary text-primary-foreground hover:bg-primary/90',
         outline:
-          'border-input bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground',
+          'border-black bg-transparent text-foreground hover:bg-secondary',
         soft:
           'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
       },
       size: {
-        sm: 'px-3 py-1 text-xs',
-        default: 'px-4 py-1.5 text-sm',
-        lg: 'px-5 py-2 text-base',
+        sm: 'h-[23px] px-3 text-[0.66rem]',
+        default: 'h-[23px] px-4 text-[0.66rem]',
+        lg: 'h-9 px-5 text-sm',
       },
     },
     defaultVariants: {

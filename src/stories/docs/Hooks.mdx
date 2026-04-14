@@ -1,0 +1,34 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Documentation/Hooks" />
+
+# Hooks
+
+The shared UI package currently exposes three reusable hooks.
+
+## `use-theme`
+
+Use for reading and updating the current theme class.
+
+```ts
+const { theme, setTheme } = useTheme();
+setTheme('dark');
+```
+
+## `use-media-query`
+
+Use for breakpoint-aware rendering in components that need to switch layout or density.
+
+```ts
+const isDesktop = useMediaQuery('(min-width: 1024px)');
+```
+
+## `use-local-storage`
+
+Use for persisting lightweight UI state such as view preferences, dismissed banners, or recent selections.
+
+```ts
+const [view, setView] = useLocalStorage('product-view', 'front');
+```
+
+These hooks should remain framework-neutral and safe for Storybook demos.

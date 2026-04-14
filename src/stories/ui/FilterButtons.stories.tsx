@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { FilterButtons } from '@print-room-studio/ui';
 
 const GridIcon = () => (
@@ -21,7 +21,7 @@ const ListIcon = () => (
 );
 
 const meta: Meta<typeof FilterButtons> = {
-  title: 'App/Design Tool/FilterButtons',
+  title: 'Storefront/FilterButtons',
   component: FilterButtons,
   tags: ['autodocs'],
   parameters: {
@@ -59,8 +59,8 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const viewOptions = [
-  { key: 'grid', label: 'Grid View', icon: <GridIcon /> },
-  { key: 'list', label: 'List View', icon: <ListIcon /> },
+  { key: 'grid', label: 'Grid', icon: <GridIcon /> },
+  { key: 'list', label: 'List', icon: <ListIcon /> },
 ];
 
 const ControlledFilterButtons = (props: Parameters<typeof FilterButtons>[0]) => {
@@ -93,9 +93,9 @@ export const TextOnly: Story = {
     <ControlledFilterButtons
       options={[
         { key: 'all', label: 'All' },
-        { key: 'shirts', label: 'Shirts' },
+        { key: 't-shirts', label: 'T-Shirts' },
         { key: 'hoodies', label: 'Hoodies' },
-        { key: 'hats', label: 'Hats' },
+        { key: 'totes', label: 'Tote Bags' },
       ]}
       value="all"
       variant="text"
@@ -141,8 +141,8 @@ export const WithDisabled: Story = {
     <ControlledFilterButtons
       options={[
         { key: 'available', label: 'Available' },
-        { key: 'coming-soon', label: 'Coming Soon', disabled: true },
-        { key: 'sale', label: 'On Sale' },
+        { key: 'coming-soon', label: 'New Season', disabled: true },
+        { key: 'sale', label: 'Ready to Brand' },
       ]}
       value="available"
       variant="text"
@@ -158,8 +158,8 @@ export const CategoryFilter: Story = {
         options={[
           { key: 'all', label: 'All Products' },
           { key: 'apparel', label: 'Apparel' },
-          { key: 'accessories', label: 'Accessories' },
-          { key: 'promotional', label: 'Promotional' },
+          { key: 'caps', label: 'Caps' },
+          { key: 'bags', label: 'Bags' },
         ]}
         value="all"
         variant="text"
@@ -174,7 +174,7 @@ export const CategoryFilter: Story = {
 export const ViewToggle: Story = {
   render: () => (
     <div className="flex items-center justify-between w-[400px] border-b pb-4">
-      <h3 className="font-medium">Products (24)</h3>
+      <h3 className="font-medium">AS Colour Collection (24)</h3>
       <ControlledFilterButtons
         options={viewOptions}
         value="grid"

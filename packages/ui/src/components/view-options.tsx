@@ -44,8 +44,8 @@ const ViewOptions = React.forwardRef<
             "px-6 py-3 text-sm font-medium rounded-full transition-all duration-200",
             "min-w-[80px] border-2",
             selectedView === option.id
-              ? "bg-gray-900 text-white border-gray-900 shadow-md"
-              : "bg-gray-100 text-gray-700 border-gray-200 hover:bg-gray-200 hover:border-gray-300"
+              ? "border-primary bg-primary text-white shadow-md"
+              : "border-black/10 bg-secondary text-gray-700 hover:border-primary/30 hover:bg-white"
           )}
         >
           {option.label}

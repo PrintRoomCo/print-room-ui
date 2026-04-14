@@ -1,0 +1,25 @@
+<style>
+  /* Sidebar brand: logo + title side by side */
+  .sidebar-header a[title] {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+
+  .sidebar-header a[title] img {
+    height: 28px;
+    width: auto;
+    max-width: 60px;
+    object-fit: contain;
+  }
+
+  .sidebar-header a[title]::after {
+    content: attr(title);
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+</style>

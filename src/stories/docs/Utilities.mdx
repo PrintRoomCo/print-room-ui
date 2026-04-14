@@ -1,0 +1,37 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Documentation/Utilities" />
+
+# Utilities
+
+The shared UI package also exposes a small set of colour-processing helpers used by the design tool.
+
+## `canvasTint.ts`
+
+Functions for parsing colours, preserving luminance, and applying canvas tint overlays.
+
+Common exports:
+
+- `parseColor`
+- `tintPreserveLuminance`
+- `applyAutoKeyTintToCanvas`
+
+## `recolor.ts`
+
+Contains `paintBaseContainedAuto`, which powers product recolouring in the viewer.
+
+## `color-accuracy.ts`
+
+OKLab helpers for comparing colour similarity and measuring delta between swatches.
+
+Common exports:
+
+- `hexToOKLab`
+- `oklabDeltaE`
+- `iterativeMeanMatch`
+
+## `swatchParams.ts`
+
+Defines shared swatch parameters used by design-tool colour controls.
+
+These utilities are better documented with input/output examples in code comments and tests than with visual stories; Storybook includes this page so the available surface is discoverable.

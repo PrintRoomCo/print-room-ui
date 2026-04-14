@@ -1,4 +1,4 @@
-import type { Preview, Decorator } from '@storybook/react';
+import type { Preview, Decorator } from '@storybook/react-vite';
 import React from 'react';
 
 import '../src/styles/globals.css';
@@ -36,7 +36,7 @@ const preview: Preview = {
     },
 
     viewport: {
-      viewports: {
+      options: {
         mobile: {
           name: 'Mobile',
           styles: { width: '375px', height: '667px' },
@@ -71,12 +71,11 @@ const preview: Preview = {
     },
 
     backgrounds: {
-      default: 'light',
-      values: [
-        { name: 'light', value: '#ffffff' },
-        { name: 'dark', value: '#0f172a' },
-        { name: 'figma-bg', value: '#F5F2ED' },
-      ],
+      options: {
+        light: { name: 'light', value: '#FBFBF6' },
+        dark: { name: 'dark', value: '#0f172a' },
+        "figma-bg": { name: 'figma-bg', value: '#FBFBF6' }
+      }
     },
 
     layout: 'centered',
@@ -99,8 +98,13 @@ const preview: Preview = {
   },
 
   decorators: [withThemeProvider],
-
   tags: ['autodocs'],
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'light'
+    }
+  }
 };
 
 export default preview;

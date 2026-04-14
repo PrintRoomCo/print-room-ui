@@ -1,9 +1,9 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@print-room-studio/ui';
 
 const meta = {
-  title: 'Layout/Tabs',
+  title: 'Primitives/Tabs',
   component: Tabs,
   parameters: {
     layout: 'centered',
@@ -154,13 +154,13 @@ export const QuoteWorkflow: Story = {
         <TabsTrigger value="submit">Submit</TabsTrigger>
       </TabsList>
       <TabsContent value="products">
-        <p className="text-sm text-muted-foreground p-4">Select products and quantities.</p>
+        <p className="text-sm text-muted-foreground p-4">Select garments, brands, and quantity breaks.</p>
       </TabsContent>
       <TabsContent value="services">
-        <p className="text-sm text-muted-foreground p-4">Choose print/embroidery services.</p>
+        <p className="text-sm text-muted-foreground p-4">Choose screen printing, embroidery, heat transfers, or finishing.</p>
       </TabsContent>
       <TabsContent value="summary">
-        <p className="text-sm text-muted-foreground p-4">Review your quote breakdown.</p>
+        <p className="text-sm text-muted-foreground p-4">Review freight, setup costs, and delivery estimates.</p>
       </TabsContent>
       <TabsContent value="submit">
         <p className="text-sm text-muted-foreground p-4">Confirm and submit your quote.</p>

@@ -1,95 +1,40 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Documentation/Introduction" />
 
-# Print Room Studio Component Library
+# Print Room UI Storybook
 
-Welcome to the Print Room Studio design system documentation. This Storybook showcases all the reusable UI components used across our applications.
+This Storybook is the working source of truth for Print Room UI across three reference surfaces:
 
-## Overview
+- `print-room-ui`: shared React components and Storybook
+- `print-room-studio`: production React apps and the design tool
+- `print-room-no-design-tool`: production Shopify storefront patterns and content
 
-This component library provides a consistent set of UI components built with:
+## What This Storybook Covers
 
-- **React 19** - Latest React with Server Components support
-- **Radix UI** - Accessible, unstyled primitives
-- **Tailwind CSS** - Utility-first styling
-- **Class Variance Authority (CVA)** - Type-safe component variants
-- **Framer Motion** - Smooth animations
+| Surface | Coverage |
+| --- | --- |
+| `Primitives/*` | Shared UI building blocks such as `Button`, `Input`, `Textarea`, `Dropdown`, `Checkbox`, `RadioGroup`, and `Tabs` |
+| `Storefront/*` | Shopify-aligned components and patterns such as `ProductCard`, `Pill`, `BrandingServiceCard`, `FreeShippingProgress`, `QuoteDetailsForm`, `Breadcrumbs`, and `Pagination` |
+| `App/Design Tool/*` | Isolated design-tool interactions such as `AnimatedColorButton`, `ColorSwatches`, `ViewTabs`, `MethodCard`, `TechniquesGuideModal`, and `QuantitySummary` |
+| `Documentation/*` | Tokens, contribution guidance, hooks, and utility docs |
 
-## Component Sources
+## Alignment Rules
 
-### UI Package (`@print-room-studio/ui`)
+1. Stories use production-shaped content from Shopify and `print-room-studio`.
+2. Shopify storefront tokens are the default brand language for Storybook.
+3. App-specific exceptions stay documented instead of silently drifting.
+4. Vendored design-tool components stay self-contained and must not import app aliases such as `@/types` or `@/hooks`.
 
-The shared UI component library containing reusable components:
+## Notable Additions In This Pass
 
-| Category | Components |
-|----------|------------|
-| **Forms** | Button, Input, Textarea, Checkbox, Switch, RadioGroup, Label, Dropdown, QuantityInput, InputNumber |
-| **Display** | Card, Accordion, Modal, Progress, ProgressBar, StepProgress, Separator |
-| **Navigation** | BackButton, ViewOptions, FilterButtons |
-| **Specialized** | ColorPicker, OrderSummary, PriceSummary, QuoteDetailsForm, ProductViewer |
+- Added shared `Breadcrumbs` and `Pagination` components to cover missing Shopify patterns.
+- Refreshed storefront stories with real brands, services, locations, pricing, and quote data.
+- Added isolated design-tool stories for `MethodCard`, `TechniquesGuideModal`, and `QuantitySummary`.
+- Updated token documentation to reflect storefront-first colours, radii, and shadows.
 
-### Design Tool Components
+## Using This Library
 
-App-specific components from the Design Tool application, showcasing real-world usage patterns.
-
-## Getting Started
-
-1. **Browse Components** - Use the sidebar to explore available components
-2. **Interactive Controls** - Use the Controls panel to modify component props
-3. **Accessibility** - Check the Accessibility panel for a11y audit results
-4. **Responsive Testing** - Use the viewport selector to test different screen sizes
-
-## Design Tokens
-
-Our design system uses CSS custom properties for theming:
-
-### Colors
-
-The color system uses HSL values for easy customization:
-
-- `--primary` - Primary action color
-- `--secondary` - Secondary/subtle actions
-- `--destructive` - Dangerous/delete actions
-- `--muted` - Subdued backgrounds
-- `--accent` - Highlight/accent color
-
-### Typography
-
-We use **DM Sans** as our primary font family with the following scale:
-
-- `display-2xl` - 48px, bold
-- `display-xl` - 40px, bold
-- `display-lg` - 32px, semibold
-- `xl` - 20px
-- `lg` - 18px
-- `md` - 16px (base)
-- `sm` - 14px
-- `xs` - 12px
-
-### Spacing
-
-Based on a 4px grid system:
-
-- `1` = 4px
-- `2` = 8px
-- `3` = 12px
-- `4` = 16px
-- `6` = 24px
-- `8` = 32px
-
-### Border Radius
-
-Semantic radius tokens:
-
-- `sm` - Small elements (inputs, buttons)
-- `md` - Medium elements
-- `lg` - Large elements (cards)
-- `button` - 8px
-- `card` - 12px
-- `modal` - 16px
-- `pill` - 100px (fully rounded)
-
-## Theme Support
-
-Components support both light and dark modes via the `.dark` class on the root element. Use the theme toggle in the toolbar to preview both themes.
+- Start with the storefront stories when validating customer-facing UI.
+- Use the design-tool stories to verify isolated interactions before wiring them into app state.
+- Check `Documentation/Design Tokens` before changing colour, radius, or shadow values.

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { BrandingServiceCard } from '@print-room-studio/ui';
+import { storefrontServices } from '../fixtures/production-data';
 
 const meta = {
   title: 'Storefront/BrandingServiceCard',
@@ -27,43 +28,29 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: 'Screen Printing',
-    description:
-      'Our screen printing service uses premium water-based inks that are soft to the touch and built to last. Ideal for bulk orders of 25+ units with vibrant, durable results.',
-    imageSrc: 'https://placehold.co/400x280/e2e8f0/64748b?text=Screen+Print',
-    ctaLabel: 'Get a quote',
-    ctaHref: '#',
+    ...storefrontServices[0],
     open: true,
   },
 };
 
 export const Embroidery: Story = {
   args: {
-    title: 'Embroidery',
-    description:
-      'Professional embroidery for a premium, textured finish. Perfect for polos, caps, and workwear. We digitise your logo in-house for precise stitch quality.',
-    imageSrc: 'https://placehold.co/400x280/e2e8f0/64748b?text=Embroidery',
-    ctaLabel: 'Learn more',
-    ctaHref: '#',
+    ...storefrontServices[1],
     open: true,
   },
 };
 
 export const NoImage: Story = {
   args: {
-    title: 'Heat Transfers',
-    description:
-      'Full-colour heat transfers are perfect for complex designs, gradients, and photo-quality prints. Available for small and large runs.',
-    ctaLabel: 'Request a quote',
+    ...storefrontServices[2],
+    imageSrc: undefined,
     open: true,
   },
 };
 
 export const WithoutOverlay: Story = {
   args: {
-    title: 'Patches',
-    description: 'Custom woven and embroidered patches for jackets, bags, and hats.',
-    imageSrc: 'https://placehold.co/400x280/e2e8f0/64748b?text=Patches',
+    ...storefrontServices[4],
     showOverlay: false,
     open: true,
   },
@@ -99,11 +86,7 @@ export const Interactive: Story = {
         </button>
 
         <BrandingServiceCard
-          title="Screen Printing"
-          description="Our screen printing service uses premium water-based inks that are soft to the touch and built to last."
-          imageSrc="https://placehold.co/400x280/e2e8f0/64748b?text=Screen+Print"
-          ctaLabel="Get a quote"
-          ctaHref="#"
+          {...storefrontServices[0]}
           open={open}
           onClose={() => setOpen(false)}
         />

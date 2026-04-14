@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { QuoteDetailsForm, type QuoteFormData } from '@print-room-studio/ui';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import {
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalHeader,
+  QuoteDetailsForm,
+  type QuoteFormData,
+} from '@print-room-studio/ui';
+import { auQuoteDetails, nzQuoteDetails } from '../fixtures/production-data';
 
 const defaultFormData: QuoteFormData = {
+  ...nzQuoteDetails,
   firstName: '',
   lastName: '',
   email: '',
@@ -11,23 +20,10 @@ const defaultFormData: QuoteFormData = {
   shippingAddress: '',
   invoiceAddress: '',
   shippingCountry: '',
-  freightOption: 'sea',
-};
-
-const filledFormData: QuoteFormData = {
-  firstName: 'Jamie',
-  lastName: 'Smith',
-  email: 'jamie@printroom.nz',
-  phone: '+64 21 555 1234',
-  businessName: 'The Print Room NZ',
-  shippingAddress: '123 Cuba Street\nWellington 6011\nNew Zealand',
-  invoiceAddress: 'PO Box 456\nWellington 6140',
-  shippingCountry: 'NZ',
-  freightOption: 'air',
 };
 
 const meta: Meta<typeof QuoteDetailsForm> = {
-  title: 'App/Quoting/QuoteDetailsForm',
+  title: 'Storefront/QuoteDetailsForm',
   component: QuoteDetailsForm,
   tags: ['autodocs'],
   parameters: {
@@ -73,11 +69,11 @@ export const Default: Story = {
 };
 
 export const PreFilled: Story = {
-  render: () => <InteractiveForm initialData={filledFormData} />,
+  render: () => <InteractiveForm initialData={nzQuoteDetails} />,
   parameters: {
     docs: {
       description: {
-        story: 'Form pre-populated with sample customer data, as it would appear when editing an existing quote.',
+        story: 'A realistic New Zealand quote request based on the Shopify modal flow.',
       },
     },
   },
@@ -100,7 +96,7 @@ export const SeaFreight: Story = {
   render: () => (
     <InteractiveForm
       initialData={{
-        ...filledFormData,
+        ...auQuoteDetails,
         freightOption: 'sea',
       }}
     />
@@ -118,7 +114,7 @@ export const AirFreight: Story = {
   render: () => (
     <InteractiveForm
       initialData={{
-        ...filledFormData,
+        ...nzQuoteDetails,
         freightOption: 'air',
       }}
     />
@@ -129,5 +125,30 @@ export const AirFreight: Story = {
         story: 'Quote configured with air freight option selected.',
       },
     },
+  },
+};
+
+export const InQuoteRequestModal: Story = {
+  render: () => (
+    <div className="w-full max-w-5xl">
+      <Modal open onOpenChange={() => undefined} size="xl">
+        <ModalContent showCloseButton={false}>
+          <ModalHeader>
+            <div className="space-y-1">
+              <h2 className="text-2xl font-semibold">Request a Quote</h2>
+              <p className="text-sm text-muted-foreground">
+                Capture contact details, shipping destination, and freight preference before the team prices the job.
+              </p>
+            </div>
+          </ModalHeader>
+          <ModalBody>
+            <InteractiveForm initialData={nzQuoteDetails} className="bg-transparent p-0 shadow-none" />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </div>
+  ),
+  parameters: {
+    layout: 'fullscreen',
   },
 };

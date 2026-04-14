@@ -1,6 +1,7 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { TestimonialCard } from '@print-room-studio/ui';
+import { storefrontTestimonials } from '../fixtures/production-data';
 
 const meta = {
   title: 'Storefront/TestimonialCard',
@@ -28,34 +29,31 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    quote:
-      'The print quality is outstanding and the turnaround time was incredibly fast. Highly recommend for anyone needing custom branded apparel.',
-    source: 'Sarah M., Auckland',
+    quote: storefrontTestimonials[0].quote,
+    source: storefrontTestimonials[0].role,
   },
 };
 
 export const Centered: Story = {
   args: {
-    quote:
-      'Best screen printing service in New Zealand. Our team uniforms look amazing!',
-    source: 'James T., Wellington',
+    quote: storefrontTestimonials[1].quote,
+    source: storefrontTestimonials[1].role,
     align: 'center',
   },
 };
 
 export const BodyFont: Story = {
   args: {
-    quote:
-      'Professional service from start to finish. The embroidery on our corporate polo shirts exceeded expectations.',
-    source: 'Print Room Customer',
+    quote: storefrontTestimonials[2].quote,
+    source: storefrontTestimonials[2].role,
     fontStyle: 'body',
   },
 };
 
 export const LargeText: Story = {
   args: {
-    quote: 'Absolutely brilliant quality every single time.',
-    source: 'Mike R.',
+    quote: 'The sample pack, quote flow, and final delivery all felt joined up.',
+    source: 'Operations Team, Festival Client',
     textSize: '2xl',
     align: 'center',
   },
@@ -63,8 +61,7 @@ export const LargeText: Story = {
 
 export const NoSource: Story = {
   args: {
-    quote:
-      'We ordered 500 custom t-shirts and every single one was perfect. Will definitely be ordering again.',
+    quote: 'We ordered tees, caps, and woven patches for a product launch and the finish across every item was consistent.',
   },
 };
 
@@ -73,14 +70,14 @@ export const RichText: Story = {
     quote: (
       <>
         <p>
-          We&apos;ve been using The Print Room for over 3 years now. Their{' '}
-          <a href="#">screen printing</a> and{' '}
-          <a href="#">embroidery services</a> are second to none.
+          We&apos;ve used Print Room for merch drops across New Zealand and Australia. Their{' '}
+          <a href="/pages/screen-printing">screen printing</a> and{' '}
+          <a href="/pages/embroidery">embroidery</a> work has stayed sharp at every scale.
         </p>
-        <p className="mt-2">Couldn&apos;t recommend them more highly.</p>
+        <p className="mt-2">The quote and approval process is also much clearer than our previous supplier.</p>
       </>
     ),
-    source: 'Corporate Client',
+    source: 'Marketing Team, Coffee Supreme',
   },
 };
 
@@ -91,16 +88,16 @@ export const TestimonialGrid: Story = {
     () => (
       <div className="grid gap-10 md:grid-cols-3" style={{ maxWidth: 960 }}>
         <TestimonialCard
-          quote="The print quality is outstanding and the turnaround time was incredibly fast."
-          source="Sarah M., Auckland"
+          quote={storefrontTestimonials[0].quote}
+          source={storefrontTestimonials[0].role}
         />
         <TestimonialCard
-          quote="Best screen printing service in New Zealand. Our team uniforms look amazing!"
-          source="James T., Wellington"
+          quote={storefrontTestimonials[1].quote}
+          source={storefrontTestimonials[1].role}
         />
         <TestimonialCard
-          quote="Professional service from start to finish. The embroidery exceeded expectations."
-          source="Lisa K., Christchurch"
+          quote={storefrontTestimonials[2].quote}
+          source={storefrontTestimonials[2].role}
         />
       </div>
     ),

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { QuantityInput } from '@print-room-studio/ui';
 
 const meta: Meta<typeof QuantityInput> = {
@@ -138,13 +138,13 @@ export const OrderQuantity: Story = {
     <div className="border rounded-lg p-4 space-y-4 w-[300px]">
       <div className="flex items-center justify-between">
         <div>
-          <p className="font-medium">Premium T-Shirt</p>
-          <p className="text-sm text-muted-foreground">$12.00 each</p>
+          <p className="font-medium">AS Colour Staple Tee</p>
+          <p className="text-sm text-muted-foreground">$24.00 each</p>
         </div>
         <ControlledQuantityInput value={24} min={12} size="sm" />
       </div>
       <p className="text-sm text-muted-foreground">
-        Minimum order: 12 pieces
+        Minimum screen print quantity: 12 pieces
       </p>
     </div>
   ),

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ColorSwatches } from '@vendored/design-tool/color/ColorSwatches';
 
 // Define the ProductSwatch type locally for stories
@@ -11,13 +11,13 @@ interface ProductSwatch {
 
 const sampleSwatches: ProductSwatch[] = [
   { id: '1', label: 'Black', hex: '#000000' },
-  { id: '2', label: 'White', hex: '#FFFFFF' },
-  { id: '3', label: 'Navy', hex: '#1e3a5f' },
-  { id: '4', label: 'Red', hex: '#dc2626' },
-  { id: '5', label: 'Forest Green', hex: '#166534' },
-  { id: '6', label: 'Royal Blue', hex: '#1d4ed8' },
-  { id: '7', label: 'Gray', hex: '#6b7280' },
-  { id: '8', label: 'Yellow', hex: '#eab308' },
+  { id: '2', label: 'Bone', hex: '#EEE8DD' },
+  { id: '3', label: 'Navy', hex: '#2B3990' },
+  { id: '4', label: 'Brick', hex: '#A83A4B' },
+  { id: '5', label: 'Forest', hex: '#658A6A' },
+  { id: '6', label: 'Charcoal', hex: '#2C2C2C' },
+  { id: '7', label: 'Walnut', hex: '#6B4E3D' },
+  { id: '8', label: 'Off White', hex: '#FBFBF6' },
 ];
 
 const meta: Meta<typeof ColorSwatches> = {
@@ -77,10 +77,10 @@ export const ManyColors: Story = {
     <ColorSwatchesDemo
       swatches={[
         ...sampleSwatches,
-        { id: '9', label: 'Pink', hex: '#ec4899' },
-        { id: '10', label: 'Purple', hex: '#8b5cf6' },
-        { id: '11', label: 'Orange', hex: '#f97316' },
-        { id: '12', label: 'Teal', hex: '#14b8a6' },
+        { id: '9', label: 'Slate', hex: '#64748B' },
+        { id: '10', label: 'Mocha', hex: '#8B6B52' },
+        { id: '11', label: 'Rose', hex: '#C77D8B' },
+        { id: '12', label: 'Dusty Blue', hex: '#6E88A8' },
       ]}
     />
   ),
@@ -106,12 +106,12 @@ export const PastelColors: Story = {
   render: () => (
     <ColorSwatchesDemo
       swatches={[
-        { id: '1', label: 'Blush', hex: '#fce4ec' },
-        { id: '2', label: 'Mint', hex: '#e8f5e9' },
-        { id: '3', label: 'Lavender', hex: '#ede7f6' },
-        { id: '4', label: 'Sky', hex: '#e3f2fd' },
-        { id: '5', label: 'Peach', hex: '#fff3e0' },
-        { id: '6', label: 'Cream', hex: '#fffde7' },
+        { id: '1', label: 'Bone', hex: '#F8F3EA' },
+        { id: '2', label: 'Sage', hex: '#D6E1D2' },
+        { id: '3', label: 'Dusty Mauve', hex: '#D9C8D8' },
+        { id: '4', label: 'Cloud', hex: '#D8E4ED' },
+        { id: '5', label: 'Clay', hex: '#E6D1C3' },
+        { id: '6', label: 'Oat', hex: '#F5F0E4' },
       ]}
     />
   ),

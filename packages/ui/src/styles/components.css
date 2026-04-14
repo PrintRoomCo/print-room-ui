@@ -214,7 +214,7 @@
 }
 
 .mypr-modal__content {
-  @apply fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border bg-background p-6 shadow-modal transition-all duration-200 rounded-modal;
+  @apply fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border-2 border-black bg-background p-6 shadow-modal transition-all duration-200 rounded-modal;
 }
 
 .mypr-modal__header {
@@ -406,12 +406,12 @@
    INPUT COMPONENT - BEM Methodology
    ========================================================================== */
 .mypr-input {
-  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 font-dm-sans;
+  @apply flex min-h-[44px] w-full rounded-input border border-black bg-background px-4 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 font-dm-sans;
 }
 
 .mypr-input:focus-visible {
-  outline: 2px solid hsl(var(--ring));
-  outline-offset: 2px;
+  box-shadow: var(--pr-shadow-focus);
+  outline: none;
 }
 
 .mypr-input--error {
@@ -482,7 +482,7 @@
 }
 
 .shadow-modal {
-  @apply shadow-lg;
+  box-shadow: var(--pr-shadow-modal);
 }
 
 /* Scrollbar utilities */

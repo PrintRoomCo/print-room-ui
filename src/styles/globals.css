@@ -5,46 +5,55 @@
 @layer base {
   :root {
     --font-dm-sans: 'DM Sans', system-ui, sans-serif;
+    --pr-blue: #2b3990;
+    --pr-dusky-purple: #4b4d72;
+    --pr-dusky-purple-hover: #3d3f5e;
+    --pr-off-white: #fbfbf6;
+    --pr-pill-bg: #eee;
+    --pr-slider-green: #658a6a;
+    --pr-radius-modal: 27px;
+    --pr-radius-input: 9999px;
+    --pr-radius-textarea: 10px;
+    --pr-radius-cta: 40px;
+    --pr-radius-submit: 50px;
+    --pr-shadow-modal: 0 4px 13px 2px rgba(0, 0, 0, 0.1);
+    --pr-shadow-focus: 0 0 0 3px rgba(43, 57, 144, 0.1);
 
-    /* Background colors - Light theme */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    --background: 60 33% 98%;
+    --foreground: 0 0% 8%;
 
     /* Card colors */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 0 0% 8%;
 
     /* Popover colors */
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
+    --popover-foreground: 0 0% 8%;
 
-    /* Primary colors */
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 237 20% 37%;
+    --primary-foreground: 0 0% 100%;
 
     /* Secondary colors */
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
+    --secondary: 0 0% 93%;
+    --secondary-foreground: 0 0% 8%;
 
     /* Muted colors */
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
+    --muted: 60 11% 95%;
+    --muted-foreground: 233 9% 36%;
 
     /* Accent colors */
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
+    --accent: 230 54% 37%;
+    --accent-foreground: 0 0% 100%;
 
     /* Destructive colors */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
     /* Border and input colors */
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-
-    /* Border radius */
-    --radius: 0.5rem;
+    --border: 0 0% 0%;
+    --input: 0 0% 0%;
+    --ring: 230 54% 37%;
+    --radius: 1rem;
 
     /* Chart colors */
     --chart-1: 12 76% 61%;
@@ -79,8 +88,7 @@
     --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
 
-    /* Accent colors */
-    --accent: 0 0% 14.9%;
+    --accent: 230 54% 37%;
     --accent-foreground: 0 0% 98%;
 
     /* Destructive colors */
@@ -90,7 +98,7 @@
     /* Border and input colors */
     --border: 0 0% 14.9%;
     --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    --ring: 230 54% 83%;
 
     /* Chart colors */
     --chart-1: 220 70% 50%;

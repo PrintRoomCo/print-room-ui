@@ -1,10 +1,11 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { BackButton } from '@print-room-studio/ui';
+import { storefrontProducts } from '../fixtures/production-data';
 
 const meta: Meta<typeof BackButton> = {
-  title: 'App/Layout/BackButton',
+  title: 'App/Design Tool/BackButton',
   component: BackButton,
   tags: ['autodocs'],
   parameters: {
@@ -32,36 +33,36 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    label: 'Back',
+    label: 'Back to design',
   },
 };
 
 export const CustomLabel: Story = {
   args: {
-    label: 'Go Back',
+    label: 'Back to quote',
   },
 };
 
 export const ReturnToProducts: Story = {
   args: {
-    label: 'Return to Products',
+    label: 'Back to catalogue',
   },
 };
 
 export const PreviousStep: Story = {
   args: {
-    label: 'Previous Step',
+    label: 'Previous step',
   },
 };
 
 export const InContext: Story = {
   render: () => (
     <div className="w-[400px] space-y-4">
-      <BackButton label="Back to Catalog" />
+      <BackButton label="Back to catalogue" />
       <div className="border rounded-lg p-4">
-        <h2 className="text-lg font-semibold">Product Details</h2>
+        <h2 className="text-lg font-semibold">{storefrontProducts[0].title}</h2>
         <p className="text-sm text-muted-foreground mt-2">
-          Premium Cotton T-Shirt with custom printing options.
+          Reviewing print placements and garment colour before sending the quote.
         </p>
       </div>
     </div>
@@ -75,12 +76,12 @@ export const NavigationHeader: Story = {
   render: () => (
     <div className="w-full max-w-2xl">
       <div className="flex items-center justify-between p-4 border-b">
-        <BackButton label="Back" />
-        <h1 className="text-lg font-semibold">Order Details</h1>
+        <BackButton label="Back to review" />
+        <h1 className="text-lg font-semibold">Quote Summary</h1>
         <div className="w-[70px]" /> {/* Spacer for alignment */}
       </div>
       <div className="p-4">
-        <p className="text-muted-foreground">Order content goes here...</p>
+        <p className="text-muted-foreground">Artwork, quantities, and delivery notes for the current quote.</p>
       </div>
     </div>
   ),

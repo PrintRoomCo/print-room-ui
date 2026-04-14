@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { ProductViewer, ProductViewerSkeleton } from '@print-room-studio/ui';
+import { buildPlaceholderImage, storefrontProducts } from '../fixtures/production-data';
 
-const PLACEHOLDER_TSHIRT = '/placeholder-product-front.png';
-const PLACEHOLDER_TSHIRT_BACK = '/placeholder-product-back.png';
+const PLACEHOLDER_TSHIRT = buildPlaceholderImage(storefrontProducts[0].title);
+const PLACEHOLDER_TSHIRT_BACK = buildPlaceholderImage(`${storefrontProducts[0].title} Back`, 'EEE', '4B4D72');
 
 const meta: Meta<typeof ProductViewer> = {
   title: 'App/Design Tool/ProductViewer',

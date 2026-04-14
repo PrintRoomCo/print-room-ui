@@ -29,7 +29,7 @@ const GlobalHeader = React.forwardRef<HTMLElement, GlobalHeaderProps>(
       <header 
         ref={ref}
         className={cn(
-          "px-6 py-4 bg-[#F8FAF4]",
+          "bg-[var(--pr-off-white)] px-6 py-4",
           className
         )} 
         {...props}

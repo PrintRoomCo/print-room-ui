@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Sidebar,
   SidebarHeader,
@@ -25,7 +25,7 @@ import {
 } from 'lucide-react';
 
 const meta = {
-  title: 'Layout/Sidebar',
+  title: 'Storefront/Sidebar',
   component: Sidebar,
   parameters: {
     layout: 'fullscreen',
@@ -239,5 +239,33 @@ export const RightSide: Story = {
         </SidebarContent>
       </Sidebar>
     </SidebarShell>
+  ),
+};
+
+export const FavoritesDrawer: Story = {
+  name: 'Favorites Drawer',
+  render: () => (
+    <div className="flex h-[520px] rounded-lg border overflow-hidden bg-background">
+      <div className="flex-1 bg-[var(--pr-off-white)] p-8 text-sm text-muted-foreground">
+        Storefront content area
+      </div>
+      <Sidebar side="right" width="lg">
+        <SidebarHeader>
+          <span className="text-sm font-bold tracking-tight">Saved for Later</span>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup label="Favourites">
+            <SidebarItem icon={<Package />} active>
+              AS Colour Staple Tee
+            </SidebarItem>
+            <SidebarItem icon={<Package />}>Stanley/Stella Creator 2.0</SidebarItem>
+            <SidebarItem icon={<Package />}>Continental Hoodie</SidebarItem>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+          <SidebarItem icon={<ShoppingCart />}>Start Quote from Saved Items</SidebarItem>
+        </SidebarFooter>
+      </Sidebar>
+    </div>
   ),
 };

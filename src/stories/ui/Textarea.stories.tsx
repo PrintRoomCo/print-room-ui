@@ -1,7 +1,7 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { Textarea, Label } from '@print-room-studio/ui';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
+import { Textarea, Label, Input } from '@print-room-studio/ui';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Primitives/Textarea',
@@ -39,7 +39,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter your message...',
+    placeholder: 'Tell us what you are printing, which garments you like, and where the artwork needs to go.',
   },
   render: (args) => (
     <div className="w-[350px]">
@@ -51,15 +51,18 @@ export const Default: Story = {
 export const WithLabel: Story = {
   render: () => (
     <div className="w-[350px] space-y-2">
-      <Label htmlFor="message">Message</Label>
-      <Textarea id="message" placeholder="Type your message here..." />
+      <Label htmlFor="project-brief">Project brief</Label>
+      <Textarea
+        id="project-brief"
+        placeholder="We need 80 AS Colour Staple Tees in black with a 2-colour front print for a Wellington event."
+      />
     </div>
   ),
 };
 
 export const WithRows: Story = {
   args: {
-    placeholder: 'Description...',
+    placeholder: 'Add placement notes, garment colours, or packaging requirements.',
     rows: 6,
   },
   render: (args) => (
@@ -71,7 +74,8 @@ export const WithRows: Story = {
 
 export const Disabled: Story = {
   args: {
-    placeholder: 'Cannot edit',
+    defaultValue:
+      'Artwork approved on 12 April. Dispatch to Auckland on the next standard courier run.',
     disabled: true,
   },
   render: (args) => (
@@ -84,7 +88,7 @@ export const Disabled: Story = {
 export const WithDefaultValue: Story = {
   args: {
     defaultValue:
-      'This textarea has a default value that spans multiple lines.\n\nYou can edit this text.',
+      'Front print: 280mm wide\nBack print: none\nGarment colour: Ecru\nFold and bag each unit for retail dispatch.',
     rows: 4,
   },
   render: (args) => (
@@ -100,11 +104,11 @@ export const OrderNotes: Story = {
       <Label htmlFor="order-notes">Order Notes</Label>
       <Textarea
         id="order-notes"
-        placeholder="Add special instructions for your order..."
+        placeholder="Please split the order into 3 cartons and label the boxes for Auckland, Wellington, and Dunedin."
         rows={4}
       />
       <p className="text-sm text-muted-foreground">
-        Include any special handling instructions or delivery notes.
+        Include packaging, courier, or delivery notes for the production team.
       </p>
     </div>
   ),
@@ -117,23 +121,19 @@ export const FormExample: Story = {
   render: () => (
     <form className="w-[400px] space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="subject">Subject</Label>
-        <input
-          id="subject"
-          className="w-full px-3 py-2 border rounded-md"
-          placeholder="Enter subject"
-        />
+        <Label htmlFor="project-name">Project name</Label>
+        <Input id="project-name" placeholder="University Club hoodie reorder" />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="body">Message</Label>
+        <Label htmlFor="body">Quote notes</Label>
         <Textarea
           id="body"
-          placeholder="Write your message..."
+          placeholder="Need 120 AS Colour Supply Hoodies with embroidery on the left chest and woven hem labels."
           rows={6}
         />
       </div>
       <p className="text-sm text-muted-foreground">
-        Maximum 1000 characters
+        Include brand, garment colour, print locations, and required in-hands date.
       </p>
     </form>
   ),

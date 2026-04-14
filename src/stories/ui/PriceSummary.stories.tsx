@@ -1,15 +1,15 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { PriceSummary, type PriceSummaryData } from '@print-room-studio/ui';
 
 const defaultData: PriceSummaryData = {
-  totalAmount: 6825.00,
-  shippingCost: 450.00,
+  totalAmount: 6825.0,
+  shippingCost: 450.0,
   carbonEstimateKg: 12.34,
 };
 
 const meta: Meta<typeof PriceSummary> = {
-  title: 'App/Quoting/PriceSummary',
+  title: 'Storefront/PriceSummary',
   component: PriceSummary,
   tags: ['autodocs'],
   parameters: {
@@ -42,7 +42,7 @@ export const SmallOrder: Story = {
   args: {
     data: {
       totalAmount: 240.00,
-      shippingCost: 25.00,
+      shippingCost: 25.0,
       carbonEstimateKg: 1.52,
     },
   },
@@ -58,8 +58,8 @@ export const SmallOrder: Story = {
 export const LargeOrder: Story = {
   args: {
     data: {
-      totalAmount: 45250.00,
-      shippingCost: 2800.00,
+      totalAmount: 45250.0,
+      shippingCost: 2800.0,
       carbonEstimateKg: 156.78,
     },
   },
@@ -75,9 +75,9 @@ export const LargeOrder: Story = {
 export const FreeShipping: Story = {
   args: {
     data: {
-      totalAmount: 12500.00,
+      totalAmount: 12500.0,
       shippingCost: 0,
-      carbonEstimateKg: 45.00,
+      carbonEstimateKg: 45.0,
     },
   },
   parameters: {
@@ -92,8 +92,8 @@ export const FreeShipping: Story = {
 export const ZeroCarbon: Story = {
   args: {
     data: {
-      totalAmount: 500.00,
-      shippingCost: 50.00,
+      totalAmount: 500.0,
+      shippingCost: 50.0,
       carbonEstimateKg: 0,
     },
   },
@@ -109,7 +109,7 @@ export const ZeroCarbon: Story = {
 export const CustomStyling: Story = {
   args: {
     data: defaultData,
-    className: 'bg-emerald-50 border border-emerald-200 rounded-2xl p-6',
+    className: 'rounded-[27px] border border-black/10 bg-[var(--pr-off-white)] p-6',
   },
   parameters: {
     docs: {

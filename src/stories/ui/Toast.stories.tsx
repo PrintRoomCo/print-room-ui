@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Toast,
   ToastAction,
@@ -19,7 +19,7 @@ import { Button } from '@print-room-studio/ui';
 /* -------------------------------------------------------------------------- */
 
 const meta = {
-  title: 'Feedback/Toast',
+  title: 'Primitives/Toast',
   component: Toast,
   parameters: {
     layout: 'centered',

@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Documentation/Contributing Guide" />
 
@@ -15,9 +15,9 @@ Before jumping in, here's what powers the system you'll be interacting with:
 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '12px', padding: '16px 0' }}>
   {[
     { label: 'Monorepo', value: 'print-room-studio (Turborepo + pnpm)' },
-    { label: 'UI Package', value: '@print-room-studio/ui — 38 shared components' },
+    { label: 'UI Package', value: '@print-room-studio/ui — 40 shared components' },
     { label: 'Component Patterns', value: 'React 19 + Radix UI + CVA + Tailwind CSS' },
-    { label: 'Storybook', value: 'v8.5 — deployed on Vercel' },
+    { label: 'Storybook', value: 'v10 — local design system source of truth' },
     { label: 'Visual Regression', value: 'Chromatic — screenshot diffs on every PR' },
     { label: 'Design Tokens', value: 'design-tokens.json → Tailwind + CSS variables' },
     { label: 'Fonts', value: 'DM Sans (primary), JetBrains Mono (code), Roboto (Tech Pack)' },
@@ -30,7 +30,7 @@ Before jumping in, here's what powers the system you'll be interacting with:
   ))}
 </div>
 
-> **Live Storybook:** [print-room-storybook.vercel.app](https://print-room-storybook.vercel.app) — browse every component, variant and design token.
+> **Storybook reference:** use this local Storybook or the current deployed Storybook for the repo to browse every component, variant, and token.
 
 ---
 
@@ -38,7 +38,7 @@ Before jumping in, here's what powers the system you'll be interacting with:
 
 Design tokens are the single source of truth for all visual values across the Print Room ecosystem. Changing a token here updates every app that consumes it.
 
-**File to edit:** `apps/storybook/src/tokens/design-tokens.json`
+**File to edit:** `src/tokens/design-tokens.json`
 
 ### How to Edit via GitHub
 
@@ -59,7 +59,7 @@ Design tokens are the single source of truth for all visual values across the Pr
   ))}
 </div>
 
-**GitHub link:** [design-tokens.json](https://github.com/jimile/print-room-studio/blob/main/apps/storybook/src/tokens/design-tokens.json)
+**GitHub link:** `src/tokens/design-tokens.json`
 
 ### Example Changes
 
@@ -106,10 +106,9 @@ The **Print Room Design System** Figma file should mirror the Storybook componen
 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px', padding: '16px 0' }}>
   {[
     { page: 'Primitives', examples: 'Button, Input, Checkbox, Switch, Label, Select', color: '#2B3990' },
-    { page: 'Layout', examples: 'Card, Modal, Accordion, Sidebar, Tabs, Data Table', color: '#0ea5e9' },
-    { page: 'Feedback', examples: 'Progress, Toast, Alert, Badge, Loading Spinner', color: '#10b981' },
-    { page: 'Domain', examples: 'Color Picker, Order Card, Quote Form, Price Summary', color: '#f59e0b' },
-    { page: 'Navigation', examples: 'Header, Back Button, Breadcrumb', color: '#8b5cf6' },
+    { page: 'Storefront', examples: 'Product Card, Modal, Breadcrumbs, Pagination, Quote Form', color: '#4B4D72' },
+    { page: 'App / Design Tool', examples: 'Color Picker, Product Viewer, View Tabs, Method Card', color: '#658A6A' },
+    { page: 'Documentation', examples: 'Design Tokens, Hooks, Utilities, Contribution Guides', color: '#2B3990' },
   ].map((item) => (
     <div key={item.page} style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '16px', borderTop: `3px solid ${item.color}` }}>
       <span style={{ fontSize: '14px', fontWeight: 700, color: item.color }}>{item.page}</span>
@@ -130,7 +129,7 @@ Design tokens in code map to **Figma Variables**. Organize them into these colle
     {[
       { collection: 'Colors', desc: 'Brand (primary, accent, dark, soft), Semantic (background, foreground, muted, border, card, popover), Status (success, warning, error, info), Extended palettes (blue, green, amber, red scales)', example: 'brand/primary → #2B3990' },
       { collection: 'Spacing', desc: 'Base unit: 4px. Scale: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24', example: 'spacing/4 → 16px (4 × 4px base)' },
-      { collection: 'Typography', desc: 'Font families (DM Sans, JetBrains Mono), sizes (xs through 4xl), weights, line heights', example: 'fontSize/base → 16px' },
+      { collection: 'Typography', desc: 'Font families (DM Sans, JetBrains Mono), sizes (xs through display scales), weights, line heights', example: 'fontSize/md → 1rem / 1.5rem (400)' },
       { collection: 'Radii', desc: 'Border radius values: none, sm, md, lg, xl, 2xl, full, card, button', example: 'radii/card → 12px' },
       { collection: 'Shadows', desc: 'Elevation levels: sm, md, lg, button, card, glassMorphism', example: 'shadow/card → 0 1px 3px…' },
     ].map((item) => (
@@ -164,25 +163,25 @@ This is the practical reference for how Figma variables translate to code. Use t
       {[
         { figma: 'brand/primary', token: 'colors.brand.primary', tw: 'bg-primary, text-primary' },
         { figma: 'brand/accent', token: 'colors.brand.accent', tw: 'bg-accent, text-accent' },
-        { figma: 'semantic/background', token: 'colors.semantic.background', tw: 'bg-background' },
-        { figma: 'semantic/foreground', token: 'colors.semantic.foreground', tw: 'text-foreground' },
-        { figma: 'semantic/muted', token: 'colors.semantic.muted', tw: 'bg-muted, text-muted-foreground' },
-        { figma: 'semantic/border', token: 'colors.semantic.border', tw: 'border-border' },
-        { figma: 'semantic/card', token: 'colors.semantic.card', tw: 'bg-card' },
+        { figma: 'semantic/background', token: 'colors.ui.background', tw: 'bg-background' },
+        { figma: 'semantic/foreground', token: 'colors.ui.foreground', tw: 'text-foreground' },
+        { figma: 'semantic/muted', token: 'colors.ui.muted', tw: 'bg-muted, text-muted-foreground' },
+        { figma: 'semantic/border', token: 'colors.ui.border', tw: 'border-border' },
+        { figma: 'semantic/card', token: 'colors.ui.card', tw: 'bg-card' },
         { figma: 'status/success', token: 'colors.status.success', tw: 'bg-green-500, text-green-500' },
         { figma: 'status/warning', token: 'colors.status.warning', tw: 'bg-amber-500, text-amber-500' },
         { figma: 'status/error', token: 'colors.status.error', tw: 'bg-red-500, text-red-500' },
         { figma: 'spacing/4', token: 'spacing.4 (16px)', tw: 'p-4, m-4, gap-4' },
         { figma: 'spacing/6', token: 'spacing.6 (24px)', tw: 'p-6, m-6, gap-6' },
         { figma: 'fontSize/sm', token: 'typography.fontSize.sm', tw: 'text-sm' },
-        { figma: 'fontSize/base', token: 'typography.fontSize.base', tw: 'text-base' },
+        { figma: 'fontSize/base', token: 'typography.fontSize.md', tw: 'text-base' },
         { figma: 'fontSize/lg', token: 'typography.fontSize.lg', tw: 'text-lg' },
         { figma: 'radii/card', token: 'borderRadius.card', tw: 'rounded-card' },
         { figma: 'radii/button', token: 'borderRadius.button', tw: 'rounded-button' },
         { figma: 'shadow/card', token: 'boxShadow.card', tw: 'shadow-card' },
       ].map((row, i) => (
         <tr key={row.figma} style={{ background: i % 2 === 0 ? 'white' : '#f8fafc' }}>
-          <td style={{ padding: '8px 12px', borderBottom: '1px solid #e2e8f0', fontWeight: 600, color: '#7c3aed' }}>{row.figma}</td>
+          <td style={{ padding: '8px 12px', borderBottom: '1px solid #e2e8f0', fontWeight: 600, color: '#4B4D72' }}>{row.figma}</td>
           <td style={{ padding: '8px 12px', borderBottom: '1px solid #e2e8f0', color: '#475569' }}><code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>{row.token}</code></td>
           <td style={{ padding: '8px 12px', borderBottom: '1px solid #e2e8f0', color: '#475569' }}><code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>{row.tw}</code></td>
         </tr>
@@ -355,7 +354,7 @@ When your design needs something that doesn't exist in Storybook:
 
 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px', padding: '16px 0' }}>
   {[
-    { step: '1', title: 'Check Storybook', desc: 'Search print-room-storybook.vercel.app — it might exist under a different name or as a variant' },
+    { step: '1', title: 'Check Storybook', desc: 'Search the current Storybook instance first — it might exist under a different name or as a variant' },
     { step: '2', title: 'Flag in the ticket', desc: 'Add a "New Component" label and describe what it needs to do' },
     { step: '3', title: 'Annotate in Figma', desc: 'Add a note on the frame: "NEW — not in Storybook" with variant/state requirements' },
     { step: '4', title: 'Dev builds + adds story', desc: 'Developer creates the component in @print-room-studio/ui with a Storybook story' },
@@ -566,7 +565,7 @@ Documentation pages (like this one) use **MDX** format — Markdown with JSX sup
 2. Start with this template:
 
 ```mdx
-import { Meta } from '@storybook/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta title="Documentation/Your Page Name" />
 
@@ -601,7 +600,7 @@ These are the ground rules for how design and code stay in sync at Print Room:
     'Design tokens are the single source of truth for colours, spacing, typography, and radii. Designers use Figma Variables that match these tokens. Developers consume tokens via Tailwind classes — never hardcode values.',
     'Components are built once in @print-room-studio/ui and used everywhere. If it exists in Storybook → use it. If it doesn\'t → dev builds it, adds a story, then designer adds the matching Figma component.',
     'Naming must match. Figma component "Button/Primary/Large" = code Button variant="default" size="lg". Storybook variant names = Figma variant names.',
-    'Storybook is the component reference at print-room-storybook.vercel.app. Every component has a story with all variants documented and autodocs showing props.',
+    'Storybook is the component reference for this repo. Every component has a story with variants documented and autodocs showing props.',
     'Visual regression via Chromatic runs on every PR. If Chromatic flags a change, it must be approved by a designer or lead dev.',
   ].map((rule, i) => (
     <div key={i} style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
@@ -617,7 +616,7 @@ These are the ground rules for how design and code stay in sync at Print Room:
 
 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px', padding: '16px 0' }}>
   {[
-    { label: 'Live Storybook', url: 'https://print-room-storybook.vercel.app', desc: 'Browse all components' },
+    { label: 'Introduction', url: '?path=/docs/documentation-introduction--docs', desc: 'Start at the Storybook overview' },
     { label: 'GitHub Repository', url: 'https://github.com/jimile/print-room-studio', desc: 'Source code & PRs' },
     { label: 'Design Tokens', url: '?path=/docs/documentation-design-tokens--docs', desc: 'Full visual token reference' },
     { label: 'Storybook Docs', url: 'https://storybook.js.org/docs', desc: 'Official Storybook documentation' },

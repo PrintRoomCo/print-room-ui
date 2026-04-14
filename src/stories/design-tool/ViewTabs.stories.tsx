@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { ViewTabs } from '@vendored/design-tool/ViewTabs';
 
 // Mock the ProductImageRow type
@@ -37,8 +37,8 @@ type Story = StoryObj<typeof ViewTabs>;
 const sampleImages: ProductImageRow[] = [
   { view: 'front', id: '1' },
   { view: 'back', id: '2' },
-  { view: 'left', id: '3' },
-  { view: 'right', id: '4' },
+  { view: 'left_sleeve', id: '3' },
+  { view: 'right_sleeve', id: '4' },
 ];
 
 // Interactive wrapper

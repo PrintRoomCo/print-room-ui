@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { FreeShippingProgress } from '@print-room-studio/ui';
 
 const meta = {
@@ -30,32 +30,32 @@ type Story = StoryObj<typeof meta>;
 /** Cart is about halfway to free shipping */
 export const Default: Story = {
   args: {
-    subtotal: 5000,
-    threshold: 10000,
+    subtotal: 18000,
+    threshold: 25000,
   },
 };
 
 /** Almost there — just a few dollars away */
 export const AlmostThere: Story = {
   args: {
-    subtotal: 9200,
-    threshold: 10000,
+    subtotal: 23500,
+    threshold: 25000,
   },
 };
 
 /** Free shipping threshold has been reached */
 export const Achieved: Story = {
   args: {
-    subtotal: 15000,
-    threshold: 10000,
+    subtotal: 32000,
+    threshold: 25000,
   },
 };
 
 /** Just started — small cart */
 export const JustStarted: Story = {
   args: {
-    subtotal: 1500,
-    threshold: 10000,
+    subtotal: 6200,
+    threshold: 25000,
   },
 };
 
@@ -63,41 +63,41 @@ export const JustStarted: Story = {
 export const EmptyCart: Story = {
   args: {
     subtotal: 0,
-    threshold: 10000,
+    threshold: 25000,
   },
 };
 
 /** NZD formatting */
 export const NZDollar: Story = {
   args: {
-    subtotal: 4500,
-    threshold: 15000,
+    subtotal: 14200,
+    threshold: 25000,
     formatMoney: (cents: number) => `NZ$${(cents / 100).toFixed(2)}`,
-    notAchievedMessage: 'Add {amount} more to your cart for free NZ shipping!',
-    achievedMessage: 'Free NZ shipping unlocked!',
+    notAchievedMessage: 'Spend {amount} more for free New Zealand shipping.',
+    achievedMessage: 'Free New Zealand shipping unlocked.',
   },
 };
 
 export const SmallBar: Story = {
   args: {
-    subtotal: 3000,
-    threshold: 10000,
+    subtotal: 10000,
+    threshold: 25000,
     size: 'sm',
   },
 };
 
 export const LargeBar: Story = {
   args: {
-    subtotal: 7500,
-    threshold: 10000,
+    subtotal: 21000,
+    threshold: 25000,
     size: 'lg',
   },
 };
 
 export const NoMessage: Story = {
   args: {
-    subtotal: 6000,
-    threshold: 10000,
+    subtotal: 19000,
+    threshold: 25000,
     showMessage: false,
   },
 };

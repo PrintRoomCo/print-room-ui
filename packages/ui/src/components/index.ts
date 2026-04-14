@@ -1,6 +1,7 @@
 export * from "./accordion";
 export * from "./back-button";
 export * from "./badge";
+export * from "./breadcrumbs";
 export * from "./branding-service-card";
 export * from "./button";
 export * from "./card";
@@ -17,6 +18,7 @@ export * from "./label";
 export * from "./location-stock";
 export * from "./modal";
 export * from "./order-summary";
+export * from "./pagination";
 export * from "./pill";
 export * from "./price-summary";
 export * from "./product-card";

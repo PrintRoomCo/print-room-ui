@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Accordion,
   AccordionItem,
@@ -40,21 +40,23 @@ export const Default: Story = {
   render: () => (
     <Accordion type="single" collapsible className="w-[400px]">
       <AccordionItem value="item-1">
-        <AccordionTrigger>Is it accessible?</AccordionTrigger>
+        <AccordionTrigger>How does artwork approval work?</AccordionTrigger>
         <AccordionContent>
-          Yes. It adheres to the WAI-ARIA design pattern.
+          We send a digital proof before production starts so you can confirm placement, colour,
+          and sizing.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger>Is it styled?</AccordionTrigger>
+        <AccordionTrigger>What garments do you stock most often?</AccordionTrigger>
         <AccordionContent>
-          Yes. It comes with default styles that match your design system.
+          AS Colour, Continental, Stanley/Stella, and Earth Positive are the most common options
+          across quotes and online orders.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
-        <AccordionTrigger>Is it animated?</AccordionTrigger>
+        <AccordionTrigger>Can you split deliveries?</AccordionTrigger>
         <AccordionContent>
-          Yes. It uses CSS animations for smooth transitions.
+          Yes. We can ship cartons to multiple sites or hold part of a run for phased dispatch.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
@@ -65,22 +67,22 @@ export const Multiple: Story = {
   render: () => (
     <Accordion type="multiple" className="w-[400px]">
       <AccordionItem value="item-1">
-        <AccordionTrigger>First Section</AccordionTrigger>
+        <AccordionTrigger>Garment selection</AccordionTrigger>
         <AccordionContent>
-          Content for the first section. Multiple sections can be open at once.
+          This order includes AS Colour Staple Tees in black and bone, plus a smaller run of
+          Continental hoodies for staff.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger>Second Section</AccordionTrigger>
+        <AccordionTrigger>Decoration details</AccordionTrigger>
         <AccordionContent>
-          Content for the second section. Try opening both at the same time!
+          Use a 2-colour front screen print on the tees and a left-chest embroidery setup on the
+          hoodies.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-3">
-        <AccordionTrigger>Third Section</AccordionTrigger>
-        <AccordionContent>
-          Content for the third section.
-        </AccordionContent>
+        <AccordionTrigger>Freight and handover</AccordionTrigger>
+        <AccordionContent>Split dispatch between Wellington pickup and Auckland courier.</AccordionContent>
       </AccordionItem>
     </Accordion>
   ),
@@ -90,15 +92,16 @@ export const WithDefaultOpen: Story = {
   render: () => (
     <Accordion type="single" defaultValue="item-2" collapsible className="w-[400px]">
       <AccordionItem value="item-1">
-        <AccordionTrigger>Closed by default</AccordionTrigger>
+        <AccordionTrigger>Quote received</AccordionTrigger>
         <AccordionContent>
-          This section starts closed.
+          Garments, decoration method, and freight options have been estimated and sent for review.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="item-2">
-        <AccordionTrigger>Open by default</AccordionTrigger>
+        <AccordionTrigger>Artwork approved</AccordionTrigger>
         <AccordionContent>
-          This section starts open due to the defaultValue prop.
+          The proof is approved and the job is queued for production. This item starts open to
+          highlight the current milestone.
         </AccordionContent>
       </AccordionItem>
     </Accordion>
@@ -111,30 +114,29 @@ export const FAQ: Story = {
       <AccordionItem value="faq-1">
         <AccordionTrigger>What print methods do you offer?</AccordionTrigger>
         <AccordionContent>
-          We offer screen printing, heat press, embroidery, and direct-to-garment
-          printing for all types of apparel and merchandise.
+          We offer screen printing, embroidery, heat transfers, finishing, and custom patches
+          across apparel, headwear, and accessories.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="faq-2">
         <AccordionTrigger>What is the minimum order quantity?</AccordionTrigger>
         <AccordionContent>
-          Our minimum order quantity varies by print method. Screen printing
-          requires a minimum of 24 pieces, while heat press and embroidery have
-          a minimum of 12 pieces.
+          Minimums depend on technique. Screen printing usually starts at 24 units, while
+          embroidery and transfers are suitable for smaller runs.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="faq-3">
         <AccordionTrigger>How long does production take?</AccordionTrigger>
         <AccordionContent>
-          Standard production time is 7-10 business days after artwork approval.
-          Rush orders are available for an additional fee.
+          Standard production is typically 7 to 10 working days after artwork approval, with rush
+          options available when capacity allows.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="faq-4">
         <AccordionTrigger>Do you offer design services?</AccordionTrigger>
         <AccordionContent>
-          Yes! Our in-house design team can help create or refine your artwork.
-          Basic design services are included with orders over $500.
+          Yes. We can refine supplied artwork, prepare separations, and help choose the right print
+          method before the job is booked.
         </AccordionContent>
       </AccordionItem>
     </Accordion>

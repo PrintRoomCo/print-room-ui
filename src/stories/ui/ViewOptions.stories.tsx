@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { ViewOptions } from '@print-room-studio/ui';
+import { designToolViews, storefrontProducts } from '../fixtures/production-data';
 
 const meta: Meta<typeof ViewOptions> = {
   title: 'App/Design Tool/ViewOptions',
@@ -30,11 +31,11 @@ const ControlledViewOptions = (props: Parameters<typeof ViewOptions>[0]) => {
 };
 
 export const Default: Story = {
-  render: () => <ControlledViewOptions />,
+  render: () => <ControlledViewOptions options={designToolViews} />,
 };
 
 export const BackSelected: Story = {
-  render: () => <ControlledViewOptions selectedView="back" />,
+  render: () => <ControlledViewOptions options={designToolViews} selectedView="back" />,
 };
 
 export const TwoOptions: Story = {
@@ -52,12 +53,7 @@ export const TwoOptions: Story = {
 export const CustomOptions: Story = {
   render: () => (
     <ControlledViewOptions
-      options={[
-        { id: 'front', label: 'Front' },
-        { id: 'back', label: 'Back' },
-        { id: 'left-sleeve', label: 'Left Sleeve' },
-        { id: 'right-sleeve', label: 'Right Sleeve' },
-      ]}
+      options={designToolViews}
       selectedView="front"
     />
   ),
@@ -87,6 +83,7 @@ export const ProductDesigner: Story = {
           </span>
         </div>
         <ViewOptions
+          options={designToolViews}
           selectedView={view}
           onViewChange={setView}
         />
@@ -100,13 +97,13 @@ export const ProductDesigner: Story = {
 
 export const InHeader: Story = {
   render: () => (
-    <div className="w-[600px] border rounded-lg">
+      <div className="w-[600px] border rounded-lg">
       <div className="flex items-center justify-between p-4 border-b">
-        <h2 className="font-semibold">Premium Cotton T-Shirt</h2>
-        <span className="text-sm text-muted-foreground">$24.99</span>
+        <h2 className="font-semibold">{storefrontProducts[0].title}</h2>
+        <span className="text-sm text-muted-foreground">{storefrontProducts[0].price}</span>
       </div>
       <div className="p-4 flex justify-center">
-        <ControlledViewOptions selectedView="front" />
+        <ControlledViewOptions options={designToolViews} selectedView="front" />
       </div>
     </div>
   ),

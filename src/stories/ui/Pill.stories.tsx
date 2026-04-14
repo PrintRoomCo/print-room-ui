@@ -1,7 +1,8 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { Pill } from '@print-room-studio/ui';
+import { storefrontServices } from '../fixtures/production-data';
 
 const meta = {
   title: 'Storefront/Pill',
@@ -26,54 +27,56 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Screen Print',
+    children: storefrontServices[0].title,
   },
 };
 
 export const Embroidery: Story = {
   args: {
-    children: 'Embroidery',
+    children: storefrontServices[1].title,
   },
 };
 
 export const NoArrow: Story = {
   args: {
-    children: 'Heat Transfer',
+    children: storefrontServices[2].title,
     showArrow: false,
   },
 };
 
 export const Filled: Story = {
   args: {
-    children: 'Patches',
+    children: storefrontServices[4].title,
     variant: 'filled',
   },
 };
 
 export const Outline: Story = {
   args: {
-    children: 'Finishing',
+    children: storefrontServices[3].title,
     variant: 'outline',
   },
 };
 
 export const Soft: Story = {
   args: {
-    children: 'Digital Print',
+    children: 'Get a Quote',
     variant: 'soft',
+    showArrow: false,
   },
 };
 
 export const Small: Story = {
   args: {
-    children: 'DTG',
+    children: 'MOQ 25',
     size: 'sm',
+    showArrow: false,
   },
 };
 
 export const Large: Story = {
   args: {
-    children: 'Sublimation',
+    children: 'Start a Quote',
     size: 'lg',
   },
 };
@@ -82,11 +85,16 @@ export const Large: Story = {
 export const ServiceRow: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Pill>Screen Print</Pill>
-      <Pill>Embroidery</Pill>
-      <Pill>Heat Transfer</Pill>
-      <Pill>Patches</Pill>
-      <Pill>Finishing</Pill>
+      {storefrontServices.map((service) => (
+        <Pill key={service.key}>{service.title}</Pill>
+      ))}
     </div>
   ),
+};
+
+export const QuotePill: Story = {
+  args: {
+    children: 'Get a Quote',
+    showArrow: false,
+  },
 };

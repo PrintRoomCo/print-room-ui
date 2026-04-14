@@ -74,8 +74,8 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
           onClick={() => !disabled && setIsOpen(!isOpen)}
           disabled={disabled}
           className={cn(
-            "flex items-center justify-between bg-white/80 border border-gray-200/50 rounded-lg shadow-sm transition-all duration-200",
-            "hover:bg-white hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500",
+            "flex items-center justify-between border border-black bg-[var(--pr-off-white)] rounded-input shadow-sm transition-all duration-200",
+            "hover:bg-white focus:outline-none focus:ring-0",
             disabled && "opacity-50 cursor-not-allowed",
             sizeClasses[size]
           )}
@@ -100,7 +100,7 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
         </button>
 
         {isOpen && !disabled && (
-          <div className="absolute z-10 w-full mt-1 bg-white/95 backdrop-blur-sm border border-gray-200/50 rounded-lg shadow-lg">
+          <div className="absolute z-10 mt-1 w-full rounded-2xl border border-black bg-white shadow-lg">
             {options.map((option) => (
               <button
                 key={option.value}
@@ -108,8 +108,8 @@ const Dropdown = React.forwardRef<HTMLDivElement, DropdownProps>(
                 disabled={option.disabled}
                 className={cn(
                   "w-full px-4 py-2 text-left transition-colors first:rounded-t-lg last:rounded-b-lg",
-                  "hover:bg-purple-50",
-                  value === option.value ? "bg-purple-50 text-purple-600" : "text-gray-900",
+                  "hover:bg-secondary",
+                  value === option.value ? "bg-secondary text-primary" : "text-gray-900",
                   option.disabled && "opacity-50 cursor-not-allowed"
                 )}
               >

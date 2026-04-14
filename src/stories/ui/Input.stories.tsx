@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { Input, Label } from '@print-room-studio/ui';
 
 const meta: Meta<typeof Input> = {
@@ -40,7 +40,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter text...',
+    placeholder: 'Your business name',
   },
 };
 
@@ -48,7 +48,7 @@ export const WithLabel: Story = {
   render: () => (
     <div className="grid w-full max-w-sm items-center gap-1.5">
       <Label htmlFor="email">Email</Label>
-      <Input type="email" id="email" placeholder="Email" />
+      <Input type="email" id="email" placeholder="orders@theprintroom.nz" />
     </div>
   ),
 };
@@ -56,41 +56,41 @@ export const WithLabel: Story = {
 export const Email: Story = {
   args: {
     type: 'email',
-    placeholder: 'Email address',
+    placeholder: 'hello@theprintroom.nz',
   },
 };
 
 export const Password: Story = {
   args: {
     type: 'password',
-    placeholder: 'Password',
+    placeholder: 'Enter portal password',
   },
 };
 
 export const Number: Story = {
   args: {
     type: 'number',
-    placeholder: '0',
+    placeholder: '250',
   },
 };
 
 export const Disabled: Story = {
   args: {
-    placeholder: 'Disabled input',
+    placeholder: 'Artwork upload disabled',
     disabled: true,
   },
 };
 
 export const WithValue: Story = {
   args: {
-    defaultValue: 'Pre-filled value',
+    defaultValue: 'The Print Room',
   },
 };
 
 export const Search: Story = {
   args: {
     type: 'search',
-    placeholder: 'Search products...',
+    placeholder: 'Search AS Colour, Continental, Stanley/Stella...',
   },
 };
 
@@ -99,15 +99,15 @@ export const FormExample: Story = {
     <form className="space-y-4 w-[350px]">
       <div className="space-y-2">
         <Label htmlFor="name">Full Name</Label>
-        <Input id="name" placeholder="John Doe" />
+        <Input id="name" placeholder="Jamie Murray" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="email-form">Email</Label>
-        <Input id="email-form" type="email" placeholder="john@example.com" />
+        <Input id="email-form" type="email" placeholder="orders@theprintroom.nz" />
       </div>
       <div className="space-y-2">
         <Label htmlFor="phone">Phone</Label>
-        <Input id="phone" type="tel" placeholder="+1 (555) 000-0000" />
+        <Input id="phone" type="tel" placeholder="+64 21 555 1234" />
       </div>
     </form>
   ),

@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { RadioGroup, RadioGroupItem, Label } from '@print-room-studio/ui';
 
 const meta: Meta<typeof RadioGroup> = {
@@ -32,18 +32,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <RadioGroup defaultValue="option-1">
+    <RadioGroup defaultValue="email-proof">
       <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-1" id="option-1" />
-        <Label htmlFor="option-1">Option 1</Label>
+        <RadioGroupItem value="email-proof" id="email-proof" />
+        <Label htmlFor="email-proof">Email artwork proof</Label>
       </div>
       <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-2" id="option-2" />
-        <Label htmlFor="option-2">Option 2</Label>
+        <RadioGroupItem value="studio-review" id="studio-review" />
+        <Label htmlFor="studio-review">Review in the design studio</Label>
       </div>
       <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-3" id="option-3" />
-        <Label htmlFor="option-3">Option 3</Label>
+        <RadioGroupItem value="sample-print" id="sample-print" />
+        <Label htmlFor="sample-print">Request a pre-production sample</Label>
       </div>
     </RadioGroup>
   ),
@@ -81,43 +81,43 @@ export const PrintMethods: Story = {
 export const ShippingOptions: Story = {
   render: () => (
     <div className="space-y-3 w-[350px]">
-      <Label className="text-base font-medium">Shipping Method</Label>
-      <RadioGroup defaultValue="standard" className="space-y-3">
+      <Label className="text-base font-medium">Delivery Method</Label>
+      <RadioGroup defaultValue="wellington-pickup" className="space-y-3">
         <div className="flex items-center justify-between space-x-2 p-3 border rounded-lg">
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="standard" id="standard" />
+            <RadioGroupItem value="wellington-pickup" id="wellington-pickup" />
             <div>
-              <Label htmlFor="standard" className="font-medium">
-                Standard Shipping
+              <Label htmlFor="wellington-pickup" className="font-medium">
+                Wellington pickup
               </Label>
-              <p className="text-sm text-muted-foreground">5-7 business days</p>
+              <p className="text-sm text-muted-foreground">Collect from Dixon Street studio</p>
             </div>
           </div>
           <span className="font-medium">Free</span>
         </div>
         <div className="flex items-center justify-between space-x-2 p-3 border rounded-lg">
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="express" id="express" />
+            <RadioGroupItem value="north-island-courier" id="north-island-courier" />
             <div>
-              <Label htmlFor="express" className="font-medium">
-                Express Shipping
+              <Label htmlFor="north-island-courier" className="font-medium">
+                North Island courier
               </Label>
-              <p className="text-sm text-muted-foreground">2-3 business days</p>
+              <p className="text-sm text-muted-foreground">1-2 working days after dispatch</p>
             </div>
           </div>
-          <span className="font-medium">$15.00</span>
+          <span className="font-medium">$9.50</span>
         </div>
         <div className="flex items-center justify-between space-x-2 p-3 border rounded-lg">
           <div className="flex items-center space-x-2">
-            <RadioGroupItem value="overnight" id="overnight" />
+            <RadioGroupItem value="south-island-rural" id="south-island-rural" />
             <div>
-              <Label htmlFor="overnight" className="font-medium">
-                Overnight Shipping
+              <Label htmlFor="south-island-rural" className="font-medium">
+                South Island rural courier
               </Label>
-              <p className="text-sm text-muted-foreground">Next business day</p>
+              <p className="text-sm text-muted-foreground">2-4 working days after dispatch</p>
             </div>
           </div>
-          <span className="font-medium">$35.00</span>
+          <span className="font-medium">$15.00</span>
         </div>
       </RadioGroup>
     </div>
@@ -129,20 +129,20 @@ export const ShippingOptions: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <RadioGroup defaultValue="option-1">
+    <RadioGroup defaultValue="auckland">
       <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-1" id="d-option-1" />
-        <Label htmlFor="d-option-1">Available</Label>
+        <RadioGroupItem value="auckland" id="auckland" />
+        <Label htmlFor="auckland">Auckland dispatch</Label>
       </div>
       <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-2" id="d-option-2" disabled />
-        <Label htmlFor="d-option-2" className="opacity-50">
-          Unavailable
+        <RadioGroupItem value="christchurch" id="christchurch" disabled />
+        <Label htmlFor="christchurch" className="opacity-50">
+          Christchurch pickup coming soon
         </Label>
       </div>
       <div className="flex items-center space-x-2">
-        <RadioGroupItem value="option-3" id="d-option-3" />
-        <Label htmlFor="d-option-3">Available</Label>
+        <RadioGroupItem value="wellington" id="wellington" />
+        <Label htmlFor="wellington">Wellington pickup</Label>
       </div>
     </RadioGroup>
   ),

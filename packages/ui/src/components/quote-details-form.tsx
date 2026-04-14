@@ -56,23 +56,23 @@ export function QuoteDetailsForm({ data, onChange, className }: QuoteDetailsForm
         <motion.div variants={item} className="space-y-4">
           <div className="mypr-form__group">
             <label className="mypr-form__label">First Name</label>
-            <Input value={data.firstName} onChange={handle("firstName")} placeholder="John" />
+            <Input value={data.firstName} onChange={handle("firstName")} placeholder="Jamie" />
           </div>
           <div className="mypr-form__group">
             <label className="mypr-form__label">Last Name</label>
-            <Input value={data.lastName} onChange={handle("lastName")} placeholder="Doe" />
+            <Input value={data.lastName} onChange={handle("lastName")} placeholder="Murray" />
           </div>
           <div className="mypr-form__group">
             <label className="mypr-form__label">Email</label>
-            <Input type="email" value={data.email} onChange={handle("email")} placeholder="john@example.com" />
+            <Input type="email" value={data.email} onChange={handle("email")} placeholder="orders@theprintroom.nz" />
           </div>
           <div className="mypr-form__group">
             <label className="mypr-form__label">Phone Number</label>
-            <Input type="tel" value={data.phone} onChange={handle("phone")} placeholder="+1 555 123 4567" />
+            <Input type="tel" value={data.phone} onChange={handle("phone")} placeholder="+64 21 555 1234" />
           </div>
           <div className="mypr-form__group">
             <label className="mypr-form__label">Business Name</label>
-            <Input value={data.businessName} onChange={handle("businessName")} placeholder="ACME Inc." />
+            <Input value={data.businessName} onChange={handle("businessName")} placeholder="The Print Room" />
           </div>
         </motion.div>
 
@@ -89,10 +89,11 @@ export function QuoteDetailsForm({ data, onChange, className }: QuoteDetailsForm
             <label className="mypr-form__label">Shipping Country</label>
             <select className="mypr-input" value={data.shippingCountry} onChange={handle("shippingCountry")}>
               <option value="">Select Country</option>
+              <option value="NZ">New Zealand</option>
+              <option value="AU">Australia</option>
               <option value="US">United States</option>
               <option value="UK">United Kingdom</option>
-              <option value="AU">Australia</option>
-              {/* Add more countries as needed */}
+              <option value="INTL">International</option>
             </select>
           </div>
           <div className="mypr-form__group">

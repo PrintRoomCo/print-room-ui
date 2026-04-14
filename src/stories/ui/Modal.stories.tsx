@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import {
   Modal,
   ModalContent,
@@ -7,12 +7,12 @@ import {
   ModalBody,
   ModalFooter,
   Button,
-  Input,
-  Label,
+  QuoteDetailsForm,
 } from '@print-room-studio/ui';
+import { nzQuoteDetails } from '../fixtures/production-data';
 
 const meta: Meta<typeof Modal> = {
-  title: 'Primitives/Modal',
+  title: 'Storefront/Modal',
   component: Modal,
   tags: ['autodocs'],
   parameters: {
@@ -52,20 +52,20 @@ const DefaultModalExample = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Modal</Button>
+      <Button onClick={() => setOpen(true)}>Open branding service</Button>
       <Modal open={open} onOpenChange={setOpen}>
         <ModalContent>
           <ModalHeader>
-            <h2 className="text-lg font-semibold">Modal Title</h2>
+            <h2 className="text-lg font-semibold">Embroidery</h2>
           </ModalHeader>
           <ModalBody>
-            <p>This is the modal content. You can put any content here.</p>
+            <p>Use this surface for Shopify-aligned service overlays, quote flows, and review steps.</p>
           </ModalBody>
           <ModalFooter>
             <Button variant="outline" onClick={() => setOpen(false)}>
-              Cancel
+              Close
             </Button>
-            <Button onClick={() => setOpen(false)}>Confirm</Button>
+            <Button onClick={() => setOpen(false)}>Get a quote</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -81,17 +81,17 @@ const SmallModalExample = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Small Modal</Button>
+      <Button onClick={() => setOpen(true)}>Open stock alert</Button>
       <Modal open={open} onOpenChange={setOpen} size="sm">
         <ModalContent>
           <ModalHeader>
-            <h2 className="text-lg font-semibold">Small Modal</h2>
+            <h2 className="text-lg font-semibold">Low stock warning</h2>
           </ModalHeader>
           <ModalBody>
-            <p>This is a small modal with limited width.</p>
+            <p>Stanley/Stella Creator 2.0 is running low in natural raw across sizes S to L.</p>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={() => setOpen(false)}>Close</Button>
+            <Button onClick={() => setOpen(false)}>Dismiss</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -107,27 +107,27 @@ const LargeModalExample = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Large Modal</Button>
+      <Button onClick={() => setOpen(true)}>Open service brief</Button>
       <Modal open={open} onOpenChange={setOpen} size="lg">
         <ModalContent>
           <ModalHeader>
-            <h2 className="text-lg font-semibold">Large Modal</h2>
+            <h2 className="text-lg font-semibold">Screen Printing Overview</h2>
           </ModalHeader>
           <ModalBody>
             <p>
-              This is a large modal with more width for displaying detailed
-              content or forms.
+              Screen printing is the best-value technique for larger runs with clean spot-colour
+              artwork and repeat production.
             </p>
             <p className="mt-4 text-muted-foreground">
-              Large modals are useful for complex forms, detailed information,
-              or when you need more horizontal space.
+              Use this layout for service explainers, quote review steps, or long-form help content
+              that needs more reading width.
             </p>
           </ModalBody>
           <ModalFooter>
             <Button variant="outline" onClick={() => setOpen(false)}>
-              Cancel
+              Close
             </Button>
-            <Button onClick={() => setOpen(false)}>Confirm</Button>
+            <Button onClick={() => setOpen(false)}>Start a quote</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -144,16 +144,16 @@ const ConfirmationDialogExample = () => {
   return (
     <>
       <Button variant="destructive" onClick={() => setOpen(true)}>
-        Delete Item
+        Delete saved design
       </Button>
       <Modal open={open} onOpenChange={setOpen} size="sm">
         <ModalContent>
           <ModalHeader>
-            <h2 className="text-lg font-semibold">Confirm Deletion</h2>
+            <h2 className="text-lg font-semibold">Delete saved design</h2>
           </ModalHeader>
           <ModalBody>
             <p className="text-muted-foreground">
-              Are you sure you want to delete this item? This action cannot be
+              Are you sure you want to delete this saved design? This action cannot be
               undone.
             </p>
           </ModalBody>
@@ -177,40 +177,27 @@ export const ConfirmationDialog: Story = {
 
 const FormModalExample = () => {
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState(nzQuoteDetails);
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Add New Product</Button>
-      <Modal open={open} onOpenChange={setOpen} size="md">
+      <Button onClick={() => setOpen(true)}>Open quote request modal</Button>
+      <Modal open={open} onOpenChange={setOpen} size="xl">
         <ModalContent>
           <ModalHeader>
-            <h2 className="text-lg font-semibold">Add New Product</h2>
+            <h2 className="text-lg font-semibold">Request a Quote</h2>
           </ModalHeader>
           <ModalBody>
-            <form className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="product-name">Product Name</Label>
-                <Input id="product-name" placeholder="Enter product name" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="product-sku">SKU</Label>
-                <Input id="product-sku" placeholder="Enter SKU" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="product-price">Price</Label>
-                <Input
-                  id="product-price"
-                  type="number"
-                  placeholder="0.00"
-                  step="0.01"
-                />
-              </div>
-            </form>
+            <QuoteDetailsForm
+              data={data}
+              onChange={(field, value) => setData((prev) => ({ ...prev, [field]: value }))}
+              className="bg-transparent p-0 shadow-none"
+            />
           </ModalBody>
           <ModalFooter>
             <Button variant="outline" onClick={() => setOpen(false)}>
               Cancel
             </Button>
-            <Button onClick={() => setOpen(false)}>Add Product</Button>
+            <Button onClick={() => setOpen(false)}>Send Request</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
@@ -226,7 +213,7 @@ const NoCloseButtonExample = () => {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Open Modal (No Close Button)</Button>
+      <Button onClick={() => setOpen(true)}>Open approval gate</Button>
       <Modal
         open={open}
         onOpenChange={setOpen}
@@ -235,16 +222,16 @@ const NoCloseButtonExample = () => {
       >
         <ModalContent>
           <ModalHeader>
-            <h2 className="text-lg font-semibold">Important Notice</h2>
+            <h2 className="text-lg font-semibold">Artwork approval required</h2>
           </ModalHeader>
           <ModalBody>
             <p>
-              This modal can only be closed using the button below. The X button
-              and backdrop click are disabled.
+              The production team cannot book this job until the final proof is approved. Backdrop
+              click and the close icon are disabled on purpose.
             </p>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={() => setOpen(false)}>I Understand</Button>
+            <Button onClick={() => setOpen(false)}>Approve proof</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

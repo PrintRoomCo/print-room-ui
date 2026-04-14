@@ -17,10 +17,17 @@ const config: Config = {
   	},
   	extend: {
   		colors: {
-  			'figma-bg': '#F5F2ED',
-  			'figma-button': '#747A7B',
+  			'figma-bg': '#FBFBF6',
+  			'figma-button': '#4B4D72',
   			'figma-hover': '#0900FF',
   			'figma-border': '#2C2C2C',
+        storefront: {
+          blue: '#2B3990',
+          cta: '#4B4D72',
+          offWhite: '#FBFBF6',
+          pill: '#EEE',
+          sliderGreen: '#658A6A'
+        },
   			primary: {
   				'50': '#f5f3ff',
   				'100': '#ede9fe',
@@ -157,8 +164,12 @@ const config: Config = {
   			full: '9999px',
   			button: '8px',
   			card: '12px',
-  			modal: '16px',
-  			pill: '100px'
+  			modal: '27px',
+  			pill: '9999px',
+        input: '9999px',
+        textarea: '10px',
+        cta: '40px',
+        submit: '50px'
   		},
   		fontSize: {
   			'display-2xl': [
@@ -285,7 +296,7 @@ const config: Config = {
   			button: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
   			'button-hover': '0 4px 8px 0 rgb(0 0 0 / 0.1)',
   			card: '0 2px 4px 0 rgb(0 0 0 / 0.06), 0 1px 2px 0 rgb(0 0 0 / 0.04)',
-  			modal: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04)'
+  			modal: '0 4px 13px 2px rgba(0, 0, 0, 0.1)'
   		},
   		animation: {
   			'fade-in': 'fade-in 0.2s ease-out',

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { LocationStock } from '@print-room-studio/ui';
 
 const meta = {
@@ -30,7 +30,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     locations: [
-      { locationName: 'Auckland CBD', available: true },
+      { locationName: 'Auckland', available: true },
       { locationName: 'Wellington', available: true },
       { locationName: 'Christchurch', available: false },
     ],
@@ -40,9 +40,9 @@ export const Default: Story = {
 export const AllAvailable: Story = {
   args: {
     locations: [
-      { locationName: 'Auckland CBD', available: true },
+      { locationName: 'Auckland', available: true },
       { locationName: 'Wellington', available: true },
-      { locationName: 'Hamilton', available: true },
+      { locationName: 'Dunedin', available: true },
     ],
   },
 };
@@ -50,7 +50,7 @@ export const AllAvailable: Story = {
 export const AllUnavailable: Story = {
   args: {
     locations: [
-      { locationName: 'Auckland CBD', available: false },
+      { locationName: 'Auckland', available: false },
       { locationName: 'Wellington', available: false },
     ],
   },
@@ -58,7 +58,7 @@ export const AllUnavailable: Story = {
 
 export const SingleLocation: Story = {
   args: {
-    locations: [{ locationName: 'The Print Room HQ', available: true }],
+    locations: [{ locationName: 'Dunedin Production', available: true }],
   },
 };
 
@@ -66,7 +66,7 @@ export const NoHeading: Story = {
   args: {
     showHeading: false,
     locations: [
-      { locationName: 'Auckland CBD', available: true },
+      { locationName: 'Auckland', available: true },
       { locationName: 'Wellington', available: false },
     ],
   },
@@ -78,9 +78,9 @@ export const CustomLabels: Story = {
     outOfStockLabel: 'Unavailable',
     heading: 'Pickup locations',
     locations: [
-      { locationName: 'Main Warehouse', available: true },
-      { locationName: 'Retail Store', available: false },
-      { locationName: 'Distribution Centre', available: true },
+      { locationName: 'Auckland', available: true },
+      { locationName: 'Wellington', available: false },
+      { locationName: 'Dunedin Production', available: true },
     ],
   },
 };

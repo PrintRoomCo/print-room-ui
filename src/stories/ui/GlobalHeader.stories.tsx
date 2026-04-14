@@ -1,9 +1,9 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { GlobalHeader, Button } from '@print-room-studio/ui';
 
 const meta: Meta<typeof GlobalHeader> = {
-  title: 'App/Layout/GlobalHeader',
+  title: 'App/Design Tool/GlobalHeader',
   component: GlobalHeader,
   tags: ['autodocs'],
   parameters: {
@@ -74,7 +74,7 @@ export const WithSubtitle: Story = {
 export const QuoteCalculator: Story = {
   args: {
     title: 'Print Room',
-    subtitle: 'Quote Calculator',
+    subtitle: 'Quote Builder',
   },
   parameters: {
     docs: {
@@ -88,9 +88,9 @@ export const QuoteCalculator: Story = {
 export const WithBackButton: Story = {
   args: {
     title: 'Print Room',
-    subtitle: 'Job Tracker',
+    subtitle: 'Review Quote',
     backButton: (
-      <Button variant="ghost" size="sm" onClick={() => alert('Back clicked')}>
+      <Button variant="ghost" size="sm">
         ← Back
       </Button>
     ),
@@ -107,11 +107,11 @@ export const WithBackButton: Story = {
 export const WithActions: Story = {
   args: {
     title: 'Print Room',
-    subtitle: 'Admin',
+    subtitle: 'Quote Builder',
     children: (
       <div className="flex items-center gap-2">
-        <Button variant="outline" size="sm">Settings</Button>
-        <Button variant="default" size="sm">New Job</Button>
+        <Button variant="outline" size="sm">Export PDF</Button>
+        <Button variant="default" size="sm">Save Quote</Button>
       </div>
     ),
   },
@@ -127,16 +127,16 @@ export const WithActions: Story = {
 export const WithBackAndActions: Story = {
   args: {
     title: 'Print Room',
-    subtitle: 'Tech Packs',
+    subtitle: 'Design Tool',
     backButton: (
-      <Button variant="ghost" size="sm" onClick={() => alert('Back')}>
+      <Button variant="ghost" size="sm">
         ← Back
       </Button>
     ),
     children: (
       <div className="flex items-center gap-2">
-        <Button variant="outline" size="sm">Export PDF</Button>
-        <Button variant="default" size="sm">Save</Button>
+        <Button variant="outline" size="sm">Share Proof</Button>
+        <Button variant="default" size="sm">Approve Artwork</Button>
       </div>
     ),
   },

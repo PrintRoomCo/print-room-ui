@@ -60,14 +60,14 @@ const FilterButtons = React.forwardRef<HTMLDivElement, FilterButtonsProps>(
             disabled={option.disabled}
             className={cn(
               "flex items-center justify-center rounded-lg transition-all duration-200",
-              "bg-transparent border-none shadow-none",
+              "border-none shadow-none",
               value === option.key
-                ? 'text-purple-600'
-                : 'text-gray-600 hover:text-purple-600',
+                ? 'bg-secondary text-primary'
+                : 'text-gray-600 hover:text-primary',
               option.disabled && "opacity-50 cursor-not-allowed",
               variant === 'icon' && sizeClasses[size],
-              variant === 'text' && "px-3 py-2",
-              variant === 'both' && "px-3 py-2 space-x-2"
+              variant === 'text' && "rounded-pill px-3 py-2",
+              variant === 'both' && "rounded-pill px-3 py-2 space-x-2"
             )}
             title={option.label}
           >

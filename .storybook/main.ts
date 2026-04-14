@@ -1,5 +1,10 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
+import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from '@storybook/react-vite';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const config: StorybookConfig = {
   stories: [
@@ -7,48 +12,45 @@ const config: StorybookConfig = {
     '../src/stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
 
-  addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    '@storybook/addon-interactions',
-    '@storybook/addon-links',
-  ],
+  addons: ['@storybook/addon-a11y', '@storybook/addon-links', '@storybook/addon-docs'],
 
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
 
-  docs: {
-    autodocs: 'tag',
-  },
-
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      shouldRemoveUndefinedFromOptional: true,
-      propFilter: (prop) => {
-        if (prop.parent) {
-          return (
-            !prop.parent.fileName.includes('node_modules') ||
-            prop.parent.fileName.includes('@radix-ui')
-          );
-        }
-        return true;
-      },
-    },
+    reactDocgen: 'react-docgen',
   },
 
   viteFinal: async (config) => {
     const { mergeConfig } = await import('vite');
 
+    // Fix: Storybook 10's MDX compiler injects file:// URLs pointing into
+    // pnpm's .pnpm store which Vite can't resolve. This plugin rewrites
+    // those imports to the hoisted path before Vite's import analysis.
+    const mdxShimPath = resolve(__dirname, '../node_modules/@storybook/addon-docs/dist/mdx-react-shim.js');
+    const fixMdxShimPlugin = {
+      name: 'fix-storybook-mdx-shim',
+      enforce: 'pre' as const,
+      transform(code: string, id: string) {
+        if (id.endsWith('.mdx') && code.includes('mdx-react-shim')) {
+          return code.replace(
+            /from\s+["']file:\/\/\/[^"']*mdx-react-shim\.js["']/g,
+            `from "${mdxShimPath.replace(/\\/g, '/')}"`
+          );
+        }
+      },
+    };
+
     return mergeConfig(config, {
+      plugins: [fixMdxShimPlugin],
       define: {
         'process.env': {},
       },
       resolve: {
         alias: {
+          '@storybook/addon-docs/dist/mdx-react-shim': resolve(__dirname, '../node_modules/@storybook/addon-docs/dist/mdx-react-shim.js'),
           '@vendored': resolve(__dirname, '../src/vendored'),
           '@': resolve(__dirname, '../src'),
           // Next.js mocks for Storybook
@@ -74,12 +76,17 @@ const config: StorybookConfig = {
             if (warning.code === 'SOURCEMAP_ERROR') {
               return;
             }
+            // Suppress Storybook virtual module dynamic import warnings
+            if (warning.message?.includes('__STORYBOOK_MODULE_')) {
+              return;
+            }
             warn(warning);
           },
         },
       },
       optimizeDeps: {
         include: [
+          '@storybook/addon-docs/dist/mdx-react-shim',
           '@radix-ui/react-accordion',
           '@radix-ui/react-progress',
           '@radix-ui/react-slot',
@@ -97,7 +104,7 @@ const config: StorybookConfig = {
     });
   },
 
-  staticDirs: ['../public'],
+  staticDirs: ['../public']
 };
 
 export default config;

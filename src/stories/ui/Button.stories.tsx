@@ -1,6 +1,6 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
+import type { Meta, StoryObj } from '@storybook/react-vite';
+import { fn } from 'storybook/test';
 import { Button } from '@print-room-studio/ui';
 
 const meta: Meta<typeof Button> = {
@@ -54,56 +54,56 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Button',
+    children: 'Start Quote',
     variant: 'default',
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Secondary',
+    children: 'View Services',
     variant: 'secondary',
   },
 };
 
 export const Destructive: Story = {
   args: {
-    children: 'Delete',
+    children: 'Remove Design',
     variant: 'destructive',
   },
 };
 
 export const Outline: Story = {
   args: {
-    children: 'Outline',
+    children: 'Request Samples',
     variant: 'outline',
   },
 };
 
 export const Ghost: Story = {
   args: {
-    children: 'Ghost',
+    children: 'Back to Catalogue',
     variant: 'ghost',
   },
 };
 
 export const Link: Story = {
   args: {
-    children: 'Link',
+    children: 'Download Price List',
     variant: 'link',
   },
 };
 
 export const Small: Story = {
   args: {
-    children: 'Small',
+    children: 'Save',
     size: 'sm',
   },
 };
 
 export const Large: Story = {
   args: {
-    children: 'Large',
+    children: 'Submit Quote',
     size: 'lg',
   },
 };
@@ -118,7 +118,7 @@ export const Icon: Story = {
 
 export const Disabled: Story = {
   args: {
-    children: 'Disabled',
+    children: 'Submitting...',
     disabled: true,
   },
 };
@@ -127,11 +127,11 @@ export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-4">
       <Button variant="default">Default</Button>
-      <Button variant="secondary">Secondary</Button>
-      <Button variant="destructive">Destructive</Button>
-      <Button variant="outline">Outline</Button>
-      <Button variant="ghost">Ghost</Button>
-      <Button variant="link">Link</Button>
+      <Button variant="secondary">View Services</Button>
+      <Button variant="destructive">Remove Design</Button>
+      <Button variant="outline">Request Samples</Button>
+      <Button variant="ghost">Back to Catalogue</Button>
+      <Button variant="link">Shipping Policy</Button>
     </div>
   ),
   parameters: {
@@ -143,8 +143,8 @@ export const AllSizes: Story = {
   render: () => (
     <div className="flex flex-wrap items-center gap-4">
       <Button size="sm">Small</Button>
-      <Button size="default">Default</Button>
-      <Button size="lg">Large</Button>
+      <Button size="default">Start Quote</Button>
+      <Button size="lg">Submit Quote</Button>
       <Button size="icon">?</Button>
     </div>
   ),
@@ -155,10 +155,10 @@ export const AllSizes: Story = {
 
 export const WithInteraction: Story = {
   args: {
-    children: 'Click Me',
+    children: 'Save Quote',
   },
   play: async ({ canvasElement, args }) => {
-    const { within, userEvent, expect } = await import('@storybook/test');
+    const { within, userEvent, expect } = await import('storybook/test');
     const canvas = within(canvasElement);
     const button = canvas.getByRole('button');
 

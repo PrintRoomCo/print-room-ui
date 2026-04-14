@@ -1,9 +1,9 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Badge } from '@print-room-studio/ui';
 
 const meta = {
-  title: 'Feedback/Badge',
+  title: 'Primitives/Badge',
   component: Badge,
   parameters: {
     layout: 'centered',

@@ -1,9 +1,9 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { StepProgress } from '@print-room-studio/ui';
 
 const meta: Meta<typeof StepProgress> = {
-  title: 'App/Layout/StepProgress',
+  title: 'App/Design Tool/StepProgress',
   component: StepProgress,
   tags: ['autodocs'],
   parameters: {
@@ -133,7 +133,7 @@ export const OrderFlow: Story = {
       <div className="border rounded-lg p-4">
         <h2 className="text-lg font-semibold">Design Your Product</h2>
         <p className="text-sm text-muted-foreground mt-2">
-          Upload your artwork and customize colors.
+          Upload artwork, choose a garment colour, and confirm placement before pricing.
         </p>
       </div>
     </div>
