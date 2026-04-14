@@ -1,0 +1,643 @@
+/* ==========================================================================
+   BUTTON COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-button {
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium transition-all duration-200 disabled:pointer-events-none disabled:opacity-50 rounded-button font-dm-sans;
+}
+
+.mypr-button:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.mypr-button--primary {
+  @apply bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground active:bg-accent/80 transition-colors;
+}
+
+.mypr-button--secondary {
+  @apply bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground active:bg-accent/80 transition-colors;
+}
+
+.mypr-button--outline {
+  @apply bg-transparent border-2 border-border text-foreground hover:bg-accent hover:text-accent-foreground active:bg-accent/80 transition-colors;
+}
+
+.mypr-button--ghost {
+  @apply bg-transparent text-muted-foreground hover:bg-accent hover:text-accent-foreground active:bg-accent/80 transition-colors;
+}
+
+.mypr-button--destructive {
+  @apply bg-destructive text-destructive-foreground hover:bg-destructive/90 active:bg-destructive/80;
+}
+
+/* Button sizes */
+.mypr-button--sm {
+  @apply px-4 py-2 text-xs;
+}
+
+.mypr-button--lg {
+  @apply px-8 py-4 text-base;
+}
+
+/* ==========================================================================
+   CARD COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-card {
+  @apply bg-card text-card-foreground rounded-card border border-border shadow-card;
+}
+
+.mypr-card__header {
+  @apply p-6 pb-0;
+}
+
+.mypr-card__content {
+  @apply p-6;
+}
+
+.mypr-card__footer {
+  @apply p-6 pt-0;
+}
+
+.mypr-card__title {
+  @apply text-lg font-semibold leading-none tracking-tight font-dm-sans;
+}
+
+.mypr-card__description {
+  @apply text-sm text-muted-foreground mt-1 font-dm-sans;
+}
+
+/* Card variants */
+.mypr-card--elevated {
+  @apply shadow-modal;
+}
+
+.mypr-card--bordered {
+  @apply border-2;
+}
+
+/* ==========================================================================
+   NAVIGATION COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-nav {
+  @apply flex items-center gap-4;
+}
+
+.mypr-nav__button {
+  @apply inline-flex items-center justify-center w-10 h-10 border border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground transition-colors cursor-pointer rounded-button;
+}
+
+.mypr-nav__button--prev::before {
+  content: "←";
+  @apply text-lg;
+}
+
+.mypr-nav__button--next::before {
+  content: "→";
+  @apply text-lg;
+}
+
+.mypr-nav__label {
+  @apply text-sm text-muted-foreground font-medium font-dm-sans;
+}
+
+/* ==========================================================================
+   TOGGLE COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-toggle {
+  @apply relative inline-flex w-11 h-6 items-center rounded-full border-2 border-transparent transition-colors disabled:cursor-not-allowed disabled:opacity-50 bg-input cursor-pointer;
+}
+
+.mypr-toggle:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.mypr-toggle--checked {
+  @apply bg-primary;
+}
+
+.mypr-toggle__thumb {
+  @apply pointer-events-none block h-4 w-4 rounded-full bg-background shadow-sm ring-0 transition-transform;
+}
+
+.mypr-toggle--checked .mypr-toggle__thumb {
+  @apply translate-x-5;
+}
+
+.mypr-toggle:not(.mypr-toggle--checked) .mypr-toggle__thumb {
+  @apply translate-x-0.5;
+}
+
+/* Toggle sizes */
+.mypr-toggle--sm {
+  @apply w-8 h-4;
+}
+
+.mypr-toggle--sm .mypr-toggle__thumb {
+  @apply h-3 w-3;
+}
+
+.mypr-toggle--sm.mypr-toggle--checked .mypr-toggle__thumb {
+  @apply translate-x-4;
+}
+
+/* ==========================================================================
+   TABS COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-tabs {
+  @apply w-full;
+}
+
+.mypr-tabs__list {
+  @apply inline-flex h-10 items-center justify-center rounded-md bg-muted p-1 text-muted-foreground;
+}
+
+.mypr-tabs__tab {
+  @apply inline-flex items-center justify-center whitespace-nowrap rounded-sm px-3 py-1.5 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 font-dm-sans cursor-pointer;
+}
+
+.mypr-tabs__tab:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.mypr-tabs__tab--active {
+  @apply bg-background text-foreground shadow-sm;
+}
+
+.mypr-tabs__close {
+  @apply ml-2 h-4 w-4 cursor-pointer hover:text-destructive transition-colors;
+}
+
+.mypr-tabs__content {
+  @apply mt-2;
+}
+
+.mypr-tabs__content:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   PROGRESS COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-progress {
+  @apply relative w-full overflow-hidden rounded-full;
+}
+
+.mypr-progress__bar {
+  @apply h-2 w-full bg-secondary;
+}
+
+.mypr-progress__fill {
+  @apply h-full w-full flex-1 bg-primary transition-all duration-300 ease-in-out;
+}
+
+.mypr-progress__label {
+  @apply text-sm font-medium text-foreground mb-2 font-dm-sans;
+}
+
+/* Progress variants */
+.mypr-progress--lg .mypr-progress__bar {
+  @apply h-4;
+}
+
+.mypr-progress--sm .mypr-progress__bar {
+  @apply h-1;
+}
+
+/* ==========================================================================
+   MODAL COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-modal {
+  @apply fixed inset-0 z-50 bg-background/80 backdrop-blur-sm transition-opacity duration-200;
+}
+
+.mypr-modal__content {
+  @apply fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-border bg-background p-6 shadow-modal transition-all duration-200 rounded-modal;
+}
+
+.mypr-modal__header {
+  @apply flex flex-col space-y-1.5 text-center sm:text-left;
+}
+
+.mypr-modal__title {
+  @apply text-lg font-semibold leading-none tracking-tight font-dm-sans;
+}
+
+.mypr-modal__description {
+  @apply text-sm text-muted-foreground font-dm-sans;
+}
+
+.mypr-modal__footer {
+  @apply flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2;
+}
+
+.mypr-modal__close {
+  @apply absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none h-6 w-6 flex items-center justify-center;
+}
+
+.mypr-modal__close:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Modal sizes */
+.mypr-modal__content--sm {
+  @apply max-w-sm;
+}
+
+.mypr-modal__content--lg {
+  @apply max-w-2xl;
+}
+
+.mypr-modal__content--xl {
+  @apply max-w-4xl;
+}
+
+/* ==========================================================================
+   ICON BAR COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-icon-bar {
+  @apply flex gap-1;
+}
+
+.mypr-icon-bar__item {
+  @apply p-2 rounded-md hover:bg-accent hover:text-accent-foreground cursor-pointer transition-colors;
+}
+
+.mypr-icon-bar__icon {
+  @apply text-lg;
+}
+
+/* Icon bar variants */
+.mypr-icon-bar--vertical {
+  @apply flex-col;
+}
+
+.mypr-icon-bar--compact .mypr-icon-bar__item {
+  @apply p-1;
+}
+
+/* ==========================================================================
+   SLIDER COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-slider {
+  @apply relative flex items-center select-none touch-none w-full h-5;
+}
+
+.mypr-slider__track {
+  @apply relative h-2 grow rounded-full bg-secondary;
+}
+
+.mypr-slider__range {
+  @apply absolute h-full bg-primary rounded-full;
+}
+
+.mypr-slider__thumb {
+  @apply block h-4 w-4 rounded-full border-2 border-primary bg-background transition-colors disabled:pointer-events-none disabled:opacity-50 cursor-pointer;
+}
+
+.mypr-slider__thumb:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-type {
+  @apply font-dm-sans;
+}
+
+.mypr-type--display-2xl {
+  @apply text-display-2xl font-bold;
+}
+
+.mypr-type--display-xl {
+  @apply text-display-xl font-bold;
+}
+
+.mypr-type--display-lg {
+  @apply text-display-lg font-semibold;
+}
+
+.mypr-type--display-md {
+  @apply text-display-md font-semibold;
+}
+
+.mypr-type--display-sm {
+  @apply text-display-sm font-semibold;
+}
+
+.mypr-type--xl {
+  @apply text-xl font-medium;
+}
+
+.mypr-type--lg {
+  @apply text-lg font-medium;
+}
+
+.mypr-type--md {
+  @apply text-base font-normal;
+}
+
+.mypr-type--sm {
+  @apply text-sm font-normal;
+}
+
+.mypr-type--xs {
+  @apply text-xs font-normal;
+}
+
+/* Typography modifiers */
+.mypr-type--bold {
+  @apply font-bold;
+}
+
+.mypr-type--semibold {
+  @apply font-semibold;
+}
+
+.mypr-type--medium {
+  @apply font-medium;
+}
+
+.mypr-type--muted {
+  @apply text-muted-foreground;
+}
+
+/* ==========================================================================
+   ACCORDION COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-accordion {
+  @apply space-y-2;
+}
+
+.mypr-accordion__item {
+  @apply bg-card rounded-card border border-border overflow-hidden;
+}
+
+.mypr-accordion__header {
+  @apply p-4;
+}
+
+.mypr-accordion__trigger {
+  @apply flex w-full items-center justify-between text-left font-medium font-dm-sans hover:bg-muted/50 transition-colors cursor-pointer;
+}
+
+.mypr-accordion__content {
+  @apply px-4 pb-4 text-sm text-muted-foreground font-dm-sans;
+}
+
+.mypr-accordion__content--hidden {
+  @apply hidden;
+}
+
+.mypr-accordion__icon {
+  @apply h-4 w-4 transition-transform duration-200;
+}
+
+.mypr-accordion__item--open .mypr-accordion__icon {
+  @apply rotate-180;
+}
+
+/* ==========================================================================
+   INPUT COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-input {
+  @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50 font-dm-sans;
+}
+
+.mypr-input:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+.mypr-input--error {
+  @apply border-destructive;
+}
+
+.mypr-input--error:focus-visible {
+  outline-color: hsl(var(--destructive));
+}
+
+.mypr-input--success {
+  @apply border-success-500;
+}
+
+.mypr-input--success:focus-visible {
+  outline-color: #10b981;
+}
+
+.mypr-input--sm {
+  @apply h-8 px-2 py-1 text-xs;
+}
+
+.mypr-input--lg {
+  @apply h-12 px-4 py-3 text-base;
+}
+
+/* ==========================================================================
+   FORM COMPONENT - BEM Methodology
+   ========================================================================== */
+.mypr-form {
+  @apply space-y-4;
+}
+
+.mypr-form__group {
+  @apply space-y-2;
+}
+
+.mypr-form__label {
+  @apply text-sm font-medium text-foreground font-dm-sans;
+}
+
+.mypr-form__label--required::after {
+  content: " *";
+  @apply text-destructive;
+}
+
+.mypr-form__error {
+  @apply text-sm text-destructive font-dm-sans;
+}
+
+.mypr-form__help {
+  @apply text-sm text-muted-foreground font-dm-sans;
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+.shadow-button {
+  @apply shadow-sm;
+}
+
+.shadow-button-hover {
+  @apply shadow-md;
+}
+
+.shadow-card {
+  @apply shadow-sm;
+}
+
+.shadow-modal {
+  @apply shadow-lg;
+}
+
+/* Scrollbar utilities */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  @apply bg-muted rounded-full;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/30 rounded-full hover:bg-muted-foreground/50;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+
+/* Touch scroll */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.4s ease-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   INPUT NUMBER COMPONENT - BEM Methodology
+   ========================================================================== */
+.ui-input-number {
+  @apply relative inline-flex items-center border border-border rounded-full bg-background overflow-hidden;
+  transition: border-color 0.2s;
+  height: 32px;
+}
+
+.ui-input-number:hover {
+  @apply border-primary/50;
+}
+
+.ui-input-number:focus-within {
+  @apply border-primary ring-2 ring-primary/20;
+}
+
+.ui-input-number-handler-wrap {
+  @apply absolute top-0 right-0 w-6 h-full border-l border-border bg-background;
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-input-number-handler {
+  @apply flex-1 flex items-center justify-center cursor-pointer transition-colors;
+  position: relative;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.ui-input-number-handler:hover {
+  @apply bg-muted;
+}
+
+.ui-input-number-handler:active {
+  @apply bg-muted/80;
+}
+
+.ui-input-number-handler-up {
+  @apply border-b border-border;
+}
+
+.ui-input-number-handler-up-inner::before {
+  content: "▲";
+  @apply text-xs text-muted-foreground;
+}
+
+.ui-input-number-handler-down-inner::before {
+  content: "▼";
+  @apply text-xs text-muted-foreground;
+}
+
+.ui-input-number-input-wrap {
+  @apply relative flex-1;
+}
+
+.ui-input-number-input {
+  @apply w-full h-8 py-1 text-sm border-0 bg-transparent outline-none text-center font-medium;
+  padding-left: 4px;
+  padding-right: 28px; /* Make room for handlers */
+}
+
+.ui-input-number-input:focus {
+  @apply outline-none;
+}
+
+/* Remove default number input arrows */
+.ui-input-number-input::-webkit-outer-spin-button,
+.ui-input-number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.ui-input-number-input[type="number"] {
+  -moz-appearance: textfield;
+} 

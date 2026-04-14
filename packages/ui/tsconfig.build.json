@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "**/*.stories.*",
+    "**/*.test.*",
+    "**/__tests__/**",
+    "node_modules",
+    "dist"
+  ],
+  "compilerOptions": {
+    "target": "ES2020",
+    "declaration": true,
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  }
+}

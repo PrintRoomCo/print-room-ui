@@ -1,0 +1,103 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/blocks';
+import tokens from '../../tokens/design-tokens.json';
+
+<Meta title="Documentation/Design Tokens Guide" />
+
+# Design Tokens Guide
+
+> **For Non-Developers:** This guide explains how to update brand colours, typography and spacing without writing code. For the full visual reference of every token, see the **[Design Tokens](?path=/docs/documentation-design-tokens--docs)** page.
+
+---
+
+## How to Make Changes
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '16px', padding: '16px 0' }}>
+  <div style={{ border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px' }}>
+    <p style={{ margin: '0 0 8px', fontSize: '24px' }}>1</p>
+    <p style={{ margin: '0 0 4px', fontWeight: 600, color: '#0f172a' }}>Find the Tokens File</p>
+    <code style={{ fontSize: '12px', color: '#2B3990' }}>apps/storybook/src/tokens/design-tokens.json</code>
+  </div>
+  <div style={{ border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px' }}>
+    <p style={{ margin: '0 0 8px', fontSize: '24px' }}>2</p>
+    <p style={{ margin: '0 0 4px', fontWeight: 600, color: '#0f172a' }}>Edit the Values</p>
+    <p style={{ margin: 0, fontSize: '13px', color: '#475569' }}>Open in any text editor or GitHub's web editor and change the hex / HSL values.</p>
+  </div>
+  <div style={{ border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px' }}>
+    <p style={{ margin: '0 0 8px', fontSize: '24px' }}>3</p>
+    <p style={{ margin: '0 0 4px', fontWeight: 600, color: '#0f172a' }}>Commit & Deploy</p>
+    <p style={{ margin: 0, fontSize: '13px', color: '#475569' }}>Click "Commit changes" on GitHub. Storybook rebuilds automatically with your updates.</p>
+  </div>
+</div>
+
+### Example Edit
+
+```json
+"colors": {
+  "brand": {
+    "primary": "#2B3990",       // ← Print Room Blue
+    "primaryDark": "#232E73",   // ← Darker variant
+    "primarySoft": "#3A4BA8",   // ← Lighter variant
+    "accent": "#0900FF",        // ← Figma accent blue
+    "accentLime": "#F1FFA5"     // ← Lime highlight
+  }
+}
+```
+
+---
+
+## Quick Preview — Brand Colors
+
+These render live from `design-tokens.json`. If you change a value, these swatches update on the next deploy.
+
+<ColorPalette>
+  <ColorItem title="Primary — Print Room Blue" subtitle={`brand.primary · ${tokens.colors.brand.primary}`} colors={{ Primary: tokens.colors.brand.primary }} />
+  <ColorItem title="Primary Dark" subtitle={`brand.primaryDark · ${tokens.colors.brand.primaryDark}`} colors={{ 'Primary Dark': tokens.colors.brand.primaryDark }} />
+  <ColorItem title="Primary Soft" subtitle={`brand.primarySoft · ${tokens.colors.brand.primarySoft}`} colors={{ 'Primary Soft': tokens.colors.brand.primarySoft }} />
+  <ColorItem title="Accent Blue" subtitle={`brand.accent · ${tokens.colors.brand.accent}`} colors={{ Accent: tokens.colors.brand.accent }} />
+  <ColorItem title="Accent Lime" subtitle={`brand.accentLime · ${tokens.colors.brand.accentLime}`} colors={{ 'Accent Lime': tokens.colors.brand.accentLime }} />
+</ColorPalette>
+
+## Quick Preview — Status Colors
+
+<ColorPalette>
+  <ColorItem title="Success" subtitle={`status.success · ${tokens.colors.status.success}`} colors={{ Success: tokens.colors.status.success }} />
+  <ColorItem title="Warning" subtitle={`status.warning · ${tokens.colors.status.warning}`} colors={{ Warning: tokens.colors.status.warning }} />
+  <ColorItem title="Error" subtitle={`status.error · ${tokens.colors.status.error}`} colors={{ Error: tokens.colors.status.error }} />
+  <ColorItem title="Info" subtitle={`status.info · ${tokens.colors.status.info}`} colors={{ Info: tokens.colors.status.info }} />
+</ColorPalette>
+
+---
+
+## Token File Structure
+
+The JSON file is organised into these top-level sections:
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px', padding: '16px 0' }}>
+  {[
+    { key: 'colors.brand', desc: 'Primary brand hex values' },
+    { key: 'colors.figma', desc: 'Legacy Figma design colours' },
+    { key: 'colors.ui', desc: 'Light-mode CSS variables' },
+    { key: 'colors.uiDark', desc: 'Dark-mode CSS variables' },
+    { key: 'colors.palette', desc: '50–950 colour scales' },
+    { key: 'colors.status', desc: 'Success / Warning / Error / Info' },
+    { key: 'colors.chart', desc: 'Data-viz colour series' },
+    { key: 'typography', desc: 'Font families, sizes, weights' },
+    { key: 'spacing', desc: '4 px base-unit scale' },
+    { key: 'borderRadius', desc: 'Radius tokens + CSS var' },
+    { key: 'shadows', desc: 'Elevation + glass morphism' },
+    { key: 'animation', desc: 'Keyframes & durations' },
+  ].map((s) => (
+    <div key={s.key} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '12px' }}>
+      <span style={{ fontSize: '13px', fontWeight: 600, color: '#0f172a', fontFamily: "'JetBrains Mono', monospace" }}>{s.key}</span>
+      <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#64748b' }}>{s.desc}</p>
+    </div>
+  ))}
+</div>
+
+---
+
+## Need Help?
+
+If you're unsure about a change, create a **Pull Request** instead of committing directly. This lets the team review before it goes live.
+
+For the complete visual reference of every colour, typography specimen, spacing scale, shadow elevation and animation, see the **[Design Tokens](?path=/docs/documentation-design-tokens--docs)** page.

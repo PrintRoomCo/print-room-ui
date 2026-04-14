@@ -1,0 +1,457 @@
+import { Meta, ColorPalette, ColorItem, Typeset } from '@storybook/blocks';
+import tokens from '../../tokens/design-tokens.json';
+
+<Meta title="Documentation/Design Tokens" />
+
+# Design Tokens
+
+Design tokens are the visual design atoms of the **Print Room Studio** design system — named entities that store visual attributes. They live in `packages/ui/tailwind.config.ts` and `packages/ui/src/styles/globals.css`, mirrored in `apps/storybook/src/tokens/design-tokens.json` for documentation.
+
+> **Editing Tokens:** Open `design-tokens.json` in any text editor (or GitHub's web editor), change the value, and commit. Storybook rebuilds automatically. See the **Design Tokens Guide** page for full instructions.
+
+---
+
+## 1 · Brand Identity
+
+Print Room Blue is the core brand colour used across internal tools, portals & storefronts.
+
+<ColorPalette>
+  <ColorItem
+    title="Primary — Print Room Blue"
+    subtitle={`brand.primary · ${tokens.colors.brand.primary}`}
+    colors={{ Primary: tokens.colors.brand.primary }}
+  />
+  <ColorItem
+    title="Primary Dark"
+    subtitle={`brand.primaryDark · ${tokens.colors.brand.primaryDark}`}
+    colors={{ 'Primary Dark': tokens.colors.brand.primaryDark }}
+  />
+  <ColorItem
+    title="Primary Soft"
+    subtitle={`brand.primarySoft · ${tokens.colors.brand.primarySoft}`}
+    colors={{ 'Primary Soft': tokens.colors.brand.primarySoft }}
+  />
+  <ColorItem
+    title="Accent Blue"
+    subtitle={`brand.accent · ${tokens.colors.brand.accent}`}
+    colors={{ Accent: tokens.colors.brand.accent }}
+  />
+  <ColorItem
+    title="Accent Lime"
+    subtitle={`brand.accentLime · ${tokens.colors.brand.accentLime}`}
+    colors={{ 'Accent Lime': tokens.colors.brand.accentLime }}
+  />
+</ColorPalette>
+
+---
+
+## 2 · Semantic UI Colors
+
+HSL-based CSS custom properties that drive light / dark theming through shadcn/ui. Override `--primary`, `--background`, `--radius` per-app for theme variants.
+
+### Light Mode
+
+<ColorPalette>
+  <ColorItem title="Background" subtitle={`--background · ${tokens.colors.ui.background}`} colors={{ Background: tokens.colors.ui.background }} />
+  <ColorItem title="Foreground" subtitle={`--foreground · ${tokens.colors.ui.foreground}`} colors={{ Foreground: tokens.colors.ui.foreground }} />
+  <ColorItem title="Primary" subtitle={`--primary · ${tokens.colors.ui.primary}`} colors={{ Primary: tokens.colors.ui.primary }} />
+  <ColorItem title="Primary Foreground" subtitle={`--primary-foreground · ${tokens.colors.ui.primaryForeground}`} colors={{ 'Primary FG': tokens.colors.ui.primaryForeground }} />
+  <ColorItem title="Secondary" subtitle={`--secondary · ${tokens.colors.ui.secondary}`} colors={{ Secondary: tokens.colors.ui.secondary }} />
+  <ColorItem title="Muted" subtitle={`--muted · ${tokens.colors.ui.muted}`} colors={{ Muted: tokens.colors.ui.muted }} />
+  <ColorItem title="Accent" subtitle={`--accent · ${tokens.colors.ui.accent}`} colors={{ Accent: tokens.colors.ui.accent }} />
+  <ColorItem title="Destructive" subtitle={`--destructive · ${tokens.colors.ui.destructive}`} colors={{ Destructive: tokens.colors.ui.destructive }} />
+  <ColorItem title="Border" subtitle={`--border · ${tokens.colors.ui.border}`} colors={{ Border: tokens.colors.ui.border }} />
+  <ColorItem title="Ring" subtitle={`--ring · ${tokens.colors.ui.ring}`} colors={{ Ring: tokens.colors.ui.ring }} />
+</ColorPalette>
+
+### Dark Mode
+
+<ColorPalette>
+  <ColorItem title="Background" subtitle={`dark --background · ${tokens.colors.uiDark.background}`} colors={{ Background: tokens.colors.uiDark.background }} />
+  <ColorItem title="Foreground" subtitle={`dark --foreground · ${tokens.colors.uiDark.foreground}`} colors={{ Foreground: tokens.colors.uiDark.foreground }} />
+  <ColorItem title="Primary" subtitle={`dark --primary · ${tokens.colors.uiDark.primary}`} colors={{ Primary: tokens.colors.uiDark.primary }} />
+  <ColorItem title="Secondary" subtitle={`dark --secondary · ${tokens.colors.uiDark.secondary}`} colors={{ Secondary: tokens.colors.uiDark.secondary }} />
+  <ColorItem title="Muted" subtitle={`dark --muted · ${tokens.colors.uiDark.muted}`} colors={{ Muted: tokens.colors.uiDark.muted }} />
+  <ColorItem title="Border" subtitle={`dark --border · ${tokens.colors.uiDark.border}`} colors={{ Border: tokens.colors.uiDark.border }} />
+  <ColorItem title="Ring" subtitle={`dark --ring · ${tokens.colors.uiDark.ring}`} colors={{ Ring: tokens.colors.uiDark.ring }} />
+</ColorPalette>
+
+---
+
+## 3 · Figma Legacy Colors
+
+Static colours carried over from the original Figma design files.
+
+<ColorPalette>
+  <ColorItem title="Background Cream" subtitle={`figma.background · ${tokens.colors.figma.background}`} colors={{ Background: tokens.colors.figma.background }} />
+  <ColorItem title="Button Gray" subtitle={`figma.button · ${tokens.colors.figma.button}`} colors={{ Button: tokens.colors.figma.button }} />
+  <ColorItem title="Hover Blue" subtitle={`figma.hover · ${tokens.colors.figma.hover}`} colors={{ Hover: tokens.colors.figma.hover }} />
+  <ColorItem title="Border Charcoal" subtitle={`figma.border · ${tokens.colors.figma.border}`} colors={{ Border: tokens.colors.figma.border }} />
+</ColorPalette>
+
+---
+
+## 4 · Extended Palette
+
+Full 50–950 colour scales used across the system for data-viz, UI accents and status states.
+
+### Primary (Purple)
+
+<ColorPalette>
+  <ColorItem title="Primary 50–200" subtitle="palette.primary" colors={{
+    '50': tokens.colors.palette.primary['50'],
+    '100': tokens.colors.palette.primary['100'],
+    '200': tokens.colors.palette.primary['200'],
+  }} />
+  <ColorItem title="Primary 300–500" subtitle="palette.primary" colors={{
+    '300': tokens.colors.palette.primary['300'],
+    '400': tokens.colors.palette.primary['400'],
+    '500': tokens.colors.palette.primary['500'],
+  }} />
+  <ColorItem title="Primary 600–950" subtitle="palette.primary" colors={{
+    '600': tokens.colors.palette.primary['600'],
+    '700': tokens.colors.palette.primary['700'],
+    '800': tokens.colors.palette.primary['800'],
+    '900': tokens.colors.palette.primary['900'],
+    '950': tokens.colors.palette.primary['950'],
+  }} />
+</ColorPalette>
+
+### Secondary (Lime)
+
+<ColorPalette>
+  <ColorItem title="Secondary 50–200" subtitle="palette.secondary" colors={{
+    '50': tokens.colors.palette.secondary['50'],
+    '100': tokens.colors.palette.secondary['100'],
+    '200': tokens.colors.palette.secondary['200'],
+  }} />
+  <ColorItem title="Secondary 300–500" subtitle="palette.secondary" colors={{
+    '300': tokens.colors.palette.secondary['300'],
+    '400': tokens.colors.palette.secondary['400'],
+    '500': tokens.colors.palette.secondary['500'],
+  }} />
+  <ColorItem title="Secondary 600–950" subtitle="palette.secondary" colors={{
+    '600': tokens.colors.palette.secondary['600'],
+    '700': tokens.colors.palette.secondary['700'],
+    '800': tokens.colors.palette.secondary['800'],
+    '900': tokens.colors.palette.secondary['900'],
+    '950': tokens.colors.palette.secondary['950'],
+  }} />
+</ColorPalette>
+
+### Accent (Emerald)
+
+<ColorPalette>
+  <ColorItem title="Accent 50–200" subtitle="palette.accent" colors={{
+    '50': tokens.colors.palette.accent['50'],
+    '100': tokens.colors.palette.accent['100'],
+    '200': tokens.colors.palette.accent['200'],
+  }} />
+  <ColorItem title="Accent 300–500" subtitle="palette.accent" colors={{
+    '300': tokens.colors.palette.accent['300'],
+    '400': tokens.colors.palette.accent['400'],
+    '500': tokens.colors.palette.accent['500'],
+  }} />
+  <ColorItem title="Accent 600–950" subtitle="palette.accent" colors={{
+    '600': tokens.colors.palette.accent['600'],
+    '700': tokens.colors.palette.accent['700'],
+    '800': tokens.colors.palette.accent['800'],
+    '900': tokens.colors.palette.accent['900'],
+    '950': tokens.colors.palette.accent['950'],
+  }} />
+</ColorPalette>
+
+### Neutral (Slate)
+
+<ColorPalette>
+  <ColorItem title="Neutral 0–200" subtitle="palette.neutral" colors={{
+    '0': tokens.colors.palette.neutral['0'],
+    '50': tokens.colors.palette.neutral['50'],
+    '100': tokens.colors.palette.neutral['100'],
+    '200': tokens.colors.palette.neutral['200'],
+  }} />
+  <ColorItem title="Neutral 300–500" subtitle="palette.neutral" colors={{
+    '300': tokens.colors.palette.neutral['300'],
+    '400': tokens.colors.palette.neutral['400'],
+    '500': tokens.colors.palette.neutral['500'],
+  }} />
+  <ColorItem title="Neutral 600–950" subtitle="palette.neutral" colors={{
+    '600': tokens.colors.palette.neutral['600'],
+    '700': tokens.colors.palette.neutral['700'],
+    '800': tokens.colors.palette.neutral['800'],
+    '900': tokens.colors.palette.neutral['900'],
+    '950': tokens.colors.palette.neutral['950'],
+  }} />
+</ColorPalette>
+
+---
+
+## 5 · Status Colors
+
+<ColorPalette>
+  <ColorItem title="Success" subtitle={`status.success · ${tokens.colors.status.success}`} colors={{ Success: tokens.colors.status.success }} />
+  <ColorItem title="Warning" subtitle={`status.warning · ${tokens.colors.status.warning}`} colors={{ Warning: tokens.colors.status.warning }} />
+  <ColorItem title="Error" subtitle={`status.error · ${tokens.colors.status.error}`} colors={{ Error: tokens.colors.status.error }} />
+  <ColorItem title="Info" subtitle={`status.info · ${tokens.colors.status.info}`} colors={{ Info: tokens.colors.status.info }} />
+</ColorPalette>
+
+---
+
+## 6 · Chart Colors
+
+Five-colour palette for data visualisation (order dashboards, revenue charts, analytics).
+
+<ColorPalette>
+  <ColorItem title="Chart 1" subtitle={`chart.1 · ${tokens.colors.chart['1']}`} colors={{ 'Chart 1': tokens.colors.chart['1'] }} />
+  <ColorItem title="Chart 2" subtitle={`chart.2 · ${tokens.colors.chart['2']}`} colors={{ 'Chart 2': tokens.colors.chart['2'] }} />
+  <ColorItem title="Chart 3" subtitle={`chart.3 · ${tokens.colors.chart['3']}`} colors={{ 'Chart 3': tokens.colors.chart['3'] }} />
+  <ColorItem title="Chart 4" subtitle={`chart.4 · ${tokens.colors.chart['4']}`} colors={{ 'Chart 4': tokens.colors.chart['4'] }} />
+  <ColorItem title="Chart 5" subtitle={`chart.5 · ${tokens.colors.chart['5']}`} colors={{ 'Chart 5': tokens.colors.chart['5'] }} />
+</ColorPalette>
+
+---
+
+## 7 · Typography
+
+### Font Families
+
+#### DM Sans — Primary (Sans & Display)
+
+<p style={{ margin: '0 0 4px', fontSize: '12px', color: '#64748b' }}>{tokens.typography.fontFamily.sans}</p>
+
+<Typeset
+  fontSizes={[12, 14, 16, 20, 24, 32, 40, 48]}
+  fontWeight={400}
+  sampleText="The quick brown fox jumps over the lazy dog"
+  fontFamily="'DM Sans', system-ui, sans-serif"
+/>
+
+#### JetBrains Mono — Code & Technical Data
+
+<p style={{ margin: '0 0 4px', fontSize: '12px', color: '#64748b' }}>{tokens.typography.fontFamily.mono}</p>
+
+<Typeset
+  fontSizes={[12, 14, 16, 20]}
+  fontWeight={400}
+  sampleText="const total = items.reduce((sum, i) => sum + i.price, 0);"
+  fontFamily="'JetBrains Mono', monospace"
+/>
+
+#### Roboto — Tech Pack Builder
+
+<p style={{ margin: '0 0 4px', fontSize: '12px', color: '#64748b' }}>{tokens.typography.fontFamily.techPack}</p>
+
+<Typeset
+  fontSizes={[12, 14, 16, 20, 24, 32]}
+  fontWeight={400}
+  sampleText="Tech Pack Builder — Production specifications"
+  fontFamily="'Roboto', 'DM Sans', system-ui, sans-serif"
+/>
+
+### Type Scale
+
+Each row renders at its actual size, line-height and weight.
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '24px 0' }}>
+  {[
+    { name: 'display-2xl', size: '3rem', lh: '3.75rem', weight: 700, text: 'Display 2XL Heading' },
+    { name: 'display-xl', size: '2.5rem', lh: '3rem', weight: 700, text: 'Display XL Heading' },
+    { name: 'display-lg', size: '2rem', lh: '2.5rem', weight: 600, text: 'Display Large Heading' },
+    { name: 'display-md', size: '1.75rem', lh: '2.25rem', weight: 600, text: 'Display Medium Heading' },
+    { name: 'display-sm', size: '1.5rem', lh: '2rem', weight: 600, text: 'Display Small Heading' },
+    { name: 'xl', size: '1.25rem', lh: '1.875rem', weight: 500, text: 'Extra-large body text for emphasis and lead paragraphs' },
+    { name: 'lg', size: '1.125rem', lh: '1.75rem', weight: 500, text: 'Large body text for emphasis within content blocks' },
+    { name: 'md', size: '1rem', lh: '1.5rem', weight: 400, text: 'Default body text — the baseline for all reading content' },
+    { name: 'sm', size: '0.875rem', lh: '1.25rem', weight: 400, text: 'Small text for labels, helper text, secondary info' },
+    { name: 'xs', size: '0.75rem', lh: '1.125rem', weight: 400, text: 'Extra-small captions, badges and fine print' },
+  ].map((t) => (
+    <div key={t.name} style={{ borderBottom: '1px solid #e2e8f0', paddingBottom: '16px' }}>
+      <p style={{ margin: '0 0 4px', fontSize: '12px', color: '#64748b', fontFamily: "'JetBrains Mono', monospace" }}>
+        {t.name} · {t.size} / {t.lh} · {t.weight}
+      </p>
+      <p style={{ margin: 0, fontSize: t.size, lineHeight: t.lh, fontWeight: t.weight, fontFamily: "'DM Sans', system-ui, sans-serif" }}>
+        {t.text}
+      </p>
+    </div>
+  ))}
+</div>
+
+---
+
+## 8 · Spacing Scale
+
+Based on a 4 px base unit (`1 = 0.25rem`). Each bar is sized proportionally.
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '16px 0' }}>
+  {[
+    { name: '0.5', value: '0.125rem', px: '2px' },
+    { name: '1', value: '0.25rem', px: '4px' },
+    { name: '1.5', value: '0.375rem', px: '6px' },
+    { name: '2', value: '0.5rem', px: '8px' },
+    { name: '3', value: '0.75rem', px: '12px' },
+    { name: '4', value: '1rem', px: '16px' },
+    { name: '5', value: '1.25rem', px: '20px' },
+    { name: '6', value: '1.5rem', px: '24px' },
+    { name: '8', value: '2rem', px: '32px' },
+    { name: '10', value: '2.5rem', px: '40px' },
+    { name: '12', value: '3rem', px: '48px' },
+    { name: '16', value: '4rem', px: '64px' },
+    { name: '20', value: '5rem', px: '80px' },
+    { name: '24', value: '6rem', px: '96px' },
+  ].map((s) => (
+    <div key={s.name} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+      <span style={{ width: '32px', fontFamily: "'JetBrains Mono', monospace", fontSize: '13px', textAlign: 'right', color: '#334155', flexShrink: 0 }}>{s.name}</span>
+      <div style={{ width: s.value, height: '20px', background: 'linear-gradient(135deg, #2B3990, #3A4BA8)', borderRadius: '4px', flexShrink: 0 }} />
+      <span style={{ fontSize: '12px', color: '#64748b', fontFamily: "'JetBrains Mono', monospace" }}>{s.value} ({s.px})</span>
+    </div>
+  ))}
+</div>
+
+---
+
+## 9 · Border Radius
+
+Base `--radius` defaults to `0.5rem` (8 px). Apps override this variable — e.g. Tech Pack Builder uses `0.9rem`.
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', padding: '16px 0' }}>
+  {[
+    { name: 'none', value: '0px', radius: '0px' },
+    { name: 'sm', value: 'calc(--radius - 4px)', radius: '4px' },
+    { name: 'DEFAULT', value: '6px', radius: '6px' },
+    { name: 'md', value: 'calc(--radius - 2px)', radius: '6px' },
+    { name: 'lg', value: 'var(--radius)', radius: '8px' },
+    { name: 'xl', value: '16px', radius: '16px' },
+    { name: 'button', value: '8px', radius: '8px' },
+    { name: 'card', value: '12px', radius: '12px' },
+    { name: 'modal', value: '16px', radius: '16px' },
+    { name: 'pill', value: '100px', radius: '100px' },
+    { name: 'full', value: '9999px', radius: '9999px' },
+  ].map((r) => (
+    <div key={r.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
+      <div style={{ width: '64px', height: '64px', background: 'linear-gradient(135deg, #2B3990, #3A4BA8)', borderRadius: r.radius }} />
+      <span style={{ fontSize: '13px', fontWeight: 600, color: '#0f172a' }}>{r.name}</span>
+      <span style={{ fontSize: '11px', color: '#64748b', fontFamily: "'JetBrains Mono', monospace" }}>{r.value}</span>
+    </div>
+  ))}
+</div>
+
+---
+
+## 10 · Shadows & Elevation
+
+### Standard Elevation
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', padding: '24px 0' }}>
+  {[
+    { name: 'xs', shadow: tokens.shadows.xs, label: 'Subtle' },
+    { name: 'sm', shadow: tokens.shadows.sm, label: 'Buttons, inputs' },
+    { name: 'md', shadow: tokens.shadows.md, label: 'Cards' },
+    { name: 'lg', shadow: tokens.shadows.lg, label: 'Dropdowns' },
+    { name: 'xl', shadow: tokens.shadows.xl, label: 'Modals' },
+  ].map((s) => (
+    <div key={s.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+      <div style={{ width: '100px', height: '100px', background: '#fff', borderRadius: '12px', boxShadow: s.shadow, border: '1px solid #f1f5f9' }} />
+      <span style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{s.name}</span>
+      <span style={{ fontSize: '11px', color: '#64748b', maxWidth: '100px', textAlign: 'center' }}>{s.label}</span>
+    </div>
+  ))}
+</div>
+
+### Component Shadows
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', padding: '24px 0' }}>
+  {[
+    { name: 'button', shadow: tokens.shadows.button, label: 'Button default' },
+    { name: 'buttonHover', shadow: tokens.shadows.buttonHover, label: 'Button hover' },
+    { name: 'card', shadow: tokens.shadows.card, label: 'Card default' },
+    { name: 'modal', shadow: tokens.shadows.modal, label: 'Modal backdrop' },
+  ].map((s) => (
+    <div key={s.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+      <div style={{ width: '100px', height: '100px', background: '#fff', borderRadius: '12px', boxShadow: s.shadow, border: '1px solid #f1f5f9' }} />
+      <span style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{s.name}</span>
+      <span style={{ fontSize: '11px', color: '#64748b', maxWidth: '100px', textAlign: 'center' }}>{s.label}</span>
+    </div>
+  ))}
+</div>
+
+### Glass Morphism
+
+Used in B2B Portal, Quote Calculator and Pre-Order Reports for frosted-glass card effects.
+
+<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px', padding: '24px 0', background: 'linear-gradient(135deg, #e2e8f0 0%, #f8fafc 50%, #ddd6fe 100%)', borderRadius: '12px', justifyContent: 'center' }}>
+  {[
+    { name: 'glassSm', shadow: tokens.shadows.glassSm, label: 'Subtle glass' },
+    { name: 'glassMd', shadow: tokens.shadows.glassMd, label: 'Card glass' },
+    { name: 'glassLg', shadow: tokens.shadows.glassLg, label: 'Panel glass' },
+    { name: 'glassXl', shadow: tokens.shadows.glassXl, label: 'Modal glass' },
+  ].map((s) => (
+    <div key={s.name} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '8px' }}>
+      <div style={{ width: '100px', height: '100px', background: 'rgba(255,255,255,0.8)', backdropFilter: 'blur(8px)', borderRadius: '12px', boxShadow: s.shadow, border: '1px solid rgba(255,255,255,0.5)' }} />
+      <span style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{s.name}</span>
+      <span style={{ fontSize: '11px', color: '#64748b', maxWidth: '100px', textAlign: 'center' }}>{s.label}</span>
+    </div>
+  ))}
+</div>
+
+```jsx
+// Glass morphism usage
+<div className="shadow-glass-md bg-white/80 backdrop-blur-sm rounded-card">
+  ...
+</div>
+```
+
+---
+
+## 11 · Animations
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '16px', padding: '16px 0' }}>
+  {[
+    { name: 'fade-in', desc: 'Opacity 0 → 1', duration: '200ms', className: 'animate-fade-in' },
+    { name: 'slide-in', desc: 'Slide down + fade', duration: '300ms', className: 'animate-slide-in' },
+    { name: 'bounce-in', desc: 'Scale bounce + fade', duration: '400ms', className: 'animate-bounce-in' },
+    { name: 'accordion-down', desc: 'Height expand', duration: '200ms', className: 'animate-accordion-down' },
+    { name: 'accordion-up', desc: 'Height collapse', duration: '200ms', className: 'animate-accordion-up' },
+    { name: 'shimmer', desc: 'Loading shimmer', duration: '6s ∞', className: 'animate-shimmer' },
+    { name: 'sparkle', desc: 'Sparkle highlight', duration: '5s ∞', className: 'animate-sparkle' },
+  ].map((a) => (
+    <div key={a.name} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      <span style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a', fontFamily: "'JetBrains Mono', monospace" }}>{a.name}</span>
+      <span style={{ fontSize: '13px', color: '#475569' }}>{a.desc}</span>
+      <span style={{ fontSize: '12px', color: '#94a3b8', fontFamily: "'JetBrains Mono', monospace" }}>{a.duration}</span>
+      <code style={{ fontSize: '11px', color: '#2B3990', marginTop: '4px' }}>className="{a.className}"</code>
+    </div>
+  ))}
+</div>
+
+---
+
+## 12 · Per-App Theme Variants
+
+Each app overrides CSS variables from the shared UI package. Override `--primary`, `--background`, `--radius` in your app's `globals.css` `:root {}` — everything else adapts automatically.
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '16px', padding: '16px 0' }}>
+  {[
+    { app: 'Shared UI / Storybook', primary: 'hsl(0 0% 9%)', bg: 'hsl(0 0% 100%)', font: 'DM Sans', radius: '0.5rem', note: 'Baseline theme' },
+    { app: 'Design Tool (legacy)', primary: '#2B3990', bg: '#F5F2ED', font: 'DM Sans', radius: '0.5rem', note: 'Figma palette, accent #0900FF' },
+    { app: 'Tech Pack Builder', primary: '#2B3990', bg: 'hsl(0 0% 100%)', font: 'Roboto / D-DINExp', radius: '0.9rem', note: 'Print Room Blue primary' },
+    { app: 'B2B Portal', primary: '#2B3990', bg: 'hsl(220 14% 96%)', font: 'DM Sans', radius: '0.5rem', note: 'Glass morphism shadows' },
+    { app: 'Quote Calculator', primary: '#2B3990', bg: 'hsl(220 14% 96%)', font: 'DM Sans', radius: '0.5rem', note: 'Glass morphism shadows' },
+    { app: 'Pre-Order Reports', primary: '#2B3990', bg: 'hsl(0 0% 100%)', font: 'DM Sans', radius: '0.5rem', note: 'Tailwind v4, lime accent' },
+  ].map((t) => (
+    <div key={t.app} style={{ border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+      <span style={{ fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>{t.app}</span>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ width: '20px', height: '20px', borderRadius: '4px', background: t.primary, border: '1px solid #e2e8f0', flexShrink: 0 }} />
+        <span style={{ fontSize: '12px', fontFamily: "'JetBrains Mono', monospace", color: '#475569' }}>--primary</span>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ width: '20px', height: '20px', borderRadius: '4px', background: t.bg, border: '1px solid #e2e8f0', flexShrink: 0 }} />
+        <span style={{ fontSize: '12px', fontFamily: "'JetBrains Mono', monospace", color: '#475569' }}>--background</span>
+      </div>
+      <div style={{ fontSize: '12px', color: '#64748b' }}>
+        <strong>Font:</strong> {t.font} · <strong>Radius:</strong> {t.radius}
+      </div>
+      <span style={{ fontSize: '11px', color: '#94a3b8', fontStyle: 'italic' }}>{t.note}</span>
+    </div>
+  ))}
+</div>

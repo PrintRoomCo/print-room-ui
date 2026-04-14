@@ -1,0 +1,630 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Contributing Guide" />
+
+# Contributing Guide for Non-Developers
+
+This guide explains how designers, project managers and other non-developers can contribute to the Print Room design system — updating brand tokens, reviewing visual changes and editing documentation — without needing to write code.
+
+---
+
+## The Print Room Tech Stack (Quick Reference)
+
+Before jumping in, here's what powers the system you'll be interacting with:
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '12px', padding: '16px 0' }}>
+  {[
+    { label: 'Monorepo', value: 'print-room-studio (Turborepo + pnpm)' },
+    { label: 'UI Package', value: '@print-room-studio/ui — 38 shared components' },
+    { label: 'Component Patterns', value: 'React 19 + Radix UI + CVA + Tailwind CSS' },
+    { label: 'Storybook', value: 'v8.5 — deployed on Vercel' },
+    { label: 'Visual Regression', value: 'Chromatic — screenshot diffs on every PR' },
+    { label: 'Design Tokens', value: 'design-tokens.json → Tailwind + CSS variables' },
+    { label: 'Fonts', value: 'DM Sans (primary), JetBrains Mono (code), Roboto (Tech Pack)' },
+    { label: 'Hosting', value: 'Vercel (apps) + Shopify (storefront + checkout)' },
+  ].map((item) => (
+    <div key={item.label} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '12px' }}>
+      <span style={{ fontSize: '12px', fontWeight: 600, color: '#2B3990', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{item.label}</span>
+      <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#334155' }}>{item.value}</p>
+    </div>
+  ))}
+</div>
+
+> **Live Storybook:** [print-room-storybook.vercel.app](https://print-room-storybook.vercel.app) — browse every component, variant and design token.
+
+---
+
+## Changing Design Tokens (Colors, Fonts, Spacing)
+
+Design tokens are the single source of truth for all visual values across the Print Room ecosystem. Changing a token here updates every app that consumes it.
+
+**File to edit:** `apps/storybook/src/tokens/design-tokens.json`
+
+### How to Edit via GitHub
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px', padding: '16px 0' }}>
+  {[
+    { step: '1', title: 'Open the file', desc: 'Go to design-tokens.json on GitHub' },
+    { step: '2', title: 'Click the pencil icon', desc: 'This opens the web editor' },
+    { step: '3', title: 'Make your changes', desc: 'Edit hex codes, font names, spacing values' },
+    { step: '4', title: 'Create a branch', desc: 'Select "Create a new branch" — never commit directly to main' },
+    { step: '5', title: 'Open a Pull Request', desc: 'Describe what you changed and why' },
+    { step: '6', title: 'Wait for review', desc: 'Storybook rebuilds automatically — team reviews the visual diff' },
+  ].map((item) => (
+    <div key={item.step} style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '16px' }}>
+      <span style={{ fontSize: '20px', fontWeight: 700, color: '#2B3990' }}>{item.step}</span>
+      <p style={{ margin: '4px 0 2px', fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{item.title}</p>
+      <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>{item.desc}</p>
+    </div>
+  ))}
+</div>
+
+**GitHub link:** [design-tokens.json](https://github.com/jimile/print-room-studio/blob/main/apps/storybook/src/tokens/design-tokens.json)
+
+### Example Changes
+
+**Change the primary brand color (Print Room Blue):**
+```json
+"brand": {
+  "primary": "#2B3990",       // ← Change this hex value
+  "primaryDark": "#232E73",
+  "primarySoft": "#3A4BA8"
+}
+```
+
+**Change a status color:**
+```json
+"status": {
+  "success": "#10b981",       // ← Green for completed/confirmed
+  "warning": "#f59e0b",       // ← Amber for attention needed
+  "error": "#ef4444",         // ← Red for failures
+  "info": "#3b82f6"           // ← Blue for informational
+}
+```
+
+**Change the primary font:**
+```json
+"fontFamily": {
+  "sans": "'DM Sans', system-ui, sans-serif",    // ← Main body font
+  "display": "'DM Sans', system-ui, sans-serif",  // ← Heading font
+  "mono": "JetBrains Mono, monospace"              // ← Code/data font
+}
+```
+
+> **See all current token values** on the [Design Tokens](?path=/docs/documentation-design-tokens--docs) page — every colour, font, spacing and shadow is shown visually.
+
+---
+
+## Working with Figma
+
+Figma is where designs start and where every visual decision is made. The key is keeping Figma and code **in sync** so neither side drifts. This section covers everything designers need to know about how Figma connects to the codebase.
+
+### Figma Library Structure
+
+The **Print Room Design System** Figma file should mirror the Storybook component structure:
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px', padding: '16px 0' }}>
+  {[
+    { page: 'Primitives', examples: 'Button, Input, Checkbox, Switch, Label, Select', color: '#2B3990' },
+    { page: 'Layout', examples: 'Card, Modal, Accordion, Sidebar, Tabs, Data Table', color: '#0ea5e9' },
+    { page: 'Feedback', examples: 'Progress, Toast, Alert, Badge, Loading Spinner', color: '#10b981' },
+    { page: 'Domain', examples: 'Color Picker, Order Card, Quote Form, Price Summary', color: '#f59e0b' },
+    { page: 'Navigation', examples: 'Header, Back Button, Breadcrumb', color: '#8b5cf6' },
+  ].map((item) => (
+    <div key={item.page} style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '16px', borderTop: `3px solid ${item.color}` }}>
+      <span style={{ fontSize: '14px', fontWeight: 700, color: item.color }}>{item.page}</span>
+      <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#64748b' }}>{item.examples}</p>
+    </div>
+  ))}
+</div>
+
+> **Rule:** Every component in Storybook should have a matching Figma component, and vice versa. If you design something new that doesn't exist in Storybook, flag it before handoff.
+
+### Figma Variable Collections
+
+Design tokens in code map to **Figma Variables**. Organize them into these collections:
+
+<div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px', margin: '16px 0' }}>
+  <p style={{ margin: '0 0 12px', fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>FIGMA VARIABLES PANEL → COLLECTIONS</p>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    {[
+      { collection: 'Colors', desc: 'Brand (primary, accent, dark, soft), Semantic (background, foreground, muted, border, card, popover), Status (success, warning, error, info), Extended palettes (blue, green, amber, red scales)', example: 'brand/primary → #2B3990' },
+      { collection: 'Spacing', desc: 'Base unit: 4px. Scale: 0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24', example: 'spacing/4 → 16px (4 × 4px base)' },
+      { collection: 'Typography', desc: 'Font families (DM Sans, JetBrains Mono), sizes (xs through 4xl), weights, line heights', example: 'fontSize/base → 16px' },
+      { collection: 'Radii', desc: 'Border radius values: none, sm, md, lg, xl, 2xl, full, card, button', example: 'radii/card → 12px' },
+      { collection: 'Shadows', desc: 'Elevation levels: sm, md, lg, button, card, glassMorphism', example: 'shadow/card → 0 1px 3px…' },
+    ].map((item) => (
+      <div key={item.collection} style={{ display: 'flex', gap: '12px', padding: '10px 12px', background: 'white', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+        <span style={{ fontSize: '13px', fontWeight: 700, color: '#2B3990', minWidth: '90px' }}>{item.collection}</span>
+        <div>
+          <p style={{ margin: '0 0 4px', fontSize: '12px', color: '#334155' }}>{item.desc}</p>
+          <code style={{ fontSize: '11px', color: '#64748b', background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px' }}>{item.example}</code>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+> **Important:** When you add or change a Figma Variable, the same change must be reflected in `design-tokens.json` in the codebase. Until we automate this (via Tokens Studio or the Figma API), this is a manual step — raise a ticket or update the file via GitHub yourself.
+
+### Figma ↔ Code Token Mapping
+
+This is the practical reference for how Figma variables translate to code. Use this when designing or when verifying a handoff:
+
+<div style={{ overflowX: 'auto', padding: '16px 0' }}>
+  <table style={{ width: '100%', fontSize: '13px', borderCollapse: 'collapse' }}>
+    <thead>
+      <tr style={{ background: '#f1f5f9', textAlign: 'left' }}>
+        <th style={{ padding: '10px 12px', fontWeight: 700, color: '#0f172a', borderBottom: '2px solid #e2e8f0' }}>Figma Variable</th>
+        <th style={{ padding: '10px 12px', fontWeight: 700, color: '#0f172a', borderBottom: '2px solid #e2e8f0' }}>design-tokens.json key</th>
+        <th style={{ padding: '10px 12px', fontWeight: 700, color: '#0f172a', borderBottom: '2px solid #e2e8f0' }}>Tailwind Class</th>
+      </tr>
+    </thead>
+    <tbody>
+      {[
+        { figma: 'brand/primary', token: 'colors.brand.primary', tw: 'bg-primary, text-primary' },
+        { figma: 'brand/accent', token: 'colors.brand.accent', tw: 'bg-accent, text-accent' },
+        { figma: 'semantic/background', token: 'colors.semantic.background', tw: 'bg-background' },
+        { figma: 'semantic/foreground', token: 'colors.semantic.foreground', tw: 'text-foreground' },
+        { figma: 'semantic/muted', token: 'colors.semantic.muted', tw: 'bg-muted, text-muted-foreground' },
+        { figma: 'semantic/border', token: 'colors.semantic.border', tw: 'border-border' },
+        { figma: 'semantic/card', token: 'colors.semantic.card', tw: 'bg-card' },
+        { figma: 'status/success', token: 'colors.status.success', tw: 'bg-green-500, text-green-500' },
+        { figma: 'status/warning', token: 'colors.status.warning', tw: 'bg-amber-500, text-amber-500' },
+        { figma: 'status/error', token: 'colors.status.error', tw: 'bg-red-500, text-red-500' },
+        { figma: 'spacing/4', token: 'spacing.4 (16px)', tw: 'p-4, m-4, gap-4' },
+        { figma: 'spacing/6', token: 'spacing.6 (24px)', tw: 'p-6, m-6, gap-6' },
+        { figma: 'fontSize/sm', token: 'typography.fontSize.sm', tw: 'text-sm' },
+        { figma: 'fontSize/base', token: 'typography.fontSize.base', tw: 'text-base' },
+        { figma: 'fontSize/lg', token: 'typography.fontSize.lg', tw: 'text-lg' },
+        { figma: 'radii/card', token: 'borderRadius.card', tw: 'rounded-card' },
+        { figma: 'radii/button', token: 'borderRadius.button', tw: 'rounded-button' },
+        { figma: 'shadow/card', token: 'boxShadow.card', tw: 'shadow-card' },
+      ].map((row, i) => (
+        <tr key={row.figma} style={{ background: i % 2 === 0 ? 'white' : '#f8fafc' }}>
+          <td style={{ padding: '8px 12px', borderBottom: '1px solid #e2e8f0', fontWeight: 600, color: '#7c3aed' }}>{row.figma}</td>
+          <td style={{ padding: '8px 12px', borderBottom: '1px solid #e2e8f0', color: '#475569' }}><code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>{row.token}</code></td>
+          <td style={{ padding: '8px 12px', borderBottom: '1px solid #e2e8f0', color: '#475569' }}><code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>{row.tw}</code></td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+> **Tip:** If you're unsure which token maps to what, open the [Design Tokens](?path=/docs/documentation-design-tokens--docs) page — every value is shown visually with its name.
+
+### Naming Conventions
+
+Print Room uses **`snake_case`** as the company-wide naming convention for files and folders. This applies to Figma files and pages too — consistency across departments means everyone can find things regardless of which tool they're working in.
+
+<div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px', margin: '16px 0' }}>
+  <p style={{ margin: '0 0 16px', fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>NAMING CONVENTIONS BY CONTEXT</p>
+
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+        <span style={{ background: '#a259ff', color: 'white', fontSize: '11px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>FIGMA FILES & PAGES</span>
+        <span style={{ fontSize: '12px', color: '#64748b' }}>snake_case — matches Print Room company convention</span>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        {[
+          { name: 'pr_design_system', desc: 'The master component library file' },
+          { name: 'pr_web_app_mockups', desc: 'Page-level designs for the unified web app' },
+          { name: 'pr_b2b_portal_mockups', desc: 'B2B portal designs' },
+          { name: 'pr_quote_calculator_v2', desc: 'Iteration on the quote calculator' },
+          { name: 'pr_storybook_assets', desc: 'Icons, illustrations, and other Storybook assets' },
+        ].map((item) => (
+          <div key={item.name} style={{ display: 'flex', gap: '12px', padding: '6px 12px', background: 'white', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+            <code style={{ fontSize: '13px', fontWeight: 600, color: '#a259ff', minWidth: '220px', background: '#faf5ff', padding: '2px 8px', borderRadius: '4px' }}>{item.name}</code>
+            <span style={{ fontSize: '12px', color: '#64748b' }}>{item.desc}</span>
+          </div>
+        ))}
+      </div>
+      <p style={{ margin: '8px 0 0', fontSize: '12px', color: '#475569' }}>
+        <strong>Pages inside a Figma file</strong> also use snake_case: <code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>primitives</code>, <code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>layout</code>, <code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>feedback</code>, <code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>domain_components</code>, <code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>navigation</code>, <code style={{ background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px', fontSize: '12px' }}>icon_set</code>
+      </p>
+    </div>
+
+    <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0', margin: '4px 0' }} />
+
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+        <span style={{ background: '#a259ff', color: 'white', fontSize: '11px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>FIGMA COMPONENTS</span>
+        <span style={{ fontSize: '12px', color: '#64748b' }}>Slash-separated (Figma standard) — this is how Figma organises its component panel</span>
+      </div>
+      <p style={{ margin: '0 0 6px', fontSize: '12px', color: '#475569' }}>
+        Component names inside Figma use the <strong>slash `/` separator</strong> because that's how Figma creates its auto-nesting in the Assets panel. This is different from file naming — it's an industry standard you can't change.
+      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        {[
+          { name: 'Button / Primary / Large', desc: 'Category / Variant / Size' },
+          { name: 'Badge / Success', desc: 'Category / Variant' },
+          { name: 'Card / Elevated', desc: 'Category / Modifier' },
+          { name: 'Input / With Label / Error', desc: 'Category / Composition / State' },
+          { name: 'Icon / Arrow Left / 24', desc: 'Category / Name / Size' },
+        ].map((item) => (
+          <div key={item.name} style={{ display: 'flex', gap: '12px', padding: '6px 12px', background: 'white', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+            <code style={{ fontSize: '13px', fontWeight: 600, color: '#a259ff', minWidth: '220px', background: '#faf5ff', padding: '2px 8px', borderRadius: '4px' }}>{item.name}</code>
+            <span style={{ fontSize: '12px', color: '#64748b' }}>{item.desc}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <hr style={{ border: 'none', borderTop: '1px solid #e2e8f0', margin: '4px 0' }} />
+
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+        <span style={{ background: '#0ea5e9', color: 'white', fontSize: '11px', fontWeight: 700, padding: '2px 8px', borderRadius: '4px' }}>CODE FILES</span>
+        <span style={{ fontSize: '12px', color: '#64748b' }}>kebab-case — standard React/Next.js convention</span>
+      </div>
+      <p style={{ margin: '0 0 6px', fontSize: '12px', color: '#475569' }}>
+        Code files use <strong>kebab-case</strong> because that's the standard in the React/Next.js ecosystem. Storybook story files use <strong>PascalCase</strong> (Storybook convention).
+      </p>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        {[
+          { name: 'color-picker.tsx', desc: 'Component file (kebab-case)' },
+          { name: 'back-button.tsx', desc: 'Component file (kebab-case)' },
+          { name: 'ColorPicker.stories.tsx', desc: 'Story file (PascalCase — Storybook convention)' },
+          { name: 'design-tokens.json', desc: 'Token file (kebab-case)' },
+          { name: 'ContributingGuide.mdx', desc: 'Documentation file (PascalCase — Storybook docs convention)' },
+        ].map((item) => (
+          <div key={item.name} style={{ display: 'flex', gap: '12px', padding: '6px 12px', background: 'white', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+            <code style={{ fontSize: '13px', fontWeight: 600, color: '#0ea5e9', minWidth: '220px', background: '#eff6ff', padding: '2px 8px', borderRadius: '4px' }}>{item.name}</code>
+            <span style={{ fontSize: '12px', color: '#64748b' }}>{item.desc}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+> **Why three different conventions?** Each tool has its own established standard. Forcing `snake_case` on code files would break import conventions across the React ecosystem. Forcing it on Figma component names would break the Assets panel nesting. But **Figma file and page names** are freeform — so they match the company-wide `snake_case` convention used across all departments.
+
+### Figma → Code Component Mapping
+
+Here's how Figma component names translate to code. Use this when designing or verifying a handoff:
+
+<div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px', margin: '16px 0' }}>
+  <p style={{ margin: '0 0 12px', fontSize: '14px', fontWeight: 700, color: '#0f172a' }}>COMPONENT NAME MAPPING</p>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    {[
+      { figma: 'Button / Primary / Large', code: '<Button variant="default" size="lg">', note: '"Primary" in Figma = "default" variant in code' },
+      { figma: 'Button / Destructive / Small', code: '<Button variant="destructive" size="sm">', note: 'Variant and size names should match' },
+      { figma: 'Badge / Success', code: '<Badge variant="success">', note: 'Status variants match across both' },
+      { figma: 'Card / Elevated', code: '<Card className="shadow-card">', note: 'Visual modifiers map to Tailwind utilities' },
+      { figma: 'Input / With Label / Error', code: '<Input /> + <Label /> + error state', note: 'Composed from primitives in code' },
+      { figma: 'Tabs / Underline / 3 Items', code: '<Tabs> <TabsList> ... </Tabs>', note: 'Tab count is content, not a variant' },
+    ].map((item) => (
+      <div key={item.figma} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', padding: '10px', background: 'white', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <div>
+          <span style={{ fontSize: '11px', fontWeight: 600, color: '#a259ff', textTransform: 'uppercase' }}>Figma</span>
+          <p style={{ margin: '2px 0 0', fontSize: '13px', fontWeight: 600, color: '#0f172a' }}>{item.figma}</p>
+        </div>
+        <div>
+          <span style={{ fontSize: '11px', fontWeight: 600, color: '#0ea5e9', textTransform: 'uppercase' }}>Code</span>
+          <p style={{ margin: '2px 0 0', fontSize: '13px', color: '#334155' }}><code style={{ fontSize: '12px', background: '#f1f5f9', padding: '2px 6px', borderRadius: '4px' }}>{item.code}</code></p>
+        </div>
+        <p style={{ margin: 0, fontSize: '11px', color: '#94a3b8', gridColumn: '1 / -1' }}>{item.note}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+### Designer's Handoff Checklist
+
+Use this checklist every time you hand a design to a developer — it prevents rework and keeps the system in sync:
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '6px', padding: '16px 0' }}>
+  <p style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a', margin: '0 0 8px' }}>Before Handoff (Designer → Developer)</p>
+  {[
+    'All colours in the design use Figma Variables from the Print Room collection (no one-off hex values)',
+    'Spacing is on the 4px grid — check frames, padding, and gaps use token values',
+    'Typography uses DM Sans (body) or JetBrains Mono (code) — no other fonts without approval',
+    'Components from the Figma library are used wherever possible — check Storybook first',
+    'Any NEW component is clearly labelled so the dev knows it needs to be built',
+    'Responsive behaviour is annotated (mobile breakpoints, how layouts stack)',
+    'Interactive states are shown: default, hover, active, disabled, error, loading',
+    'The Figma link is attached to the ticket alongside any flow diagrams',
+  ].map((item, i) => (
+    <div key={i} style={{ display: 'flex', gap: '10px', padding: '8px 12px', background: i % 2 === 0 ? '#f0fdf4' : 'white', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+      <span style={{ fontSize: '16px', lineHeight: '1.3' }}>☐</span>
+      <p style={{ margin: 0, fontSize: '13px', color: '#334155' }}>{item}</p>
+    </div>
+  ))}
+
+  <p style={{ fontSize: '14px', fontWeight: 700, color: '#0f172a', margin: '16px 0 8px' }}>After Build (Developer → Designer)</p>
+  {[
+    'New components appear in Storybook with all variants — designer verifies they match the design',
+    'If a new component was built, create the matching Figma component in the library',
+    'Review the Chromatic visual diff on the PR — accept or flag discrepancies',
+    'Update Figma library version notes if components were added or changed',
+  ].map((item, i) => (
+    <div key={i} style={{ display: 'flex', gap: '10px', padding: '8px 12px', background: i % 2 === 0 ? '#eff6ff' : 'white', borderRadius: '6px', border: '1px solid #e2e8f0' }}>
+      <span style={{ fontSize: '16px', lineHeight: '1.3' }}>☐</span>
+      <p style={{ margin: 0, fontSize: '13px', color: '#334155' }}>{item}</p>
+    </div>
+  ))}
+</div>
+
+### Flagging a Missing Component
+
+When your design needs something that doesn't exist in Storybook:
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '12px', padding: '16px 0' }}>
+  {[
+    { step: '1', title: 'Check Storybook', desc: 'Search print-room-storybook.vercel.app — it might exist under a different name or as a variant' },
+    { step: '2', title: 'Flag in the ticket', desc: 'Add a "New Component" label and describe what it needs to do' },
+    { step: '3', title: 'Annotate in Figma', desc: 'Add a note on the frame: "NEW — not in Storybook" with variant/state requirements' },
+    { step: '4', title: 'Dev builds + adds story', desc: 'Developer creates the component in @print-room-studio/ui with a Storybook story' },
+    { step: '5', title: 'Designer adds to library', desc: 'Once the dev confirms it\'s in Storybook, create the matching Figma library component' },
+  ].map((item) => (
+    <div key={item.step} style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '16px' }}>
+      <span style={{ fontSize: '20px', fontWeight: 700, color: '#2B3990' }}>{item.step}</span>
+      <p style={{ margin: '4px 0 2px', fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{item.title}</p>
+      <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>{item.desc}</p>
+    </div>
+  ))}
+</div>
+
+### Token Sync: Today vs Future
+
+Right now, syncing tokens between Figma and code is a manual process. Here's where we are and where we're heading:
+
+<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', padding: '16px 0' }}>
+  <div style={{ border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px', borderTop: '3px solid #f59e0b' }}>
+    <p style={{ margin: '0 0 8px', fontSize: '14px', fontWeight: 700, color: '#f59e0b' }}>TODAY (Manual)</p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      {[
+        'Designer changes a Figma Variable',
+        'Designer raises a ticket or edits design-tokens.json via GitHub',
+        'Developer reviews the PR',
+        'Build script generates Tailwind + CSS values',
+        'Chromatic verifies nothing broke visually',
+      ].map((step, i) => (
+        <p key={i} style={{ margin: 0, fontSize: '12px', color: '#475569' }}><span style={{ color: '#f59e0b', fontWeight: 700 }}>{i + 1}.</span> {step}</p>
+      ))}
+    </div>
+  </div>
+  <div style={{ border: '1px solid #e2e8f0', borderRadius: '12px', padding: '20px', borderTop: '3px solid #10b981' }}>
+    <p style={{ margin: '0 0 8px', fontSize: '14px', fontWeight: 700, color: '#10b981' }}>FUTURE (Automated)</p>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      {[
+        'Designer edits tokens in Figma using Tokens Studio plugin',
+        'Tokens Studio pushes changes to GitHub automatically',
+        'CI detects the change and rebuilds Tailwind + CSS',
+        'Chromatic runs visual snapshots',
+        'Team reviews and merges — zero manual copy-paste',
+      ].map((step, i) => (
+        <p key={i} style={{ margin: 0, fontSize: '12px', color: '#475569' }}><span style={{ color: '#10b981', fontWeight: 700 }}>{i + 1}.</span> {step}</p>
+      ))}
+    </div>
+  </div>
+</div>
+
+> **What is Tokens Studio?** A free Figma plugin that lets designers manage design tokens visually inside Figma. It has a built-in GitHub sync, so token changes push directly to the repo. We'll set this up once the current token structure is stable.
+
+---
+
+## The Design-to-Code Workflow
+
+This is the agreed workflow between designers and developers at Print Room. Understanding it helps you know when and how to contribute.
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '16px 0' }}>
+  {[
+    { phase: 'Brief', who: 'Anyone', desc: 'Create a ticket with a Figma wireframe attached so the logic review has UI context from the start' },
+    { phase: 'Logic Review', who: 'Team', desc: 'Review the logic and convert into a Mermaid diagram — must be approved before proceeding' },
+    { phase: 'Wireframe Refinement', who: 'Designer', desc: 'Refine the Figma wireframe based on logic review feedback' },
+    { phase: 'Check Storybook', who: 'Designer + Dev', desc: 'Check if the needed components already exist in Storybook before building anything new' },
+    { phase: 'UI Build', who: 'Developer', desc: 'Build new components in @print-room-studio/ui using design tokens (never hardcode values)' },
+    { phase: 'UI Review', who: 'Team', desc: 'Review the built components — if approved, continue; if not, reiterate' },
+    { phase: 'Figma Mockup', who: 'Designer', desc: 'Create full-fidelity mockup → Test & review → Verify UX behaviour flows correctly' },
+    { phase: 'Storybook Stories', who: 'Developer', desc: 'Build Storybook stories from the approved Figma mockup' },
+    { phase: 'Update Figma Library', who: 'Designer', desc: 'If a new component was built, add the matching component to the Figma library' },
+    { phase: 'Pull Request', who: 'Developer', desc: 'Open a PR — Chromatic runs automatically and takes visual snapshots' },
+    { phase: 'Review', who: 'Designer + Lead Dev', desc: 'Code review + design review + Chromatic visual diff approval' },
+    { phase: 'Deploy', who: 'Team', desc: 'Merge → staging preview → stakeholder sign-off → production' },
+  ].map((item, i) => (
+    <div key={item.phase} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '8px 12px', background: i % 2 === 0 ? '#f8fafc' : 'transparent', borderRadius: '6px' }}>
+      <span style={{ fontSize: '12px', fontWeight: 700, color: '#2B3990', minWidth: '24px', textAlign: 'right' }}>{i + 1}</span>
+      <div>
+        <span style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{item.phase}</span>
+        <span style={{ fontSize: '12px', color: '#94a3b8', marginLeft: '8px' }}>({item.who})</span>
+        <p style={{ margin: '2px 0 0', fontSize: '13px', color: '#475569' }}>{item.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+---
+
+## Visual Review with Chromatic
+
+Chromatic is the visual regression testing tool that catches unintended UI changes automatically.
+
+### How It Works
+
+When a developer opens a Pull Request:
+
+1. **Chromatic builds your Storybook** in the cloud
+2. **Screenshots every story** (currently ~43 stories across all components)
+3. **Compares each screenshot** pixel-by-pixel against the last approved baseline
+4. **Flags any visual differences** — even 1px of spacing or a slight colour shift
+5. **Posts a status check** on the GitHub PR with a link to review
+
+### Your Role as a Reviewer
+
+When you receive a Chromatic review link:
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px', padding: '16px 0' }}>
+  {[
+    { icon: '1', title: 'Open the Chromatic link', desc: 'From the PR on GitHub, click the Chromatic status check' },
+    { icon: '2', title: 'Review the "Changes" tab', desc: 'Each changed story shows a Baseline → New → Diff view' },
+    { icon: '3', title: 'Accept or Deny each change', desc: 'Accept if the change is intentional; Deny if something looks wrong' },
+    { icon: '4', title: 'Add comments', desc: 'Explain why you denied a change so the developer knows what to fix' },
+  ].map((item) => (
+    <div key={item.icon} style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '16px' }}>
+      <span style={{ fontSize: '20px', fontWeight: 700, color: '#2B3990' }}>{item.icon}</span>
+      <p style={{ margin: '4px 0 2px', fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{item.title}</p>
+      <p style={{ margin: 0, fontSize: '12px', color: '#64748b' }}>{item.desc}</p>
+    </div>
+  ))}
+</div>
+
+> **Key rule from the Design System Contract:** *"If Chromatic flags a change, it must be approved by a designer or lead dev before merge."*
+
+### How a UI Change Goes from Idea to Production
+
+Every UI change — whether it's a new component, a colour tweak, or a layout fix — follows the same path. Here's the full journey in plain English.
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '0', padding: '16px 0' }}>
+  {[
+    { step: '1', title: 'Create a branch', who: 'Developer', desc: 'The developer creates a new branch (think of it as a private copy of the project). Each piece of work gets its own branch — for example feat/avatar-component or fix/button-padding.', colour: '#dbeafe' },
+    { step: '2', title: 'Build the change', who: 'Developer', desc: 'The developer writes the component code and a Storybook "story" that shows what it looks like. They test it locally before sharing.', colour: '#f0fdf4' },
+    { step: '3', title: 'Push and open a Pull Request', who: 'Developer', desc: 'The developer pushes the branch to GitHub and opens a Pull Request (PR). A PR is a formal request saying "I\'d like to merge my changes into the main project — please review."', colour: '#dbeafe' },
+    { step: '4', title: 'Chromatic runs automatically', who: 'Automated', desc: 'As soon as the PR is opened, our Chromatic workflow kicks in. It builds the full Storybook in the cloud, takes a screenshot of every single story, and compares each one pixel-by-pixel against the last approved version.', colour: '#f0fdf4' },
+    { step: '5', title: 'Review the visual diff', who: 'Designer / Reviewer', desc: 'Chromatic posts a link on the PR. Click it to see every change side-by-side: the old version (baseline), the new version, and a highlighted diff. You can accept or deny each change and leave comments.', colour: '#dbeafe' },
+    { step: '6', title: 'Fix or approve', who: 'Team', desc: 'If something looks wrong, deny the change and explain why. The developer fixes it, pushes again, and Chromatic re-runs. Repeat until everyone is happy.', colour: '#f0fdf4' },
+    { step: '7', title: 'Merge', who: 'Developer / Lead', desc: 'Once the code review and Chromatic review both pass, the PR gets merged into main. The accepted screenshots become the new baseline for future comparisons.', colour: '#dbeafe' },
+  ].map((item, i) => (
+    <div key={item.step} style={{ display: 'flex', gap: '16px', alignItems: 'stretch' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '40px' }}>
+        <div style={{ width: '32px', height: '32px', borderRadius: '50%', background: '#2B3990', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '14px', flexShrink: 0 }}>{item.step}</div>
+        {i < 6 && <div style={{ width: '2px', flex: 1, background: '#cbd5e1' }} />}
+      </div>
+      <div style={{ background: item.colour, borderRadius: '8px', padding: '12px 16px', marginBottom: '8px', flex: 1 }}>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px' }}>
+          <span style={{ fontSize: '14px', fontWeight: 600, color: '#0f172a' }}>{item.title}</span>
+          <span style={{ fontSize: '11px', color: '#64748b', background: '#e2e8f0', borderRadius: '4px', padding: '1px 6px' }}>{item.who}</span>
+        </div>
+        <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#334155', lineHeight: 1.5 }}>{item.desc}</p>
+      </div>
+    </div>
+  ))}
+</div>
+
+### FAQ for Non-Developers
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: '8px 0' }}>
+  {[
+    { q: 'Do I need to install anything to review?', a: 'No. Everything happens in your browser — GitHub for the code, Chromatic for the visual diffs.' },
+    { q: 'What is a "branch"?', a: 'A branch is a copy of the project where someone can make changes without affecting the live version. Think of it like editing a Google Doc in "Suggesting" mode.' },
+    { q: 'What is a "Pull Request"?', a: 'A Pull Request (PR) is a request to merge a branch\'s changes into the main project. It\'s where code review, discussion, and Chromatic visual review all happen.' },
+    { q: 'Can multiple people work at the same time?', a: 'Yes. Everyone works on their own branch. Multiple PRs can be open at once — each gets its own Chromatic build.' },
+    { q: 'What happens if I deny a change in Chromatic?', a: 'The PR cannot be merged until the issue is resolved. The developer will fix the problem, push again, and Chromatic will re-run for you to review.' },
+    { q: 'Where do I find the Chromatic link?', a: 'On the PR page in GitHub, scroll to the bottom where the status checks are. Click "Details" next to the Chromatic check.' },
+    { q: 'What if I accidentally accept a wrong change?', a: 'Tell the developer — they can re-run Chromatic. Accepted baselines can always be overridden in a follow-up PR.' },
+  ].map((item) => (
+    <div key={item.q} style={{ border: '1px solid #e2e8f0', borderRadius: '8px', padding: '12px 16px' }}>
+      <p style={{ margin: 0, fontSize: '13px', fontWeight: 600, color: '#0f172a' }}>{item.q}</p>
+      <p style={{ margin: '4px 0 0', fontSize: '13px', color: '#475569' }}>{item.a}</p>
+    </div>
+  ))}
+</div>
+
+---
+
+## Editing Documentation Pages
+
+Documentation pages (like this one) use **MDX** format — Markdown with JSX support.
+
+**Location:** `apps/storybook/src/stories/docs/`
+
+### Current Documentation Pages
+
+| Page | File | Purpose |
+|------|------|---------|
+| Introduction | `Introduction.mdx` | Overview of the component library and tech stack |
+| Design Tokens | `DesignTokens.mdx` | Visual reference for all tokens (colours, type, spacing, shadows) |
+| Design Tokens Guide | `DesignTokensGuide.mdx` | How to edit tokens (for non-developers) |
+| Contributing Guide | `ContributingGuide.mdx` | This page |
+
+### Basic MDX Syntax
+
+```mdx
+# Heading 1
+## Heading 2
+### Heading 3
+
+**Bold text** and *italic text*
+
+- Bullet point
+- Another point
+
+> This is a callout / quote block
+
+| Column 1 | Column 2 |
+|----------|----------|
+| Cell 1   | Cell 2   |
+```
+
+### Creating a New Documentation Page
+
+1. Create a new `.mdx` file in `apps/storybook/src/stories/docs/`
+2. Start with this template:
+
+```mdx
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Your Page Name" />
+
+# Your Page Title
+
+Your content here...
+```
+
+3. Open a PR with the new file — it will appear in the Storybook sidebar automatically.
+
+---
+
+## Adding Images
+
+1. Add your image to `apps/storybook/public/images/`
+2. Reference it in any MDX file:
+
+```mdx
+![Description of the image](/images/your-image.png)
+```
+
+---
+
+## The Designer ↔ Developer Agreement
+
+These are the ground rules for how design and code stay in sync at Print Room:
+
+<div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '12px', padding: '24px', margin: '16px 0' }}>
+  <p style={{ margin: '0 0 16px', fontSize: '15px', fontWeight: 700, color: '#0f172a' }}>THE PRINT ROOM DESIGN SYSTEM CONTRACT</p>
+  {[
+    'Figma is where designs are created. Code is where they become real. Storybook is the bridge.',
+    'Design tokens are the single source of truth for colours, spacing, typography, and radii. Designers use Figma Variables that match these tokens. Developers consume tokens via Tailwind classes — never hardcode values.',
+    'Components are built once in @print-room-studio/ui and used everywhere. If it exists in Storybook → use it. If it doesn\'t → dev builds it, adds a story, then designer adds the matching Figma component.',
+    'Naming must match. Figma component "Button/Primary/Large" = code Button variant="default" size="lg". Storybook variant names = Figma variant names.',
+    'Storybook is the component reference at print-room-storybook.vercel.app. Every component has a story with all variants documented and autodocs showing props.',
+    'Visual regression via Chromatic runs on every PR. If Chromatic flags a change, it must be approved by a designer or lead dev.',
+  ].map((rule, i) => (
+    <div key={i} style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
+      <span style={{ fontSize: '14px', fontWeight: 700, color: '#2B3990', minWidth: '20px' }}>{i + 1}.</span>
+      <p style={{ margin: 0, fontSize: '13px', color: '#334155', lineHeight: '1.5' }}>{rule}</p>
+    </div>
+  ))}
+</div>
+
+---
+
+## Quick Links
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: '12px', padding: '16px 0' }}>
+  {[
+    { label: 'Live Storybook', url: 'https://print-room-storybook.vercel.app', desc: 'Browse all components' },
+    { label: 'GitHub Repository', url: 'https://github.com/jimile/print-room-studio', desc: 'Source code & PRs' },
+    { label: 'Design Tokens', url: '?path=/docs/documentation-design-tokens--docs', desc: 'Full visual token reference' },
+    { label: 'Storybook Docs', url: 'https://storybook.js.org/docs', desc: 'Official Storybook documentation' },
+  ].map((link) => (
+    <a key={link.label} href={link.url} target={link.url.startsWith('http') ? '_blank' : undefined} style={{ textDecoration: 'none', border: '1px solid #e2e8f0', borderRadius: '8px', padding: '16px', display: 'block' }}>
+      <span style={{ fontSize: '14px', fontWeight: 600, color: '#2B3990' }}>{link.label}</span>
+      <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#64748b' }}>{link.desc}</p>
+    </a>
+  ))}
+</div>

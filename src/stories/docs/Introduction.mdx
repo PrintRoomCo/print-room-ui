@@ -1,0 +1,95 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Documentation/Introduction" />
+
+# Print Room Studio Component Library
+
+Welcome to the Print Room Studio design system documentation. This Storybook showcases all the reusable UI components used across our applications.
+
+## Overview
+
+This component library provides a consistent set of UI components built with:
+
+- **React 19** - Latest React with Server Components support
+- **Radix UI** - Accessible, unstyled primitives
+- **Tailwind CSS** - Utility-first styling
+- **Class Variance Authority (CVA)** - Type-safe component variants
+- **Framer Motion** - Smooth animations
+
+## Component Sources
+
+### UI Package (`@print-room-studio/ui`)
+
+The shared UI component library containing reusable components:
+
+| Category | Components |
+|----------|------------|
+| **Forms** | Button, Input, Textarea, Checkbox, Switch, RadioGroup, Label, Dropdown, QuantityInput, InputNumber |
+| **Display** | Card, Accordion, Modal, Progress, ProgressBar, StepProgress, Separator |
+| **Navigation** | BackButton, ViewOptions, FilterButtons |
+| **Specialized** | ColorPicker, OrderSummary, PriceSummary, QuoteDetailsForm, ProductViewer |
+
+### Design Tool Components
+
+App-specific components from the Design Tool application, showcasing real-world usage patterns.
+
+## Getting Started
+
+1. **Browse Components** - Use the sidebar to explore available components
+2. **Interactive Controls** - Use the Controls panel to modify component props
+3. **Accessibility** - Check the Accessibility panel for a11y audit results
+4. **Responsive Testing** - Use the viewport selector to test different screen sizes
+
+## Design Tokens
+
+Our design system uses CSS custom properties for theming:
+
+### Colors
+
+The color system uses HSL values for easy customization:
+
+- `--primary` - Primary action color
+- `--secondary` - Secondary/subtle actions
+- `--destructive` - Dangerous/delete actions
+- `--muted` - Subdued backgrounds
+- `--accent` - Highlight/accent color
+
+### Typography
+
+We use **DM Sans** as our primary font family with the following scale:
+
+- `display-2xl` - 48px, bold
+- `display-xl` - 40px, bold
+- `display-lg` - 32px, semibold
+- `xl` - 20px
+- `lg` - 18px
+- `md` - 16px (base)
+- `sm` - 14px
+- `xs` - 12px
+
+### Spacing
+
+Based on a 4px grid system:
+
+- `1` = 4px
+- `2` = 8px
+- `3` = 12px
+- `4` = 16px
+- `6` = 24px
+- `8` = 32px
+
+### Border Radius
+
+Semantic radius tokens:
+
+- `sm` - Small elements (inputs, buttons)
+- `md` - Medium elements
+- `lg` - Large elements (cards)
+- `button` - 8px
+- `card` - 12px
+- `modal` - 16px
+- `pill` - 100px (fully rounded)
+
+## Theme Support
+
+Components support both light and dark modes via the `.dark` class on the root element. Use the theme toggle in the toolbar to preview both themes.
