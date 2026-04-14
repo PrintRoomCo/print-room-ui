@@ -15,6 +15,7 @@
     "storefront": {
       "offWhite": "#FBFBF6",
       "pill": "#EEE",
+      "pillHover": "#e2e2e2",
       "sliderGreen": "#658A6A",
       "cantFindBg": "#EFFE9C"
     },
@@ -115,7 +116,11 @@
       "storefrontBody": "0.9375rem / 1.5rem (400)",
       "storefrontLabel": "0.8125rem / 1.25rem (400)",
       "storefrontPill": "0.66rem / 1rem (400)",
-      "storefrontInput": "0.875rem / 1.25rem (400)"
+      "storefrontInput": "0.875rem / 1.25rem (400)",
+      "storefrontTitleModal": "2.75rem / 3.25rem (700)",
+      "storefrontTitleDrawer": "2.5625rem / 3rem (700)",
+      "storefrontCta": "1.5rem / 2rem (600)",
+      "storefrontSubmit": "1.5rem / 2rem (600)"
     },
     "fontWeight": {
       "normal": "400",
@@ -159,6 +164,8 @@
     "card": "12px",
     "modal": "27px",
     "pill": "9999px",
+    "chip": "24px",
+    "popover": "16px",
     "input": "9999px",
     "textarea": "10px",
     "cta": "40px",
@@ -177,11 +184,38 @@
     "buttonHover": "0 4px 8px 0 rgb(0 0 0 / 0.1)",
     "card": "0 2px 4px 0 rgb(0 0 0 / 0.06), 0 1px 2px 0 rgb(0 0 0 / 0.04)",
     "modal": "0 4px 13px 2px rgba(0, 0, 0, 0.1)",
+    "popover": "0 10px 25px rgba(0, 0, 0, 0.1)",
+    "sliderThumb": "0 2px 6px rgba(0, 0, 0, 0.15)",
     "focus": "0 0 0 3px rgba(43, 57, 144, 0.1)",
     "glassSm": "0 2px 8px rgba(0 0 0 / 0.04), 0 1px 2px rgba(0 0 0 / 0.06)",
     "glassMd": "0 4px 16px rgba(0 0 0 / 0.06), 0 2px 4px rgba(0 0 0 / 0.04)",
     "glassLg": "0 8px 32px rgba(0 0 0 / 0.08), 0 4px 8px rgba(0 0 0 / 0.04)",
     "glassXl": "0 16px 48px rgba(0 0 0 / 0.12), 0 8px 16px rgba(0 0 0 / 0.06)"
+  },
+
+  "borders": {
+    "modal": "2px solid black",
+    "drawerLeft": "2px solid black",
+    "pill": "0.666px solid black",
+    "input": "1px solid black",
+    "cta": "2px solid #4B4D72",
+    "chip": "0.4px solid black"
+  },
+
+  "sizing": {
+    "productImageDrawer": "90px",
+    "productImageModal": "53px",
+    "pillHeight": "23px",
+    "submitHeight": "70px",
+    "submitMaxWidth": "351px",
+    "startQuoteHeight": "79px",
+    "inputMinHeight": "2.75rem",
+    "sliderThumbSize": "24px",
+    "sliderTrackHeight": "6px",
+    "ctaWidth": "153px",
+    "ctaHeight": "47px",
+    "chipWidth": "90px",
+    "chipHeight": "21px"
   },
 
   "animation": {

@@ -159,8 +159,10 @@ const config: Config = {
         full: '9999px',
         button: '8px',
         card: '12px',
-        modal: '16px',
-        pill: '100px',
+        modal: '27px',
+        pill: '9999px',
+        chip: '24px',
+        popover: '16px',
       },
       fontSize: {
         'display-2xl': [
@@ -222,8 +224,10 @@ const config: Config = {
         button: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
         'button-hover': '0 4px 8px 0 rgb(0 0 0 / 0.1)',
         card: '0 2px 4px 0 rgb(0 0 0 / 0.06), 0 1px 2px 0 rgb(0 0 0 / 0.04)',
-        modal:
-          '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.04)',
+        modal: '0 4px 13px 2px rgba(0, 0, 0, 0.1)',
+        popover: '0 10px 25px rgba(0, 0, 0, 0.1)',
+        'slider-thumb': '0 2px 6px rgba(0, 0, 0, 0.15)',
+        focus: '0 0 0 3px rgba(43, 57, 144, 0.1)',
       },
       animation: {
         'fade-in': 'fade-in 0.2s ease-out',
@@ -231,6 +235,7 @@ const config: Config = {
         'bounce-in': 'bounce-in 0.4s ease-out',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        marquee: 'marquee 20s linear infinite',
       },
       keyframes: {
         'fade-in': {
@@ -253,6 +258,10 @@ const config: Config = {
         'accordion-up': {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
+        },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },

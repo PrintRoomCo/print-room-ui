@@ -53,6 +53,11 @@ Token source file: `src/tokens/design-tokens.json`
     colors={{ Slider: tokens.colors.storefront.sliderGreen }}
   />
   <ColorItem
+    title="Pill Hover"
+    subtitle={`storefront.pillHover · ${tokens.colors.storefront.pillHover}`}
+    colors={{ 'Pill Hover': tokens.colors.storefront.pillHover }}
+  />
+  <ColorItem
     title="Attention Background"
     subtitle={`storefront.cantFindBg · ${tokens.colors.storefront.cantFindBg}`}
     colors={{ Attention: tokens.colors.storefront.cantFindBg }}
@@ -90,6 +95,8 @@ Primary typeface remains `DM Sans` across storefront and shared React UI.
 | `storefrontLabel` | `0.8125rem / 1.25rem` |
 | `storefrontPill` | `0.66rem / 1rem` |
 | `storefrontInput` | `0.875rem / 1.25rem` |
+| `storefrontTitleModal` | `2.75rem / 3.25rem` |
+| `storefrontCta` | `1.5rem / 2rem` |
 
 ## Radius and Shadow Tokens
 
@@ -100,8 +107,33 @@ Primary typeface remains `DM Sans` across storefront and shared React UI.
 | `borderRadius.input` | `9999px` | Storefront text inputs and selects |
 | `borderRadius.textarea` | `10px` | Quote notes and address fields |
 | `borderRadius.cta` | `40px` | Prominent CTA buttons |
+| `borderRadius.chip` | `24px` | Compact chip buttons (e.g. favorites) |
+| `borderRadius.popover` | `16px` | Popover and drawer panels |
 | `shadows.modal` | `0 4px 13px 2px rgba(0, 0, 0, 0.1)` | Storefront modal surface |
+| `shadows.popover` | `0 10px 25px rgba(0, 0, 0, 0.1)` | Popover drop shadow |
+| `shadows.sliderThumb` | `0 2px 6px rgba(0, 0, 0, 0.15)` | Budget/size slider thumb |
 | `shadows.focus` | `0 0 0 3px rgba(43, 57, 144, 0.1)` | Focus ring treatment for inputs |
+
+## Border Tokens
+
+| Token | Value | Usage |
+| --- | --- | --- |
+| `borders.modal` | `2px solid black` | Shopify modal border |
+| `borders.pill` | `0.666px solid black` | Service and branding pills |
+| `borders.input` | `1px solid black` | Text inputs and selects |
+| `borders.cta` | `2px solid #4B4D72` | CTA button border |
+| `borders.chip` | `0.4px solid black` | Compact chip buttons |
+
+## Sizing Tokens
+
+| Token | Value | Usage |
+| --- | --- | --- |
+| `sizing.pillHeight` | `23px` | Shopify pill button height |
+| `sizing.submitHeight` | `70px` | Quote submit button height |
+| `sizing.inputMinHeight` | `2.75rem` | Minimum input field height |
+| `sizing.sliderThumbSize` | `24px` | Budget slider thumb diameter |
+| `sizing.ctaWidth` | `153px` | Standard CTA button width |
+| `sizing.ctaHeight` | `47px` | Standard CTA button height |
 
 ## App Exceptions
 

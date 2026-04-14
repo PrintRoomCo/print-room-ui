@@ -152,6 +152,11 @@ export function TechniquesGuideModal({
 
             <div>
               <div className="relative overflow-hidden rounded-lg bg-neutral-100">
+                {images.length === 0 ? (
+                  <div className="flex h-72 items-center justify-center text-sm text-neutral-400">
+                    Images coming soon
+                  </div>
+                ) : (
                 <div
                   className="flex transition-transform duration-300"
                   style={{ transform: `translateX(-${imageIndex * 100}%)` }}
@@ -166,6 +171,8 @@ export function TechniquesGuideModal({
                   ))}
                 </div>
 
+                )}
+
                 {images.length > 1 ? (
                   <>
                     <button
@@ -173,7 +180,7 @@ export function TechniquesGuideModal({
                       aria-label="Previous image"
                       onClick={() => setImageIndex((prev) => Math.max(0, prev - 1))}
                       disabled={imageIndex === 0}
-                      className="absolute left-2 top-1/2 rounded-full bg-white/80 p-1.5 shadow disabled:opacity-30"
+                      className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow hover:bg-white disabled:opacity-30"
                     >
                       <ChevronLeft className="h-4 w-4" />
                     </button>
@@ -182,7 +189,7 @@ export function TechniquesGuideModal({
                       aria-label="Next image"
                       onClick={() => setImageIndex((prev) => Math.min(images.length - 1, prev + 1))}
                       disabled={imageIndex === images.length - 1}
-                      className="absolute right-2 top-1/2 rounded-full bg-white/80 p-1.5 shadow disabled:opacity-30"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 shadow hover:bg-white disabled:opacity-30"
                     >
                       <ChevronRight className="h-4 w-4" />
                     </button>

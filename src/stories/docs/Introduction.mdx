@@ -16,7 +16,7 @@ This Storybook is the working source of truth for Print Room UI across three ref
 | --- | --- |
 | `Primitives/*` | Shared UI building blocks such as `Button`, `Input`, `Textarea`, `Dropdown`, `Checkbox`, `RadioGroup`, and `Tabs` |
 | `Storefront/*` | Shopify-aligned components and patterns such as `ProductCard`, `Pill`, `BrandingServiceCard`, `FreeShippingProgress`, `QuoteDetailsForm`, `Breadcrumbs`, and `Pagination` |
-| `App/Design Tool/*` | Isolated design-tool interactions such as `AnimatedColorButton`, `ColorSwatches`, `ViewTabs`, `MethodCard`, `TechniquesGuideModal`, and `QuantitySummary` |
+| `App/Design Tool/*` | Isolated design-tool interactions such as `AnimatedColorButton`, `ColorSwatches`, `ViewTabs`, `MethodCard`, `TechniquesGuideModal`, `QuantitySummary`, `TechniqueSelector`, `ArtworkSizeSlider`, and `FilterBar` |
 | `Documentation/*` | Tokens, contribution guidance, hooks, and utility docs |
 
 ## Alignment Rules
@@ -28,10 +28,12 @@ This Storybook is the working source of truth for Print Room UI across three ref
 
 ## Notable Additions In This Pass
 
-- Added shared `Breadcrumbs` and `Pagination` components to cover missing Shopify patterns.
+- Added `AnnouncementBar` component (static + marquee modes) matching the Shopify announcement bar.
+- Vendored 3 new design-tool components: `TechniqueSelector`, `ArtworkSizeSlider`, `FilterBar`.
+- Expanded production data fixtures with 8 additional branding services and business/sustainability info.
+- Synced all Shopify storefront tokens — added borders, sizing, popover/slider-thumb shadows, chip/popover radii.
 - Refreshed storefront stories with real brands, services, locations, pricing, and quote data.
-- Added isolated design-tool stories for `MethodCard`, `TechniquesGuideModal`, and `QuantitySummary`.
-- Updated token documentation to reflect storefront-first colours, radii, and shadows.
+- Updated token documentation to reflect storefront-first colours, radii, shadows, and borders.
 
 ## Using This Library
 
